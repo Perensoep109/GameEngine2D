@@ -33,3 +33,5 @@
 
 *.pch
 *.sdf
+*ipch
+*.ipch
