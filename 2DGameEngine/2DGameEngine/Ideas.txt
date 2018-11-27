@@ -1,0 +1,30 @@
+The full game idea:
+
+An infinite, procedurally generated platformer game that goes from the top to the bottom. The game is sorta like spelunky, but more fast paced. More stuff happens at once and there are more dangers
+Dangers such as flowing lava and water, falling boulders, explosions, cave ins, enemies and other traps.
+
+The game is centered to be fast paced.
+
+
+
+
+
+
+=======================================WORLD GENERATION================================================================
+Grid & preset world generation. These chunks get created at runtime, by multithreading the world generator.
+
+
+
+
+
+
+=======================================Rendering=======================================================================
+Write all the object structs (position, rotation, scale) to the vertex shader and write 1 set of quad data because the sprites will all be rendered upon that same quad later in the fragment shader.
+The geometry shader will take all the object structs and copy the vertex data for every object. This set of new data will be pushed onto the fragment for lightning calculations, texture mapping and
+other parts of the rendering. 
+
+To render all the objects, all the keys for the renderable objects will be stored alongside all the gameobjects. This list will be updated at runtime whenever a gameobject of type renderable2D gets
+created or removed. When either of these actions hit. Both this list and the gameobject manager list will get updated. Every renderable2D will contain a rotation and a position. When the renderer
+has to draw a frame, they get all the data through the keylist. Push it into the shaders and start rendering through them.
+
+All the light sources will be rendered with another shader for organization purposes.

@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Engine">
+      <UniqueIdentifier>{53367e41-0370-4628-8981-09a9032c00b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game">
+      <UniqueIdentifier>{ba368860-efda-400a-86c5-2977f5bf2ffc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine">
+      <UniqueIdentifier>{77529b62-180b-492a-809b-dd95fe528dee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game">
+      <UniqueIdentifier>{5322eb75-1541-4df2-9e7f-f4a5b26d62d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Objects">
+      <UniqueIdentifier>{cbac0ffb-d3a2-4a63-ba80-227658f46894}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\Objects">
+      <UniqueIdentifier>{ec8a293b-7fa5-48ce-a0e0-48683c75a7bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\Graphics">
+      <UniqueIdentifier>{3127ff1e-5cd4-4ede-9ee6-2d53a1b05a50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Graphics">
+      <UniqueIdentifier>{04ba1b09-e576-462b-97de-d41ba0f314ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game\Objects">
+      <UniqueIdentifier>{bdd49ca0-9506-4db7-beb7-bd7a28457fbc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\Graphics">
+      <UniqueIdentifier>{789a7e0e-8366-4347-8b58-8411a41423a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\Graphics\Shaders">
+      <UniqueIdentifier>{db0ff73e-cfd8-4886-aa78-ec965aedac61}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Source Files\Engine\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjectManager.cpp">
+      <Filter>Source Files\Engine\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderable2D.cpp">
+      <Filter>Source Files\Engine\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>Source Files\Engine\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>Source Files\Engine\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>Source Files\Engine\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="TileMap.cpp">
+      <Filter>Source Files\Engine\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="ActiveObject.cpp">
+      <Filter>Source Files\Engine\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteAtlas.cpp">
+      <Filter>Source Files\Engine\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer2D.cpp">
+      <Filter>Source Files\Engine\Graphics</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="libs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjectManager.h">
+      <Filter>Header Files\Engine\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Header Files\Engine\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>Header Files\Engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>Header Files\Engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Vertex.h">
+      <Filter>Header Files\Engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>Header Files\Engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="TestOBJ.h">
+      <Filter>Header Files\Game\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="TestObject.h">
+      <Filter>Header Files\Engine\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="TileMap.h">
+      <Filter>Header Files\Engine\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="ActiveObject.h">
+      <Filter>Header Files\Engine\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderable2D.h">
+      <Filter>Header Files\Engine\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Primitive.h">
+      <Filter>Header Files\Engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteAtlas.h">
+      <Filter>Header Files\Engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer2D.h">
+      <Filter>Header Files\Engine\Graphics</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Ideas.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="vertexCore.glsl">
+      <Filter>Source Files\Engine\Graphics\Shaders</Filter>
+    </None>
+    <None Include="fragmentCore.glsl">
+      <Filter>Source Files\Engine\Graphics\Shaders</Filter>
+    </None>
+    <None Include="geometryCore.glsl">
+      <Filter>Source Files\Engine\Graphics\Shaders</Filter>
+    </None>
+  </ItemGroup>
+</Project>
