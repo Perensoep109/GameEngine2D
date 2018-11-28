@@ -6,7 +6,7 @@ class Camera
 {
 private:
 	//Constant fields
-	glm::vec3* front = new glm::vec3(0.f, 0.f, 1.f);
+	glm::vec3* front;
 
 	glm::vec3* position;
 	glm::mat4* ViewMatrix;
@@ -14,7 +14,7 @@ private:
 	float* speed;
 
 public:
-	Camera();
+	Camera(glm::vec3* camPos);
 	~Camera();
 
 	//Functions

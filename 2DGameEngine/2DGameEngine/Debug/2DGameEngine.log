@@ -1,5 +1,3 @@
 ﻿  Camera.cpp
-c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\camera.cpp(21): error C2110: '+': cannot add two pointers
-c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\camera.cpp(21): error C2672: 'glm::lookAt': no matching overloaded function found
-c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\camera.cpp(21): error C2780: 'glm::mat<4,4,T,Q> glm::lookAt(const glm::vec<3,T,Q> &,const glm::vec<3,T,Q> &,const glm::vec<3,T,Q> &)': expects 3 arguments - 1 provided
-  c:\users\wiebe\documents\github\gameengine2d\2dgameengine\linking\glm\include\ext\matrix_transform.hpp(138): note: see declaration of 'glm::lookAt'
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\camera.cpp(27): error C2440: '=': cannot convert from 'glm::mat<4,4,glm::f32,0>' to 'glm::mat4 *'
+  c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\camera.cpp(27): note: No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
