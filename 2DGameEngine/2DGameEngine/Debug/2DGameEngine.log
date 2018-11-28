@@ -1,25 +1,5 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-﻿  Game.cpp
-c:\users\wiebe\documents\github\2dgameengine\2dgameengine\2dgameengine\gameobjectmanager.h(12): error C2011: 'GameObjectManager': 'class' type redefinition
-  c:\users\wiebe\documents\github\2dgameengine\2dgameengine\2dgameengine\gameobjectmanager.h(11): note: see declaration of 'GameObjectManager'
-c:\users\wiebe\documents\github\2dgameengine\2dgameengine\2dgameengine\game.cpp(18): error C2027: use of undefined type 'GameObjectManager'
-  c:\users\wiebe\documents\github\2dgameengine\2dgameengine\2dgameengine\gameobjectmanager.h(11): note: see declaration of 'GameObjectManager'
-c:\users\wiebe\documents\github\2dgameengine\2dgameengine\2dgameengine\game.cpp(18): error C3861: 'deletePool': identifier not found
-  main.cpp
-c:\users\wiebe\documents\github\2dgameengine\2dgameengine\2dgameengine\gameobjectmanager.h(12): error C2011: 'GameObjectManager': 'class' type redefinition
-  c:\users\wiebe\documents\github\2dgameengine\2dgameengine\2dgameengine\gameobjectmanager.h(11): note: see declaration of 'GameObjectManager'
-  Renderer2D.cpp
-c:\users\wiebe\documents\github\2dgameengine\2dgameengine\2dgameengine\renderer2d.cpp(25): warning C4018: '<': signed/unsigned mismatch
-  Generating Code...
-=======
-=======
->>>>>>> parent of 85cf742... Continued working on the rendering
-﻿  GameObjectManager.cpp
-LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
-GameObjectManager.obj : error LNK2001: unresolved external symbol "private: static class std::list<int,class std::allocator<int> > * GameObjectManager::renderObjects" (?renderObjects@GameObjectManager@@0PAV?$list@HV?$allocator@H@std@@@std@@A)
-C:\Users\Wiebe\Documents\GitHub\2DGameEngine\2DGameEngine\Debug\2DGameEngine.exe : fatal error LNK1120: 1 unresolved externals
-<<<<<<< HEAD
->>>>>>> parent of 85cf742... Continued working on the rendering
-=======
->>>>>>> parent of 85cf742... Continued working on the rendering
+﻿  Camera.cpp
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\camera.cpp(21): error C2110: '+': cannot add two pointers
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\camera.cpp(21): error C2672: 'glm::lookAt': no matching overloaded function found
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\camera.cpp(21): error C2780: 'glm::mat<4,4,T,Q> glm::lookAt(const glm::vec<3,T,Q> &,const glm::vec<3,T,Q> &,const glm::vec<3,T,Q> &)': expects 3 arguments - 1 provided
+  c:\users\wiebe\documents\github\gameengine2d\2dgameengine\linking\glm\include\ext\matrix_transform.hpp(138): note: see declaration of 'glm::lookAt'

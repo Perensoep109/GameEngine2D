@@ -2,7 +2,7 @@
 #include <typeinfo>
 
 std::unordered_map<int, GameObject*>*::GameObjectManager::gameObjects = new std::unordered_map<int, GameObject*>();
-std::list<int>* renderObjects = new std::list<int>();
+std::list<int>*::GameObjectManager::renderObjects = new std::list<int>();
 
 void GameObjectManager::createObject(GameObject* gameObject)
 {

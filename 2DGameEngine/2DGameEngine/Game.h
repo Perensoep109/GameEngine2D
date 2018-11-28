@@ -7,6 +7,7 @@
 #include "TestObject.h"
 #include "GameObjectManager.h"
 #include "Primitive.h"
+#include "Renderer2D.h"
 
 #include "Vertex.h"
 
@@ -19,12 +20,14 @@ private:
 	void initGLEW();
 	void initOpenGLOptions();
 	void initShaders();
+	void initRenderer();
 
 	//Callbacks
 	static void glfwErrorCallback(int id, const char* description);
 
 	//Components
 	Window* gameWindow;
+	Renderer2D* gameRenderer;
 
 	//Shaders
 	Shader* mainShader;

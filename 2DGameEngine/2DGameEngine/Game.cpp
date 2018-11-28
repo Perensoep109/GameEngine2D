@@ -7,6 +7,7 @@ Game::Game()
 	initGLEW();
 	initOpenGLOptions();
 	initShaders();
+	initRenderer();
 
 	start();
 }
@@ -70,21 +71,7 @@ void Game::update()
 
 void Game::render()
 {
-	glClearColor(0.f, 0.f, 0.f, 0.f);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
-
-	mainShader->use();
-	glBindVertexArray(VAO);
-	glDrawArrays(GL_POINTS, 0, 4);
-
-	this->gameWindow->swapBuffers();
-	glFlush();
-
-	//Reset
-	glBindVertexArray(0);
-	glUseProgram(0);
-	glActiveTexture(0);
-	glBindTexture(GL_TEXTURE_2D, 0);
+	this->gameRenderer->renderGame();
 }
 
 #pragma region Initializers
@@ -138,6 +125,11 @@ void Game::initOpenGLOptions()
 void Game::initShaders()
 {
 	this->mainShader = new Shader(4, 4,"vertexCore.glsl", "fragmentCore.glsl", "geometryCore.glsl");
+}
+
+void Game::initRenderer()
+{
+	this->gameRenderer = new Renderer2D(this->mainShader, this->gameWindow);
 }
 
 #pragma endregion

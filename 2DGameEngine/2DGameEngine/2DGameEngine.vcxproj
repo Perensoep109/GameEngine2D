@@ -124,6 +124,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ActiveObject.cpp" />
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameObjectManager.cpp" />
@@ -138,6 +139,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ActiveObject.h" />
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameObjectManager.h" />
@@ -145,6 +147,7 @@
     <ClInclude Include="Primitive.h" />
     <ClInclude Include="Renderable2D.h" />
     <ClInclude Include="Renderer2D.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteAtlas.h" />
