@@ -129,7 +129,7 @@ void Game::initShaders()
 
 void Game::initRenderer()
 {
-	this->gameRenderer = new Renderer2D(this->mainShader, this->gameWindow);
+	this->gameRenderer = new Renderer2D(this->mainShader, this->gameWindow, this->gameCamera);
 }
 
 #pragma endregion

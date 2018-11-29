@@ -4,6 +4,7 @@
 #include<glfw3.h>
 class Camera
 {
+	class Renderable2D;
 private:
 	//Constant fields
 	glm::vec3* front;
@@ -18,6 +19,8 @@ public:
 	~Camera();
 
 	//Functions
+	void followGameObject(Renderable2D objectToFollow);
+	void move();
 
 	//Accessors
 	float* getSpeed();

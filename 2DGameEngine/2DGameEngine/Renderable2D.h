@@ -9,6 +9,7 @@ protected:
 
 private:
 	float renderLayer = 1.f;
+	glm::vec3* position;
 
 public:
 	Renderable2D();

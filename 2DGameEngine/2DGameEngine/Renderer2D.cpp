@@ -2,16 +2,18 @@
 
 
 
-Renderer2D::Renderer2D(Shader* mainShaderProgram, Window* mainWindow)
+Renderer2D::Renderer2D(Shader* mainShaderProgram, Window* mainWindow, Camera* mainCamera)
 {
 	this->mainShader = mainShaderProgram;
 	this->mainWindow = mainWindow;
+	this->mainCamera = mainCamera;
 }
 
 Renderer2D::~Renderer2D()
 {
 	delete this->mainWindow;
 	delete this->mainShader;
+	delete this->mainCamera;
 }
 
 //Functions:
@@ -39,6 +41,7 @@ void Renderer2D::renderFrame()
 void Renderer2D::sendToShader()
 {
 	this->mainShader->setMat4fv(this->mainWindow->getProjectionMatrix(), "ProjectionMatrix");
+	this->mainShader->set1i(1, "objectAmount");
 }
 
 void Renderer2D::renderGame()

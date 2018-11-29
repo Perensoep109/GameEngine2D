@@ -3,9 +3,19 @@ in vec2 pos;
 
 vec4 gl_Position;
 
+//Uniforms
+uniform int objectAmount;
+
 //Matrices
 uniform mat4 ViewMatrix;
 uniform mat4 ProjectionMatrix;
+
+//Outputs
+out ObjectOutput
+{
+	int amountOfObjects;
+	vec2[objectAmount] objectData;
+}
 
 void main()
 {

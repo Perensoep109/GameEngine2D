@@ -17,6 +17,9 @@ Camera::~Camera()
 	delete this->ViewMatrix;
 }
 
+//Functions
+
+
 float* Camera::getSpeed()
 {
 	return this->speed;
@@ -24,7 +27,7 @@ float* Camera::getSpeed()
 
 glm::mat4* Camera::getViewMatrix()
 {
-	this->ViewMatrix = glm::lookAt(*this->position, *this->position + glm::vec3(0.f, 0.f, 1.f), glm::vec3(glm::vec3(0.f, 1.f, 0.f)));
+	this->ViewMatrix = &glm::lookAt(*this->position, *this->position + glm::vec3(0.f, 0.f, 1.f), glm::vec3(glm::vec3(0.f, 1.f, 0.f)));
 	return this->ViewMatrix;
 }
 

@@ -28,6 +28,7 @@ private:
 	//Components
 	Window* gameWindow;
 	Renderer2D* gameRenderer;
+	Camera* gameCamera;
 
 	//Shaders
 	Shader* mainShader;
