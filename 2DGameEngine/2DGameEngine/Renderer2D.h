@@ -2,11 +2,12 @@
 #include "Window.h"
 #include "Shader.h"
 #include "Camera.h"
+#include "GameObjectManager.h"
 
 class Renderer2D
 {
+	friend class GameObjectManager;
 private:
-	class GameObjectManager;
 	//Fields
 	float clearR = 0.f, clearG = 0.f, clearB = 0.f, clearA = 0.f;
 	Shader* mainShader;
@@ -15,6 +16,7 @@ private:
 
 	void renderFrame();
 	void sendToShader();
+	void genVAO();
 public:
 	Renderer2D(Shader* mainShaderProgram, Window* mainWindow, Camera* mainCamera);
 	~Renderer2D();

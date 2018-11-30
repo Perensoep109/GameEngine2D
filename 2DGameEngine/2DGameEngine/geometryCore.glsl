@@ -3,11 +3,11 @@
     layout(points) in;
     layout(triangle_strip, max_vertices = 5) out;
 
-	in int objectAmount;
-
 	in ObjectInput
 	{
-		vec2[256] objectData;
+		vec2 in_objectData[];
+		float in_objectRotation;
+		int in_objectAmount;
 	} objectInput[];
 
 	void createQuad(vec4 position)
@@ -32,9 +32,8 @@
 
     void main()
     {
-        for(int i = 0; i < objectAmount; i++)
+        for(int i = 0; i < objectInput[0].in_objectAmount; i++)
 		{
-			//Render all the objects that are in this shader
-			//createQuad(objectInput[0].objectData[i]);
+			
 		}
     }

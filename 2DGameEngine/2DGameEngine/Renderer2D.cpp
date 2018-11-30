@@ -44,6 +44,11 @@ void Renderer2D::sendToShader()
 	this->mainShader->set1i(1, "objectAmount");
 }
 
+void Renderer2D::genVAO()
+{
+	for(int i = 0; i < GameObjectManager::)
+}
+
 void Renderer2D::renderGame()
 {
 	renderFrame();
