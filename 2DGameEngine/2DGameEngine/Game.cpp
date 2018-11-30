@@ -21,35 +21,6 @@ Game::~Game()
 
 void Game::start()
 {
-	//testObject = new TestOBJ();
-
-#pragma region Temporary code
-	/*
-	glPointSize(10);
-
-	glGenBuffers(1, &VBO);
-
-	float points[] = {
-	-0.45f,  0.45f,
-	 0.45f,  0.45f,
-	 0.45f, -0.45f,
-	-0.45f, -0.45f,
-	};
-	
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(points), points, GL_STATIC_DRAW);
-
-	// Create VAO
-	glGenVertexArrays(1, &VAO);
-	glBindVertexArray(VAO);
-
-	// Specify layout of point data
-	GLint posAttrib = glGetAttribLocation(mainShader->id, "pos");
-	glEnableVertexAttribArray(posAttrib);
-	glVertexAttribPointer(posAttrib, 2, GL_FLOAT, GL_FALSE, 0, 0);
-	*/
-
-#pragma endregion
 	while (!this->gameWindow->getWindowShouldClose())
 	{
 		//Update input

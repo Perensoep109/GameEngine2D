@@ -7,8 +7,8 @@
 
 	in ObjectInput
 	{
-		vec2[objectAmount] objectData;
-	} objectInput
+		vec2[256] objectData;
+	} objectInput[];
 
 	void createQuad(vec4 position)
 	{
@@ -35,6 +35,6 @@
         for(int i = 0; i < objectAmount; i++)
 		{
 			//Render all the objects that are in this shader
-			createQuad(objectInput[i].objectData[i]);
+			//createQuad(objectInput[0].objectData[i]);
 		}
     }

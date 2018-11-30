@@ -14,8 +14,8 @@ uniform mat4 ProjectionMatrix;
 out ObjectOutput
 {
 	int amountOfObjects;
-	vec2[objectAmount] objectData;
-}
+	vec2[256] objectData;
+};
 
 void main()
 {
