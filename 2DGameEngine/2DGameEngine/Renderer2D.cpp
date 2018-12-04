@@ -1,4 +1,4 @@
-#include "Renderer2D.h"
+#include "GameObjectManager.h"
 
 
 
@@ -19,13 +19,15 @@ Renderer2D::~Renderer2D()
 //Functions:
 void Renderer2D::renderFrame()
 {
-	sendToShader();
-
 	glClearColor(this->clearR, this->clearG, this->clearB, this->clearA);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
 	//Render the rest
+	this->mainShader->use();
+	sendToShader();
+	genVAO();
 
+	glDrawArrays(GL_POINTS, this->VAO, this->renderPositions.size());
 	//End render
 
 	this->mainWindow->swapBuffers();
@@ -46,8 +48,17 @@ void Renderer2D::sendToShader()
 
 void Renderer2D::genVAO()
 {
-	for(int i = 0; i < GameObjectManager::)
+	int keyAmount = GameObjectManager::renderObjects->size();
+	for (int i = 0; i < keyAmount; i++)
+	{
+		renderPositions.push_back(GameObjectManager::renderObjects->at(i)->getPosition());
+	}
+
+	glCreateVertexArrays(1, &VAO);
+	glBindVertexArray(VAO);
 }
+
+
 
 void Renderer2D::renderGame()
 {
@@ -57,7 +68,7 @@ void Renderer2D::renderGame()
 /*
 	glPointSize(10);
 
-	glGenBuffers(1, &VBO);
+	glGenBuffers(1, &VBO);  
 
 	float points[] = {
 	-0.45f,  0.45f,

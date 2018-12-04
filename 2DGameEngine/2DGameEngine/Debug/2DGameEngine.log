@@ -1,11 +1,2 @@
-﻿  Game.cpp
-c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\gameobjectmanager.h(12): error C2011: 'GameObjectManager': 'class' type redefinition
-  c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\gameobjectmanager.h(11): note: see declaration of 'GameObjectManager'
-c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\game.cpp(19): error C2027: use of undefined type 'GameObjectManager'
-  c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\gameobjectmanager.h(11): note: see declaration of 'GameObjectManager'
-c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\game.cpp(19): error C3861: 'deletePool': identifier not found
-  main.cpp
-c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\gameobjectmanager.h(12): error C2011: 'GameObjectManager': 'class' type redefinition
-  c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\gameobjectmanager.h(11): note: see declaration of 'GameObjectManager'
-  Renderer2D.cpp
-  Generating Code...
+﻿  GameObjectManager.cpp
+  2DGameEngine.vcxproj -> C:\Users\Wiebe\Documents\GitHub\GameEngine2D\2DGameEngine\Debug\2DGameEngine.exe

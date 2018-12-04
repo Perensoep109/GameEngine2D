@@ -5,9 +5,9 @@
 
 	in ObjectInput
 	{
-		vec2 in_objectData[];
-		float in_objectRotation;
-		int in_objectAmount;
+		vec3[256] out_objectData;
+		float out_objectRotation;
+		int out_objectAmount;
 	} objectInput[];
 
 	void createQuad(vec4 position)
@@ -32,8 +32,8 @@
 
     void main()
     {
-        for(int i = 0; i < objectInput[0].in_objectAmount; i++)
-		{
+        //for(int i = 0; i < objectInput[0].out_objectAmount; i++)
+		//{
 			
-		}
+		//}
     }

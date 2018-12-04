@@ -21,6 +21,11 @@ Game::~Game()
 
 void Game::start()
 {
+	for (int i = 0; i < 20; i++)
+	{
+		GameObjectManager::createObject(new TestOBJ(new glm::vec3(0.f, 0.f, 0.f)));
+	}
+
 	while (!this->gameWindow->getWindowShouldClose())
 	{
 		//Update input
@@ -111,9 +116,5 @@ void Game::glfwErrorCallback(int id, const char* description)
 {
 	std::cout << description << "\n";
 }
-
-#pragma endregion
-
-#pragma region Temporary code
 
 #pragma endregion

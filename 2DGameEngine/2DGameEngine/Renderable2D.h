@@ -6,8 +6,6 @@ class Renderable2D
 {
 protected:
 	Sprite2D* sprite;
-
-private:
 	float renderLayer = 1.f;
 	glm::vec3* position;
 
@@ -21,4 +19,7 @@ public:
 	
 	void draw();
 	void setSprite(const char* fileName);
+
+	//Accessors
+	glm::vec3* getPosition();
 };

@@ -11,7 +11,7 @@ uniform mat4 ViewMatrix;
 uniform mat4 ProjectionMatrix;
 
 //Outputs
-out ObjectOutput
+out ObjectInput
 {
 	vec3[256] out_objectData;
 	float out_objectRotation;

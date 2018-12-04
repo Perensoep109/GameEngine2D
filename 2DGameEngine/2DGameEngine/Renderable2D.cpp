@@ -25,3 +25,8 @@ void Renderable2D::setSprite(const char* fileName)
 {
 	this->sprite->setSprite(fileName);
 }
+
+glm::vec3* Renderable2D::getPosition()
+{
+	return this->position;
+}

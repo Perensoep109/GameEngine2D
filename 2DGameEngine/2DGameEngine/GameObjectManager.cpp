@@ -2,17 +2,19 @@
 #include <typeinfo>
 
 std::unordered_map<int, GameObject*>*::GameObjectManager::gameObjects = new std::unordered_map<int, GameObject*>();
-std::list<int>*::GameObjectManager::renderObjects = new std::list<int>();
+std::vector<Renderable2D*>*::GameObjectManager::renderObjects = new std::vector<Renderable2D*>();
 
 void GameObjectManager::createObject(GameObject* gameObject)
 {
 	//Check if the object pool exists:
 	GameObjectManager::checkError();
 	
-	if (GameObjectManager::gameObjects->insert({ gameObject->getID(), gameObject }).second == false)
+	if (GameObjectManager::gameObjects->insert({ gameObject->getID(), gameObject }).second == true)
 	{
 		//This object already exists, generate a new object ID
 		gameObject->generateID();
+		std::cout << "ID already exists! ID: " << gameObject->getID() << "\n";
+
 		GameObjectManager::createObject(gameObject);
 	}
 
@@ -22,8 +24,7 @@ void GameObjectManager::createObject(GameObject* gameObject)
 	if (typeInfo == typeid(Renderable2D))
 	{
 		//This object is a renderable, add the key to the renderobjects list
-		std::cout << "Renderable created! Adding it to the render key list ID: " << gameObject->getID() << "\n";
-		renderObjects->push_back(gameObject->getID());
+		renderObjects->push_back((Renderable2D*)gameObject);
 	}
 }
 
@@ -43,6 +44,7 @@ void GameObjectManager::destroyObject(GameObject* gameObject)
 {	
 	GameObjectManager::destroyObject(gameObject->getID());
 }
+
 
 
 
