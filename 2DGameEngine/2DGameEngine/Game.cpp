@@ -31,7 +31,7 @@ void Game::start()
 		//Update input
 		glfwPollEvents();
 
-		update();
+		//update();
 
 		render();
 	}

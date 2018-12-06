@@ -49,13 +49,22 @@ void Renderer2D::sendToShader()
 void Renderer2D::genVAO()
 {
 	int keyAmount = GameObjectManager::renderObjects->size();
+	//std::vector<float>* positions = new std::vector<float>();
+
 	for (int i = 0; i < keyAmount; i++)
 	{
-		renderPositions.push_back(GameObjectManager::renderObjects->at(i)->getPosition());
+		//positions->push_back(GameObjectManager::renderObjects->at(i)->getPosition()->x);
+		//positions->push_back(GameObjectManager::renderObjects->at(i)->getPosition()->y);
 	}
 
 	glCreateVertexArrays(1, &VAO);
 	glBindVertexArray(VAO);
+
+	//Clear ram
+	//delete positions;
+	glBindVertexArray(0);
+	glUseProgram(0);
+	glActiveTexture(0);
 }
 
 
@@ -92,7 +101,7 @@ void Renderer2D::renderGame()
 
 #pragma region Getters & Setters
 //Getters
-
+	
 float Renderer2D::getClearR()
 {
 	return this->clearR;
