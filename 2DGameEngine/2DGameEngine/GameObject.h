@@ -7,17 +7,26 @@
 
 class GameObjectManager;
 
+enum OBJ_TYPE
+{
+	Renderable2DE
+};
+
 class GameObject
 {
 private:
 	int objectID = 0;
+	OBJ_TYPE objectType;
+	
 
 public:
-	GameObject();
+	GameObject(OBJ_TYPE);
 	~GameObject();
 
 	int getID();
 
 	//Functions
 	int generateID();
+
+	bool typeOf(OBJ_TYPE type);
 };

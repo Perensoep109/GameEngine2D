@@ -10,9 +10,4 @@ public:
 		this->position = _position;
 		std::cout << "Created test object" << "\n";
 	}
-
-	void update()
-	{
-		std::cout << "Updated test object" << "\n";
-	}
 };

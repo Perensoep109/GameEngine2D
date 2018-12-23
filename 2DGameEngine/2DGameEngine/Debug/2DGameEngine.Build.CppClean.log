@@ -1,6 +1,3 @@
-c:\users\wiebe\documents\github\2dgameengine\2dgameengine\2dgameengine\debug\vc141.pdb
-c:\users\wiebe\documents\github\2dgameengine\2dgameengine\2dgameengine\debug\gameobject.obj
-c:\users\wiebe\documents\github\2dgameengine\2dgameengine\2dgameengine\debug\gameobjectmanager.obj
 c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\debug\vc141.pdb
 c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\debug\vc141.idb
 c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\debug\window.obj
@@ -15,12 +12,20 @@ c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\debug\gam
 c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\debug\gameobject.obj
 c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\debug\game.obj
 c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\debug\activeobject.obj
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\debug\camera.obj
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\debug\scene.obj
 c:\users\wiebe\documents\github\gameengine2d\2dgameengine\debug\2dgameengine.exe
 c:\users\wiebe\documents\github\gameengine2d\2dgameengine\debug\2dgameengine.ilk
 c:\users\wiebe\documents\github\gameengine2d\2dgameengine\debug\2dgameengine.pdb
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\debug\2dgameengine.res
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\debug\physicsobject.obj
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\debug\gameobjectmanager.obj.enc
 c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\debug\2dgameengine.tlog\cl.command.1.tlog
 c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\debug\2dgameengine.tlog\cl.read.1.tlog
 c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\debug\2dgameengine.tlog\cl.write.1.tlog
 c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\debug\2dgameengine.tlog\link.command.1.tlog
 c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\debug\2dgameengine.tlog\link.read.1.tlog
 c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\debug\2dgameengine.tlog\link.write.1.tlog
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\debug\2dgameengine.tlog\rc.command.1.tlog
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\debug\2dgameengine.tlog\rc.read.1.tlog
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\debug\2dgameengine.tlog\rc.write.1.tlog

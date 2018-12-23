@@ -1,25 +1,17 @@
 #version 440
-in vec2 pos;
 
-vec4 gl_Position;
+layout (location = 0) in vec2 aPos;
+layout (location = 1) in vec3 aColor;
+layout (location = 2) in vec2 aOffset; //Offset of this instance, from the first instance in the array
 
-//Uniforms
-uniform int in_objectAmount;
+out vec3 fColor;
 
-//Matrices
-uniform mat4 ViewMatrix;
+//Matrices:
 uniform mat4 ProjectionMatrix;
-
-//Outputs
-out ObjectInput
-{
-	vec3[256] out_objectData;
-	float out_objectRotation;
-	int out_objectAmount;
-} out_data;
+uniform mat4 ViewMatrix;
 
 void main()
 {
-    gl_Position = ViewMatrix * ProjectionMatrix * vec4(pos, 0.0, 1.0);
-	out_data.out_objectAmount = in_objectAmount;
+	gl_Position = vec4(aPos + aOffset, 0.0, 1.0);
+	fColor = aColor;
 }

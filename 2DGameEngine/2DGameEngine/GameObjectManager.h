@@ -14,13 +14,14 @@ class GameObjectManager
 private:
 	static std::unordered_map<int, GameObject*>* gameObjects;
 	static void checkError();
+	static bool insertObject(GameObject* gameObject);
 
 public:
 	//Fields
 	static std::vector<Renderable2D*>* renderObjects;
 
 	//Pool interaction functions
-	static void createObject(GameObject* gaeObject);
+	static void createObject(GameObject* gameObject);
 	static void destroyObject(int objectID);
 	static void destroyObject(GameObject* gameObject);
 	static GameObject* getObject(int objectID);

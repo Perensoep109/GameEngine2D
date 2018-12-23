@@ -42,6 +42,12 @@
     <Filter Include="Source Files\Engine\Graphics\Shaders">
       <UniqueIdentifier>{db0ff73e-cfd8-4886-aa78-ec965aedac61}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Engine\Scenes">
+      <UniqueIdentifier>{00381753-30e6-448f-b66c-532be906cad7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Scenes">
+      <UniqueIdentifier>{34bcc445-12ed-45ca-8e1b-2b04224378a7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -68,12 +74,6 @@
     <ClCompile Include="Window.cpp">
       <Filter>Source Files\Engine\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="TileMap.cpp">
-      <Filter>Source Files\Engine\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="ActiveObject.cpp">
-      <Filter>Source Files\Engine\Objects</Filter>
-    </ClCompile>
     <ClCompile Include="SpriteAtlas.cpp">
       <Filter>Source Files\Engine\Graphics</Filter>
     </ClCompile>
@@ -81,7 +81,13 @@
       <Filter>Source Files\Engine\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="Camera.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Engine\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Source Files\Engine\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="TileMap.cpp">
+      <Filter>Source Files\Engine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -118,9 +124,6 @@
     <ClInclude Include="TileMap.h">
       <Filter>Header Files\Engine\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="ActiveObject.h">
-      <Filter>Header Files\Engine\Objects</Filter>
-    </ClInclude>
     <ClInclude Include="Renderable2D.h">
       <Filter>Header Files\Engine\Objects</Filter>
     </ClInclude>
@@ -137,7 +140,10 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Header Files\Engine\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -4,8 +4,9 @@
 
 Camera::Camera(glm::vec3* camPos)
 {
-	this->front = new glm::vec3(0.f, 0.f, 1.f);
+	this->front = new glm::vec3(0.f, 0.f, -1.f);
 	this->position = camPos;
+	this->ViewMatrix = new glm::mat4();
 }
 
 
@@ -27,7 +28,7 @@ float* Camera::getSpeed()
 
 glm::mat4* Camera::getViewMatrix()
 {
-	this->ViewMatrix = &glm::lookAt(*this->position, *this->position + glm::vec3(0.f, 0.f, 1.f), glm::vec3(glm::vec3(0.f, 1.f, 0.f)));
+	*this->ViewMatrix = glm::lookAt(*this->position, *this->position + glm::vec3(0.f, 0.f, 1.f), glm::vec3(glm::vec3(0.f, 1.f, 0.f)));
 	return this->ViewMatrix;
 }
 

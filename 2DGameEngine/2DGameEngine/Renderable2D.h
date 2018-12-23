@@ -1,8 +1,8 @@
 #pragma once
-#include "ActiveObject.h"
+#include "GameObject.h"
 #include "Sprite.h"
 class Renderable2D
-	: public ActiveObject
+	: public GameObject
 {
 protected:
 	Sprite2D* sprite;
@@ -17,9 +17,13 @@ public:
 	//Public fields:
 	bool shouldRender = true;
 	
-	void draw();
+	//Setters
 	void setSprite(const char* fileName);
+	void setLayer(float newLayer);
+
 
 	//Accessors
 	glm::vec3* getPosition();
+	float getRotation();
+	float getLayer();
 };

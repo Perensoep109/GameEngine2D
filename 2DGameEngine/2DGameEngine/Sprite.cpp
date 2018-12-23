@@ -54,6 +54,12 @@ void Sprite2D::loadSprite(const char* fileName)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+	//ERROR         ^^^^^^
+	GLenum err;
+	err = glGetError();
+	if (err == GL_NO_ERROR) return;
+	std::cout << "OpenGL error: " << err << "\n";
+	printf("Error: %s\n", glewGetErrorString(err));
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 
 	if (image != nullptr)
@@ -69,4 +75,5 @@ void Sprite2D::loadSprite(const char* fileName)
 	{
 		std::cout << "Error, loading sprite from file failed: " << fileName << "\n";
 	}
+
 }

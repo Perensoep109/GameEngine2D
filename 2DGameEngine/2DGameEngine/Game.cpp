@@ -7,6 +7,7 @@ Game::Game()
 	initGLEW();
 	initOpenGLOptions();
 	initShaders();
+	initCamera();
 	initRenderer();
 
 	start();
@@ -21,17 +22,12 @@ Game::~Game()
 
 void Game::start()
 {
-	for (int i = 0; i < 20; i++)
-	{
-		GameObjectManager::createObject(new TestOBJ(new glm::vec3(0.f, 0.f, 0.f)));
-	}
+	//testObject = new TestOBJ(new glm::vec3(10.f, 10.f, 0.0f));
 
 	while (!this->gameWindow->getWindowShouldClose())
 	{
-		//Update input
-		glfwPollEvents();
 
-		//update();
+		update();
 
 		render();
 	}
@@ -67,7 +63,7 @@ void Game::initGLFW()
 void Game::initWindow()
 {
 	//Initialize the window
-	this->gameWindow = new Window("Title", true, true, 4, 4);
+	this->gameWindow = new Window("Title", true, false, 4, 4, glm::ivec2(800, 600));
 }
 
 void Game::initGLEW()
@@ -90,8 +86,6 @@ void Game::initOpenGLOptions()
 	//glCullFace(GL_BACK);
 	//glFrontFace(GL_CCW);
 
-	glPointSize(10);
-
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
@@ -100,14 +94,18 @@ void Game::initOpenGLOptions()
 
 void Game::initShaders()
 {
-	this->mainShader = new Shader(4, 4,"vertexCore.glsl", "fragmentCore.glsl", "geometryCore.glsl");
+	this->mainShader = new Shader(4, 4, "vertexCore.glsl", "fragmentCore.glsl");
+}
+
+void Game::initCamera()
+{
+	this->gameCamera = new Camera(new glm::vec3(0, 0, 0));
 }
 
 void Game::initRenderer()
 {
 	this->gameRenderer = new Renderer2D(this->mainShader, this->gameWindow, this->gameCamera);
 }
-
 #pragma endregion
 
 #pragma region Callbacks

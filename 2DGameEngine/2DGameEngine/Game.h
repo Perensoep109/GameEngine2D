@@ -20,6 +20,7 @@ private:
 	void initGLEW();
 	void initOpenGLOptions();
 	void initShaders();
+	void initCamera();
 	void initRenderer();
 
 	//Callbacks
@@ -34,8 +35,6 @@ private:
 	Shader* mainShader;
 
 	TestOBJ* testObject;
-
-	GLuint VBO, VAO;
 public:
 	Game();
 	~Game();

@@ -18,7 +18,6 @@ private:
 	bool fullscreen;
 
 	//References
-	//Camera* cameraRef;
 	glm::vec2 centerOfScreen = glm::vec2(this->fbW / 2, this->fbH / 2);
 
 	//Projection matrix
@@ -56,7 +55,7 @@ public:
 #pragma region Accessors
 	glm::ivec2 getSize();
 	bool getWindowShouldClose();
-	glm::mat4 getProjectionMatrix();
+	glm::mat4* getProjectionMatrix();
 
 	//Framebuffer
 	int getFBW(), getFBH();

@@ -8,16 +8,9 @@ void GameObjectManager::createObject(GameObject* gameObject)
 {
 	//Check if the object pool exists:
 	GameObjectManager::checkError();
-	
-	if (GameObjectManager::gameObjects->insert({ gameObject->getID(), gameObject }).second == true)
-	{
-		//This object already exists, generate a new object ID
-		gameObject->generateID();
-		std::cout << "ID already exists! ID: " << gameObject->getID() << "\n";
+	GameObjectManager::insertObject(gameObject);
 
-		GameObjectManager::createObject(gameObject);
-	}
-
+	/*
 	//Add this object to the renderable list if it is a renderable type
 	const std::type_info& typeInfo = typeid(*gameObject);
 
@@ -26,6 +19,20 @@ void GameObjectManager::createObject(GameObject* gameObject)
 		//This object is a renderable, add the key to the renderobjects list
 		renderObjects->push_back((Renderable2D*)gameObject);
 	}
+	*/
+
+	if (gameObject->typeOf(OBJ_TYPE::Renderable2DE))
+	{
+		renderObjects->push_back((Renderable2D*)gameObject);
+		std::cout << "Renderobject found!" << "\n";
+	}
+	else
+	{
+		std::cout << "Object was not an renderable object" << "\n";
+	}
+
+	//std::cout << "Game object name: " << typeid(GameObject).name() << "\n";
+	//std::cout << "Render object name: " << typeid(Renderable2D).name() << "\n";
 }
 
 
@@ -71,4 +78,17 @@ void GameObjectManager::checkError()
 {
 	if (gameObjects == nullptr)
 		throw "Interaction with non existant object pool";
+}
+
+bool GameObjectManager::insertObject(GameObject* gameObject)
+{
+	if (GameObjectManager::gameObjects->insert({ gameObject->getID(), gameObject }).second == true)
+	{
+		//This object already exists, generate a new object ID
+		gameObject->generateID();
+		std::cout << "ID already exists! ID: " << gameObject->getID() << "\n";
+
+		GameObjectManager::insertObject(gameObject);
+	}
+	return true;
 }

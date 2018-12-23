@@ -1,12 +1,27 @@
 #include "GameObjectManager.h"
+#include <array>
 
 
-
-Renderer2D::Renderer2D(Shader* mainShaderProgram, Window* mainWindow, Camera* mainCamera)
+Renderer2D::Renderer2D(Shader* _mainShaderProgram, Window* _mainWindow, Camera* _mainCamera)
 {
-	this->mainShader = mainShaderProgram;
-	this->mainWindow = mainWindow;
-	this->mainCamera = mainCamera;
+	this->mainShader = _mainShaderProgram;
+	this->mainWindow = _mainWindow;
+	this->mainCamera = _mainCamera;
+
+	int index = 0;
+	float offset = 0.1f;
+	for (int y = -height; y < height; y += 2)
+	{
+		for (int x = -width; x < width; x += 2)
+		{
+			glm::vec2 translation;
+			translation.x = (float)x / 10.0f + offset;
+			translation.y = (float)y / 10.0f + offset;
+			translations[index++] = translation;
+		}
+	}
+
+	setupFrameRender();
 }
 
 Renderer2D::~Renderer2D()
@@ -19,89 +34,98 @@ Renderer2D::~Renderer2D()
 //Functions:
 void Renderer2D::renderFrame()
 {
+	//Actual drawing
 	glClearColor(this->clearR, this->clearG, this->clearB, this->clearA);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
-	//Render the rest
-	this->mainShader->use();
-	sendToShader();
-	genVAO();
+	mainShader->use();
+	//sendToShader();
 
-	glDrawArrays(GL_POINTS, this->VAO, this->renderPositions.size());
-	//End render
+	//checkGLError();
+
+	glBindVertexArray(quadVAO);
+	glDrawArraysInstanced(GL_TRIANGLES, 0, 6, objectAmount); // 100 triangles of 6 vertices each
+	glBindVertexArray(0);
 
 	this->mainWindow->swapBuffers();
-	glFlush();
+	glfwPollEvents();
+}
 
-	//Reset
-	glBindVertexArray(0);
-	glUseProgram(0);
-	glActiveTexture(0);
-	glBindTexture(GL_TEXTURE_2D, 0);
+void Renderer2D::setupFrameRender()
+{
+	//Create instance VBO
+	glGenBuffers(1, &instanceVBO);
+	glBindBuffer(GL_ARRAY_BUFFER, instanceVBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(glm::vec2) * objectAmount, &translations[0], GL_STATIC_DRAW);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+	//Setup vertex data
+	float quadVertices[] = {
+		// positions     // colors
+		-0.05f,  0.05f,  1.0f, 0.0f, 0.0f,
+		 0.05f, -0.05f,  0.0f, 1.0f, 0.0f,
+		-0.05f, -0.05f,  0.0f, 0.0f, 1.0f,
+
+		-0.05f,  0.05f,  1.0f, 0.0f, 0.0f,
+		 0.05f, -0.05f,  0.0f, 1.0f, 0.0f,
+		 0.05f,  0.05f,  0.0f, 1.0f, 1.0f
+	};
+
+	//Setup quad data
+	glGenVertexArrays(1, &quadVAO);
+	glGenBuffers(1, &quadVBO);
+	glBindVertexArray(quadVAO);
+	glBindBuffer(GL_ARRAY_BUFFER, quadVBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(quadVertices), quadVertices, GL_STATIC_DRAW);
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
+	glEnableVertexAttribArray(1);
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(2 * sizeof(float)));
+
+	//Setup instance data
+	glGenBuffers(1, &instanceVBO);
+	glBindBuffer(GL_ARRAY_BUFFER, instanceVBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(glm::vec2) * objectAmount, &translations[0], GL_STATIC_DRAW);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+	
+
+	glEnableVertexAttribArray(2);
+	glBindBuffer(GL_ARRAY_BUFFER, instanceVBO); // this attribute comes from a different vertex buffer
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glVertexAttribDivisor(2, 1); // tell OpenGL this is an instanced vertex attribute.
 }
 
 void Renderer2D::sendToShader()
 {
-	this->mainShader->setMat4fv(this->mainWindow->getProjectionMatrix(), "ProjectionMatrix");
-	this->mainShader->set1i(1, "objectAmount");
+	glm::mat4 tempMatrix = *this->mainWindow->getProjectionMatrix();
+	glm::mat4 tempMatrix1 = *this->mainCamera->getViewMatrix();
+
+	this->mainShader->setMat4fv(tempMatrix, "ProjectionMatrix");
+	this->mainShader->setMat4fv(tempMatrix1, "ViewMatrix");
 }
 
-void Renderer2D::genVAO()
+void Renderer2D::checkGLError()
 {
-	int keyAmount = GameObjectManager::renderObjects->size();
-	//std::vector<float>* positions = new std::vector<float>();
-
-	for (int i = 0; i < keyAmount; i++)
+	GLenum err;
+	err = glGetError();
+	if (err == GL_NO_ERROR)
 	{
-		//positions->push_back(GameObjectManager::renderObjects->at(i)->getPosition()->x);
-		//positions->push_back(GameObjectManager::renderObjects->at(i)->getPosition()->y);
+		std::cout << "No error was found\n";
+		return;
 	}
-
-	glCreateVertexArrays(1, &VAO);
-	glBindVertexArray(VAO);
-
-	//Clear ram
-	//delete positions;
-	glBindVertexArray(0);
-	glUseProgram(0);
-	glActiveTexture(0);
+	std::cout << "OpenGL error: " << err << "\n";
+	printf("Error: %s\n", glewGetErrorString(err));
 }
-
-
 
 void Renderer2D::renderGame()
 {
 	renderFrame();
 }
 
-/*
-	glPointSize(10);
-
-	glGenBuffers(1, &VBO);  
-
-	float points[] = {
-	-0.45f,  0.45f,
-	 0.45f,  0.45f,
-	 0.45f, -0.45f,
-	-0.45f, -0.45f,
-	};
-
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(points), points, GL_STATIC_DRAW);
-
-	// Create VAO
-	glGenVertexArrays(1, &VAO);
-	glBindVertexArray(VAO);
-
-	// Specify layout of point data
-	GLint posAttrib = glGetAttribLocation(mainShader->id, "pos");
-	glEnableVertexAttribArray(posAttrib);
-	glVertexAttribPointer(posAttrib, 2, GL_FLOAT, GL_FALSE, 0, 0);
-	*/
-
 #pragma region Getters & Setters
 //Getters
-	
 float Renderer2D::getClearR()
 {
 	return this->clearR;
