@@ -106,7 +106,6 @@ void Game::initOpenGLOptions()
 
 void Game::initShaders()
 {
-	this->mainShader = new Shader(4, 4, "vertexCore.glsl", "fragmentCore.glsl");
 	this->gameObjectShader = new Shader(4, 4, "GameObjectVertexCore.glsl", "GameObjectFragmentCore.glsl");
 }
 

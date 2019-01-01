@@ -153,15 +153,6 @@
     <Text Include="Ideas.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="vertexCore.glsl">
-      <Filter>Source Files\Engine\Graphics\Shaders</Filter>
-    </None>
-    <None Include="fragmentCore.glsl">
-      <Filter>Source Files\Engine\Graphics\Shaders</Filter>
-    </None>
-    <None Include="geometryCore.glsl">
-      <Filter>Source Files\Engine\Graphics\Shaders</Filter>
-    </None>
     <None Include="GameObjectVertexCore.glsl">
       <Filter>Source Files\Engine\Graphics\Shaders\GameObject Shaders</Filter>
     </None>
