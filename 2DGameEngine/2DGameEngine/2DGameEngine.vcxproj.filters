@@ -48,6 +48,9 @@
     <Filter Include="Header Files\Engine\Scenes">
       <UniqueIdentifier>{34bcc445-12ed-45ca-8e1b-2b04224378a7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Engine\Graphics\Shaders\GameObject Shaders">
+      <UniqueIdentifier>{d270cb77-2bcd-4653-a2e3-1162509d0b56}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -158,6 +161,12 @@
     </None>
     <None Include="geometryCore.glsl">
       <Filter>Source Files\Engine\Graphics\Shaders</Filter>
+    </None>
+    <None Include="GameObjectVertexCore.glsl">
+      <Filter>Source Files\Engine\Graphics\Shaders\GameObject Shaders</Filter>
+    </None>
+    <None Include="GameObjectFragmentCore.glsl">
+      <Filter>Source Files\Engine\Graphics\Shaders\GameObject Shaders</Filter>
     </None>
   </ItemGroup>
 </Project>

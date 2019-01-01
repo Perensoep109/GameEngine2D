@@ -32,7 +32,7 @@ Shader::Shader(const int versionMajor, const int versionMinor, const char* verte
 Shader::~Shader()
 {
 	glDeleteProgram(this->id);
-	std::cout << "Deleted shader" << "\n";
+	std::cout << "Deleted shader " << this->id << "\n";
 }
 
 #pragma endregion
@@ -106,7 +106,7 @@ void Shader::linkProgram(GLuint vertexShader, GLuint geometryShader, GLuint frag
 	if (!success)
 	{
 		glGetProgramInfoLog(this->id, 512, NULL, infoLog);
-		std::cout << "Error, shader could not be linked" << "\n";
+		std::cout << "Error, shader could not be linked, shader index: " << this->id << "\n";
 		std::cout << infoLog << "\n";
 	}
 

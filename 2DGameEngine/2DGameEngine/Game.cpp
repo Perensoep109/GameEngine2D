@@ -16,17 +16,25 @@ Game::Game()
 
 Game::~Game()
 {
-	delete gameWindow;
 	GameObjectManager::deletePool();
+	delete this->gameRenderer;
 }
+
+#pragma region Game Loop
 
 void Game::start()
 {
-	//testObject = new TestOBJ(new glm::vec3(10.f, 10.f, 0.0f));
+	//testObject = new TestOBJ(new glm::vec2(10.f, 10.f));
+	int objectAmount = 5;
+	testObject = new TestOBJ*[objectAmount];
+
+	for (int i = 0; i < objectAmount; i++)
+	{
+		testObject[i] = new TestOBJ(new glm::vec2(0, 0));
+	}
 
 	while (!this->gameWindow->getWindowShouldClose())
 	{
-
 		update();
 
 		render();
@@ -39,12 +47,14 @@ void Game::update()
 	{
 		this->gameWindow->close();
 	}
-}	
+}
 
 void Game::render()
 {
 	this->gameRenderer->renderGame();
 }
+
+#pragma endregion
 
 #pragma region Initializers
 
@@ -80,6 +90,8 @@ void Game::initOpenGLOptions()
 {
 	//OpenGL Options
 	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_DEBUG_OUTPUT);
+	glDebugMessageCallback(OpenGLErrorMessageCallBack, 0);
 
 	//glEnable(GL_CULL_FACE);
 
@@ -95,6 +107,7 @@ void Game::initOpenGLOptions()
 void Game::initShaders()
 {
 	this->mainShader = new Shader(4, 4, "vertexCore.glsl", "fragmentCore.glsl");
+	this->gameObjectShader = new Shader(4, 4, "GameObjectVertexCore.glsl", "GameObjectFragmentCore.glsl");
 }
 
 void Game::initCamera()
@@ -104,7 +117,7 @@ void Game::initCamera()
 
 void Game::initRenderer()
 {
-	this->gameRenderer = new Renderer2D(this->mainShader, this->gameWindow, this->gameCamera);
+	this->gameRenderer = new Renderer2D(this->mainShader, this->gameObjectShader, this->gameWindow, this->gameCamera);
 }
 #pragma endregion
 
@@ -113,6 +126,13 @@ void Game::initRenderer()
 void Game::glfwErrorCallback(int id, const char* description)
 {
 	std::cout << description << "\n";
+}
+
+void APIENTRY Game::OpenGLErrorMessageCallBack(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar* message, const void* userParam)
+{
+	fprintf(stderr, "GL CALLBACK: %s type = 0x%x, severity = 0x%x, message = %s\n",
+		(type == GL_DEBUG_TYPE_ERROR ? "** GL ERROR **" : ""),
+		type, severity, message);
 }
 
 #pragma endregion

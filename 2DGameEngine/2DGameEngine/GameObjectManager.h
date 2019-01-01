@@ -26,6 +26,9 @@ public:
 	static void destroyObject(GameObject* gameObject);
 	static GameObject* getObject(int objectID);
 
+	//Render object functions:
+	static int getRenderObjectAmount();
+
 	//Deconstructor
 	static void clearPool();
 	static void deletePool();

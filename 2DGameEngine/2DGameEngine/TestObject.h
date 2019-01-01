@@ -4,9 +4,9 @@ class TestOBJ
 	: public Renderable2D
 {
 public:
-	TestOBJ(glm::vec3* _position)
+	TestOBJ(glm::vec2* _position)
+		: Renderable2D("Graphics/TestSprite.bmp", _position)
 	{
-		this->setSprite("Graphics/TestSprite.bmp");
 		this->position = _position;
 		std::cout << "Created test object" << "\n";
 	}

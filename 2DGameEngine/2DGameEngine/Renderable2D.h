@@ -4,26 +4,35 @@
 class Renderable2D
 	: public GameObject
 {
+private:
+	//Variables:
+	glm::ivec2* spriteDim;
+
+	//Functions
+	void scaleToSprite();
+
 protected:
-	Sprite2D* sprite;
 	float renderLayer = 1.f;
-	glm::vec3* position;
+	float rotation = 0.f;
+	glm::vec2* position;
+	glm::mat4* InstanceMatrix;
 
 public:
-	Renderable2D();
-	Renderable2D(const char* fileName);
+	Renderable2D(const char* fileName, glm::vec2* _position, glm::ivec2* _spriteDim = new glm::ivec2(32, 32));
 	~Renderable2D();
 
 	//Public fields:
 	bool shouldRender = true;
+
+	void rotate(float angle);
 	
 	//Setters
 	void setSprite(const char* fileName);
 	void setLayer(float newLayer);
 
-
 	//Accessors
-	glm::vec3* getPosition();
+	glm::vec2* getPosition();
+	glm::mat4* getInstanceMatrix();
 	float getRotation();
 	float getLayer();
 };

@@ -19,6 +19,11 @@ const char* Sprite2D::getSprite()
 	return nullptr;
 }
 
+glm::ivec2 Sprite2D::getDimensions()
+{
+	return glm::ivec2(this->spriteWidth, this->spriteHeight);
+}
+
 void Sprite2D::bind(const GLint textureUnit)
 {
 	glActiveTexture(GL_TEXTURE0 + textureUnit);
@@ -38,6 +43,7 @@ void Sprite2D::setSprite(const char* fileName)
 
 void Sprite2D::loadSprite(const char* fileName)
 {
+	/*
 	//Load from file
 	if (this->id)
 	{
@@ -55,11 +61,6 @@ void Sprite2D::loadSprite(const char* fileName)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 	//ERROR         ^^^^^^
-	GLenum err;
-	err = glGetError();
-	if (err == GL_NO_ERROR) return;
-	std::cout << "OpenGL error: " << err << "\n";
-	printf("Error: %s\n", glewGetErrorString(err));
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 
 	if (image != nullptr)
@@ -68,12 +69,12 @@ void Sprite2D::loadSprite(const char* fileName)
 		glGenerateMipmap(GL_TEXTURE_2D);
 
 		glActiveTexture(0);
-		glBindTexture(GL_TEXTURE_2D, 0);
+		glBindTexture(GL_TEXTURE_2D, 0);//
 		SOIL_free_image_data(image);
 	}
 	else
 	{
 		std::cout << "Error, loading sprite from file failed: " << fileName << "\n";
 	}
-
+	*/
 }

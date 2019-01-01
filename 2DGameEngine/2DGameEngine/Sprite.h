@@ -29,6 +29,7 @@ public:
 
 	//Accessors
 	const char* getSprite();
+	glm::ivec2 getDimensions();
 
 	//Setters
 	void setSprite(const char* fileName);

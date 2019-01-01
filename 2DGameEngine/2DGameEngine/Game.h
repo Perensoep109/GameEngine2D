@@ -25,6 +25,7 @@ private:
 
 	//Callbacks
 	static void glfwErrorCallback(int id, const char* description);
+	static void APIENTRY OpenGLErrorMessageCallBack(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar* message, const void* userParam);
 
 	//Components
 	Window* gameWindow;
@@ -33,8 +34,9 @@ private:
 
 	//Shaders
 	Shader* mainShader;
+	Shader* gameObjectShader;
 
-	TestOBJ* testObject;
+	TestOBJ** testObject;
 public:
 	Game();
 	~Game();
@@ -42,9 +44,4 @@ public:
 	void start();
 	void update();
 	void render();
-
-#pragma region Temporary code
-
-#pragma endregion
-
 };
