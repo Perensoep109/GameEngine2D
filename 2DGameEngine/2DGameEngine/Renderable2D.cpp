@@ -6,8 +6,9 @@ Renderable2D::Renderable2D(const char* fileName, glm::vec2* _position, glm::ivec
 	this->position = _position;
 	this->spriteDim = _spriteDim;
 	this->InstanceMatrix = new glm::mat4(1.f);
-	scaleToSprite();
-	*this->InstanceMatrix = glm::translate(*this->InstanceMatrix, glm::vec3(*this->position, 0.0f));
+	//scaleToSprite();
+	//*this->InstanceMatrix = glm::scale(*this->InstanceMatrix, glm::vec3(100.f, 100.f, 100.f));
+	*this->InstanceMatrix = glm::translate(*this->InstanceMatrix, glm::vec3(*this->position, 10.0f));
 }
 
 Renderable2D::~Renderable2D()
@@ -23,7 +24,7 @@ Renderable2D::~Renderable2D()
 void Renderable2D::scaleToSprite()
 {
 	*this->InstanceMatrix = glm::translate(*this->InstanceMatrix, glm::vec3(0.5f * this->spriteDim->x, 0.5f * this->spriteDim->y, 0.0f));
-	*this->InstanceMatrix = glm::rotate(*this->InstanceMatrix, this->rotation, glm::vec3(0.f, 0.f, 1.f));
+	*this->InstanceMatrix = glm::rotate(*this->InstanceMatrix, this->rotation, glm::vec3(1.f, 0.f, 0.f));
 	*this->InstanceMatrix = glm::translate(*this->InstanceMatrix, glm::vec3(0.5f * this->spriteDim->x, -0.5f * this->spriteDim->y, -0.0f));
 	*this->InstanceMatrix = glm::scale(*this->InstanceMatrix, glm::vec3(this->spriteDim->x, this->spriteDim->y, 1.0f));
 }
@@ -36,6 +37,7 @@ void Renderable2D::scaleToSprite()
 #pragma region Setters
 void Renderable2D::rotate(float angle)
 {
+	this->rotation += angle;
 	*this->InstanceMatrix = glm::rotate(*this->InstanceMatrix, this->rotation, glm::vec3(0.f, 0.f, 1.f));
 }
 

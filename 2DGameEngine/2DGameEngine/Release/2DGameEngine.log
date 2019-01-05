@@ -1,17 +1,1 @@
-﻿  Camera.cpp
-  Game.cpp
-  GameObject.cpp
-  GameObjectManager.cpp
-  main.cpp
-  Renderable2D.cpp
-  Renderer2D.cpp
-  Scene.cpp
-  Shader.cpp
-  Sprite.cpp
-  SpriteAtlas.cpp
-  TileMap.cpp
-  Window.cpp
-  Generating code
-  All 668 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
-  Finished generating code
-  2DGameEngine.vcxproj -> C:\Users\Wiebe\Documents\GitHub\GameEngine2D\2DGameEngine\2DGameEngine\2DGameEngine.exe
+﻿LINK : fatal error LNK1104: cannot open file 'C:\Users\Wiebe\Documents\GitHub\GameEngine2D\2DGameEngine\\2DGameEngine.exe'

@@ -25,7 +25,7 @@ Game::~Game()
 void Game::start()
 {
 	//testObject = new TestOBJ(new glm::vec2(10.f, 10.f));
-	int objectAmount = 5;
+	int objectAmount = 2;
 	testObject = new TestOBJ*[objectAmount];
 
 	for (int i = 0; i < objectAmount; i++)
@@ -37,15 +37,24 @@ void Game::start()
 	{
 		update();
 
+		//testObject[0]->rotate(5);
+
 		render();
 	}
 }
 
 void Game::update()
 {
+	this->gameWindow->updateProjMatrix();
+
 	if (glfwGetKey(this->gameWindow->window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 	{
 		this->gameWindow->close();
+	}
+
+	if (glfwGetKey(this->gameWindow->window, GLFW_KEY_F1) == GLFW_PRESS)
+	{
+		GameObjectManager::createObject(new TestOBJ(new glm::vec2(-10.f, 0.f)));
 	}
 }
 

@@ -67,37 +67,6 @@ void Window::mouse_callback(GLFWwindow* window, double xPos, double yPos)
 }
 #pragma endregion
 
-#pragma region Accessors
-glm::ivec2 Window::getSize()
-{
-	glm::ivec2 returnVec = glm::ivec2(1);
-
-	glfwGetWindowSize(this->window, &returnVec.x, &returnVec.y);
-	return returnVec;
-}
-
-bool Window::getWindowShouldClose()
-{
-	return this->shouldClose;
-}
-
-glm::mat4* Window::getProjectionMatrix()
-{
-	return this->ProjectionMatrix;
-}
-
-//Framebuffer
-int Window::getFBW()
-{
-	return this->fbW;
-}
-
-int Window::getFBH()
-{
-	return this->fbH;
-}
-#pragma endregion
-
 #pragma region Functions
 
 void Window::close()
@@ -127,7 +96,7 @@ void Window::updateProjMatrix()
 {
 	glfwGetFramebufferSize(this->window, &this->fbW, &this->fbH);
 
-	*this->ProjectionMatrix = glm::ortho(0.f, 800.f, 600.f, 0.f, nearPlane, farPlane);
+	*this->ProjectionMatrix = glm::ortho(0.0f, 800.f, 0.0f, 600.f, 0.1f, 100.f);
 }
 
 void Window::swapBuffers()
@@ -138,5 +107,38 @@ void Window::swapBuffers()
 void Window::initMatrices()
 {
 	*this->ProjectionMatrix = glm::ortho(0.f, 10.f, 10.f, 0.f, nearPlane, farPlane);
+}
+#pragma endregion
+
+#pragma region Accessors
+glm::ivec2 Window::getSize()
+{
+	glm::ivec2 returnVec = glm::ivec2(1);
+
+	glfwGetWindowSize(this->window, &returnVec.x, &returnVec.y);
+	return returnVec;
+}
+
+bool Window::getWindowShouldClose()
+{
+	return this->shouldClose;
+}
+
+glm::mat4* Window::getProjectionMatrix()
+{
+	updateProjMatrix();
+
+	return this->ProjectionMatrix;
+}
+
+//Framebuffer
+int Window::getFBW()
+{
+	return this->fbW;
+}
+
+int Window::getFBH()
+{
+	return this->fbH;
 }
 #pragma endregion

@@ -53,9 +53,9 @@ public:
 	//void keyboardInput();
 
 #pragma region Accessors
-	glm::ivec2 getSize();
-	bool getWindowShouldClose();
-	glm::mat4* getProjectionMatrix();
+	glm::ivec2	getSize();
+	bool		getWindowShouldClose();
+	glm::mat4*	getProjectionMatrix();
 
 	//Framebuffer
 	int getFBW(), getFBH();

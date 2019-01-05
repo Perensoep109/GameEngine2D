@@ -20,31 +20,46 @@ private:
 	//Rendering functions:
 #pragma region Rendering functions
 	//Instanced rendering functions
-	GLuint createEmptyVBO(int floatCount);
+	void setupMainRender();
+	GLuint createEmptyBO();
+
+#pragma region Store data
+	//Matrices
+	void storeMat4Data(glm::mat4* matrix, std::vector<float>* vboData);													//Store data non interleaved
+	void storeMat4Data(glm::mat4* matrix, std::vector<float>* vboData, int objectAmount, int currentObject = 0);		//Store data interleaved
+
+	//Vectors:
+	void storeVec2Data(glm::vec2* vec2, std::vector<float>* vboData);
+	void storeVec3Data(glm::vec3* vec3, std::vector<float>* vboData);
+	void storeVec4Data(glm::vec4* vec4, std::vector<float>* vboData);
+#pragma endregion
 
 #pragma region Gameobject rendering
 	//Variables
-	GLuint instanceVBO;
+	GLuint instanceMatXRow, instanceMatYRow, instanceMatZRow, instanceMatWRow;
 	GLuint quadVAO, quadVBO;
 	const int MAX_INSTANCES = 1000;
-	const int INSTANCE_DATA_LENGTH = 18;
+	const int INSTANCE_DATA_LENGTH_F = sizeof(glm::vec4);
+	const int INSTANCE_DATA_LENGTH_B = INSTANCE_DATA_LENGTH_F * sizeof(float);
 	int pointer = 0;
 
 	//==Functions==
 	//Main functions
 	void setupGameObjectRender();
-	void updateGameObjectRender(const int objectsToRender);
+	void updateGameObjectRender(int objectsToRender);
 	void renderGameObjects();
 	void sendToGameObjectShader();
-	void setAttributes();
+	void setAttributes(int objectAmount);
+	void deleteGameObjectRendering();
+	void endGameObjectRender();
 
 	//Create data
 	GLuint createQuadVAO();
-	std::vector<float>* generateVBOData(int objectsToRender, int amountOfFloats);
+	void assembleVBOData(int objectsToRender, std::vector<glm::vec4>* xVector, std::vector<glm::vec4>* yVector, std::vector<glm::vec4>* zVector, std::vector<glm::vec4>* wVector);
+#pragma endregion
 
-	//Store data
-	void storeMatrixData(glm::mat4* matrix, std::vector<float>*);
-	void storeVec2Data(glm::vec2* vec2, std::vector<float>*);
+#pragma region Tilemap rendering
+
 #pragma endregion
 
 #pragma endregion
