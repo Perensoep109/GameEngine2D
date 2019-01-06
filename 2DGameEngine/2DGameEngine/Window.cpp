@@ -8,8 +8,8 @@ Window::Window()
 Window::Window(const char* title, const bool resizable, const bool _fullscreen, const int GL_MAJOR, const int GL_MINOR, const glm::ivec2 wDim)
 {
 	//Set frame buffer size
-	this->fbH = wDim.x;
-	this->fbW = wDim.y;
+	this->fbH = wDim.y;
+	this->fbW = wDim.x;
 
 	//Set variables
 	this->nearPlane = -1.f;

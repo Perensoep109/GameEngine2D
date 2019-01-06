@@ -30,7 +30,7 @@ void Game::start()
 
 	for (int i = 0; i < objectAmount; i++)
 	{
-		testObject[i] = new TestOBJ(new glm::vec2(0, 0));
+		testObject[i] = new TestOBJ(new glm::vec2(30, 30));
 	}
 
 	while (!this->gameWindow->getWindowShouldClose())
@@ -126,6 +126,7 @@ void Game::initCamera()
 void Game::initRenderer()
 {
 	this->gameRenderer = new Renderer2D(this->mainShader, this->gameObjectShader, this->gameWindow, this->gameCamera);
+	this->gameRenderer->setBackgroundColor(90.f / 255, 130.f / 255, 180.f / 255, 0.f);
 }
 #pragma endregion
 

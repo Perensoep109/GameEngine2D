@@ -4,6 +4,7 @@
 
 void Renderer2D::setupGameObjectRender()
 {
+	setAttributes();
 }
 
 void Renderer2D::renderGameObjects()
@@ -17,7 +18,7 @@ void Renderer2D::renderGameObjects()
 	this->gameObjectShader->use();
 
 	//Update
-	updateGameObjectRender(objectAmount);
+	bufferData(objectAmount);
 
 	sendToGameObjectShader();
 
@@ -31,59 +32,42 @@ void Renderer2D::renderGameObjects()
 
 void Renderer2D::sendToGameObjectShader()
 {
-	glUniformMatrix4fv(glGetUniformLocation(gameObjectShader->id, "ProjectionMatrix"), 1, false, glm::value_ptr(*this->mainWindow->getProjectionMatrix()));
+	//glUniformMatrix4fv(glGetUniformLocation(gameObjectShader->id, "ProjectionMatrix"), 1, false, glm::value_ptr(*this->mainWindow->getProjectionMatrix()));
 }
 
-void Renderer2D::updateGameObjectRender(int objectsToRender)
+void Renderer2D::bufferData(int objectsToRender)
 {
-	//Variables
+	std::vector<glm::mat4>* instanceMatrices = new std::vector<glm::mat4>();
 
-	//Assemble all objects their instance matrices
-	std::vector<glm::vec4>* xs = new std::vector<glm::vec4>();
-	std::vector<glm::vec4>* ys = new std::vector<glm::vec4>();
-	std::vector<glm::vec4>* zs = new std::vector<glm::vec4>();
-	std::vector<glm::vec4>* ws = new std::vector<glm::vec4>();
-	
-	//Assemble all data
-	assembleVBOData(objectsToRender, xs, ys, zs, ws);
+	for (int i = 0; i < objectsToRender; i++)
+	{
+		glm::mat4 tempMat = *GameObjectManager::renderObjects->at(i)->getInstanceMatrix();
+		instanceMatrices->push_back(tempMat);
+	}
 
-	//Then buffer this data
 	glBindVertexArray(this->quadVAO);
-	
-	//Location = 1, instance matrix X row
+	glBindBuffer(GL_ARRAY_BUFFER, this->instanceMatricesBuffer);
+	glBufferData(GL_ARRAY_BUFFER, objectsToRender * sizeof(glm::mat4), &instanceMatrices[0], GL_STATIC_DRAW);
+}
+
+void Renderer2D::setAttributes()
+{
+	glBindVertexArray(this->quadVAO);
 	glEnableVertexAttribArray(1);
-	glGenBuffers(1, &this->instanceMatXRow);
-	glBindBuffer(GL_ARRAY_BUFFER, this->instanceMatXRow);
-	glBufferData(GL_ARRAY_BUFFER, xs->size() * sizeof(glm::vec4) * 4, xs->data(), GL_DYNAMIC_DRAW);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	glBindBuffer(GL_ARRAY_BUFFER, this->instanceMatXRow);
-	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(float), NULL);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	glVertexAttribDivisor(1, 1);
-
-	//Location = 2, instance matrix Y row
+	glVertexAttribPointer(3, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), (void*)0);
 	glEnableVertexAttribArray(2);
-	glGenBuffers(1, &this->instanceMatYRow);
-	glBindBuffer(GL_ARRAY_BUFFER, this->instanceMatYRow);
-	glBufferData(GL_ARRAY_BUFFER, ys->size() * sizeof(glm::vec4) * 4, ys->data(), GL_DYNAMIC_DRAW);
-	glVertexAttribPointer(2, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(float), NULL);
-	glVertexAttribDivisor(2, 1);
-
-	//Location = 3, instance matrix Z row
+	glVertexAttribPointer(4, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), (void*)(sizeof(glm::vec4)));
 	glEnableVertexAttribArray(3);
-	glGenBuffers(1, &this->instanceMatZRow);//
-	glBindBuffer(GL_ARRAY_BUFFER, this->instanceMatZRow);
-	glBufferData(GL_ARRAY_BUFFER, zs->size() * sizeof(glm::vec4) * 4, zs->data(), GL_DYNAMIC_DRAW);
-	glVertexAttribPointer(3, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(float), NULL);
-	glVertexAttribDivisor(3, 1);
-
-	//Location = 4, instance matrix W row
+	glVertexAttribPointer(5, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), (void*)(2 * sizeof(glm::vec4)));
 	glEnableVertexAttribArray(4);
-	glGenBuffers(1, &this->instanceMatWRow);//
-	glBindBuffer(GL_ARRAY_BUFFER, this->instanceMatWRow);
-	glBufferData(GL_ARRAY_BUFFER, ws->size() * sizeof(glm::vec4) * 4, ws->data(), GL_DYNAMIC_DRAW);
-	glVertexAttribPointer(4, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(float), NULL);
+	glVertexAttribPointer(6, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), (void*)(3 * sizeof(glm::vec4)));
+
+	glVertexAttribDivisor(3, 1);
 	glVertexAttribDivisor(4, 1);
+	glVertexAttribDivisor(5, 1);
+	glVertexAttribDivisor(6, 1);
+
+	glBindVertexArray(0);
 }
 
 void Renderer2D::assembleVBOData(int objectsToRender, std::vector<glm::vec4>* xVector, std::vector<glm::vec4>* yVector, std::vector<glm::vec4>* zVector, std::vector<glm::vec4>* wVector)
@@ -107,10 +91,6 @@ void Renderer2D::deleteGameObjectRendering()
 
 void Renderer2D::endGameObjectRender()
 {
-	glDeleteBuffers(1, &instanceMatXRow);
-	glDeleteBuffers(1, &instanceMatYRow);
-	glDeleteBuffers(1, &instanceMatZRow);
-	glDeleteBuffers(1, &instanceMatWRow);
 	glBindVertexArray(0);
 }
 

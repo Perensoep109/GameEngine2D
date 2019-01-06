@@ -7,7 +7,7 @@ Renderable2D::Renderable2D(const char* fileName, glm::vec2* _position, glm::ivec
 	this->spriteDim = _spriteDim;
 	this->InstanceMatrix = new glm::mat4(1.f);
 	//scaleToSprite();
-	//*this->InstanceMatrix = glm::scale(*this->InstanceMatrix, glm::vec3(100.f, 100.f, 100.f));
+	*this->InstanceMatrix = glm::scale(*this->InstanceMatrix, glm::vec3(100.f, 100.f, 10.f));
 	*this->InstanceMatrix = glm::translate(*this->InstanceMatrix, glm::vec3(*this->position, 10.0f));
 }
 
