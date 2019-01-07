@@ -10,6 +10,7 @@ uniform mat4 ProjectionMatrix;
 
 void main()
 {
-	gl_Position = aInstanceMatrix * vec4(aVertex.xy, 0.0, 1.0);
+	gl_Position = ProjectionMatrix * aInstanceMatrix * vec4(aVertex.xy, 0.0, 1.0);
+	//gl_Position = vec4(aVertex.xy, 0.0, 1.0);
 	TextureCoords = vec2(0, 0);
 }

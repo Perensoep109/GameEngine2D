@@ -21,7 +21,9 @@ private:
 #pragma region Rendering functions
 	//Instanced rendering functions
 	void setupMainRender();
-	GLuint createEmptyBO();
+
+	//Create data
+	GLuint createQuadVAO();
 
 #pragma region Store data
 	//Matrices
@@ -36,8 +38,8 @@ private:
 
 #pragma region Gameobject rendering
 	//Variables
-	GLuint instanceMatricesBuffer;
 	GLuint quadVAO, quadVBO;
+	GLuint matrixBuffer;
 	const int MAX_INSTANCES = 1000;
 	const int INSTANCE_DATA_LENGTH_F = sizeof(glm::vec4);
 	const int INSTANCE_DATA_LENGTH_B = INSTANCE_DATA_LENGTH_F * sizeof(float);
@@ -52,10 +54,6 @@ private:
 	void setAttributes();
 	void deleteGameObjectRendering();
 	void endGameObjectRender();
-
-	//Create data
-	GLuint createQuadVAO();
-	void assembleVBOData(int objectsToRender, std::vector<glm::vec4>* xVector, std::vector<glm::vec4>* yVector, std::vector<glm::vec4>* zVector, std::vector<glm::vec4>* wVector);
 #pragma endregion
 
 #pragma region Tilemap rendering
