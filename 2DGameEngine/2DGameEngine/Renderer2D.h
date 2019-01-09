@@ -39,18 +39,18 @@ private:
 #pragma region Gameobject rendering
 	//Variables
 	GLuint quadVAO, quadVBO;
-	GLuint matrixBuffer;
+	GLuint matBuffer;
 	const int MAX_INSTANCES = 1000;
 	const int INSTANCE_DATA_LENGTH_F = sizeof(glm::vec4);
 	const int INSTANCE_DATA_LENGTH_B = INSTANCE_DATA_LENGTH_F * sizeof(float);
-	int pointer = 0;
 
 	//==Functions==
 	//Main functions
 	void setupGameObjectRender();
 	void renderGameObjects();
 	void sendToGameObjectShader();
-	void bufferData(int objectsToRender);
+	void updateBufferData(int objectsToRender);
+	void createBuffers();
 	void setAttributes();
 	void deleteGameObjectRendering();
 	void endGameObjectRender();

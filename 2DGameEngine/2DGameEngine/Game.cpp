@@ -30,14 +30,12 @@ void Game::start()
 
 	for (int i = 0; i < objectAmount; i++)
 	{
-		testObject[i] = new TestOBJ(new glm::vec2(0, 30));
+		testObject[i] = new TestOBJ(new glm::vec2(0, 0));
 	}
 
 	while (!this->gameWindow->getWindowShouldClose())
 	{
 		update();
-
-		//testObject[0]->rotate(5);
 
 		render();
 	}

@@ -53,13 +53,13 @@ GLuint Renderer2D::createQuadVAO()
 	GLuint returnVAO;
 
 	float quadVertices[] = {
-		-1.f, 1.0f,
-		1.0f, -1.f,
-		-1.f, -1.f,
+		-100.f, 100.0f,
+		100.0f, -100.f,
+		-100.f, -100.f,
 
-		-1.f, 1.f,
-		1.f, -1.f,
-		1.f, 1.f
+		-100.f, 100.f,
+		100.f, -100.f,
+		100.f, 100.f
 	};
 
 	//Create array:
