@@ -1,2 +1,19 @@
-﻿  Renderer2D.cpp
-  2DGameEngine.vcxproj -> C:\Users\wiebe\Documents\GitHub\GameEngine2D\2DGameEngine\2DGameEngine\2DGameEngine.exe
+﻿  Game.cpp
+  GameObject.cpp
+  GameObjectManager.cpp
+  GameObjectRenderer.cpp
+  Renderer2D.cpp
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\renderer2d.cpp(63): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\renderer2d.cpp(56): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\renderer2d.cpp(57): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\renderer2d.cpp(58): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\renderer2d.cpp(60): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\renderer2d.cpp(61): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\renderer2d.cpp(62): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  TileMapRenderer.cpp
+  Window.cpp
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\window.cpp(54): warning C4150: deletion of pointer to incomplete type 'GLFWwindow'; no destructor called
+  c:\users\wiebe\documents\github\gameengine2d\2dgameengine\linking\glfw\include\glfw3.h(789): note: see declaration of 'GLFWwindow'
+  main.cpp
+  Generating Code...
+  2DGameEngine.vcxproj -> C:\Users\Wiebe\Documents\GitHub\GameEngine2D\2DGameEngine\2DGameEngine\2DGameEngine.exe

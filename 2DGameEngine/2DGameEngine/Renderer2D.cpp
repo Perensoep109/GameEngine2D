@@ -26,7 +26,7 @@ Renderer2D::~Renderer2D()
 #pragma region Rendering
 void Renderer2D::setupMainRender()
 {
-	this->quadVAO = createQuadVAO();
+	this->quadVAO = createQuadVAO(64, 64);
 }
 
 void Renderer2D::renderGame()
@@ -42,24 +42,24 @@ void Renderer2D::renderFrame()
 
 	this->renderGameObjects();
 
-	this->mainWindow->swapBuffers();
+	this->mainWindow->refreshWindow();
 	glfwPollEvents();
 }
 
 //==General Data Creation==
-GLuint Renderer2D::createQuadVAO()
+GLuint Renderer2D::createQuadVAO(int tileWidth, int tileHeight)
 {
 	//Variables
 	GLuint returnVAO;
 
 	float quadVertices[] = {
-		-100.f, 100.0f,
-		100.0f, -100.f,
-		-100.f, -100.f,
+		-tileWidth / 2, tileHeight / 2,
+		tileWidth / 2 , -tileHeight / 2,
+		-tileWidth / 2, -tileHeight / 2,
 
-		-100.f, 100.f,
-		100.f, -100.f,
-		100.f, 100.f
+		-tileWidth / 2, tileHeight / 2,
+		tileWidth / 2, -tileHeight / 2,
+		tileWidth / 2, tileHeight / 2
 	};
 
 	//Create array:

@@ -37,6 +37,8 @@ private:
 	Shader* gameObjectShader;
 
 	TestOBJ** testObject;
+
+	bool endNextFrame;
 public:
 	Game();
 	~Game();

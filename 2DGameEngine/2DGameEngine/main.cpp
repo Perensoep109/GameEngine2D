@@ -3,12 +3,12 @@
 
 int main()
 {
+	bool autoClose = false;
+
 	Game* game = new Game();
 
-	glfwTerminate();
+	if(!autoClose)
+		system("PAUSE");
 
-	delete game;
-
-	system("PAUSE");
 	return 0;
 }

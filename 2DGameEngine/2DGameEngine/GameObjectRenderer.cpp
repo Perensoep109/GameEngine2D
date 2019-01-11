@@ -38,66 +38,34 @@ void Renderer2D::sendToGameObjectShader()
 
 void Renderer2D::createBuffers()
 {
-	glGenBuffers(1, &matBuffer);
-	glBindBuffer(GL_ARRAY_BUFFER, matBuffer);
-	glBufferData(GL_ARRAY_BUFFER, 16 * sizeof(float) * MAX_INSTANCES, NULL, GL_STREAM_DRAW);
+	glGenBuffers(1, &posBuffer);
+	glBindBuffer(GL_ARRAY_BUFFER, posBuffer);
+	glBufferData(GL_ARRAY_BUFFER, 4 * sizeof(float) * MAX_INSTANCES, NULL, GL_STREAM_DRAW);
 }
 
 void Renderer2D::updateBufferData(int objectAmount)
 {
-	std::vector<glm::mat4>* matData = new std::vector<glm::mat4>();
+	std::vector<glm::vec2>* posData = new std::vector<glm::vec2>();
 
 	for (int i = 0; i < objectAmount; i++)
 	{
-		matData->push_back(*GameObjectManager::renderObjects->at(i)->getInstanceMatrix());
+		posData->push_back(*GameObjectManager::renderObjects->at(i)->getPosition());
 	}
 
-	glBindBuffer(GL_ARRAY_BUFFER, matBuffer);
-	glBufferData(GL_ARRAY_BUFFER, 16 * sizeof(float) * MAX_INSTANCES, NULL, GL_STREAM_DRAW);
-	glBufferSubData(GL_ARRAY_BUFFER, 0, objectAmount * sizeof(float) * 16, &matData->front());
+	glBindBuffer(GL_ARRAY_BUFFER, posBuffer);
+	glBufferData(GL_ARRAY_BUFFER, 4 * sizeof(float) * MAX_INSTANCES, NULL, GL_STREAM_DRAW);
+	glBufferSubData(GL_ARRAY_BUFFER, 0, objectAmount * sizeof(float) * 4, &posData->front());
 }
 
 void Renderer2D::setAttributes()
 {
-	GLsizei vec4Size = sizeof(glm::vec4);
 	glBindVertexArray(this->quadVAO);
-	glBindBuffer(GL_ARRAY_BUFFER, matBuffer);
+	glBindBuffer(GL_ARRAY_BUFFER, posBuffer);
 	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 4 * vec4Size, (void*)0);
-	glEnableVertexAttribArray(2);
-	glVertexAttribPointer(2, 4, GL_FLOAT, GL_FALSE, 4 * vec4Size, (void*)(vec4Size));
-	glEnableVertexAttribArray(3);
-	glVertexAttribPointer(3, 4, GL_FLOAT, GL_FALSE, 4 * vec4Size, (void*)(2 * vec4Size));
-	glEnableVertexAttribArray(4);
-	glVertexAttribPointer(4, 4, GL_FLOAT, GL_FALSE, 4 * vec4Size, (void*)(3 * vec4Size));
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0);
 
 	glVertexAttribDivisor(0, 0);
 	glVertexAttribDivisor(1, 1);
-	glVertexAttribDivisor(2, 1);
-	glVertexAttribDivisor(3, 1);
-	glVertexAttribDivisor(4, 1);
-
-	glBindVertexArray(0);
-
-	/*
-	GLsizei vec4Size = sizeof(glm::vec4);
-	glBindVertexArray(this->quadVAO);
-	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 4 * vec4Size, (void*)0);
-	glEnableVertexAttribArray(2);
-	glVertexAttribPointer(2, 4, GL_FLOAT, GL_FALSE, 4 * vec4Size, (void*)(vec4Size));
-	glEnableVertexAttribArray(3);
-	glVertexAttribPointer(3, 4, GL_FLOAT, GL_FALSE, 4 * vec4Size, (void*)(2 * vec4Size));
-	glEnableVertexAttribArray(4);
-	glVertexAttribPointer(4, 4, GL_FLOAT, GL_FALSE, 4 * vec4Size, (void*)(3 * vec4Size));
-
-	glVertexAttribDivisor(1, 1);
-	glVertexAttribDivisor(2, 1);
-	glVertexAttribDivisor(3, 1);
-	glVertexAttribDivisor(4, 1);
-
-	glBindVertexArray(0);
-	*/
 }
 
 #pragma region Memory cleaning

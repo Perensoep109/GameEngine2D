@@ -1,144 +1,249 @@
 #include "Window.h"
 
-Window::Window()
-{
-	glfwTerminate();
-}
+#pragma region Constructors / Deconstructors
 
-Window::Window(const char* title, const bool resizable, const bool _fullscreen, const int GL_MAJOR, const int GL_MINOR, const glm::ivec2 wDim)
-{
-	//Set frame buffer size
-	this->fbH = wDim.y;
-	this->fbW = wDim.x;
+//====Properties====
+/*
+	Base window constructor, this function starts with assigning all the variables,
+*/
 
-	//Set variables
+Window::Window(int windowWidth, int windowHeight, const char* windowTitle, bool resizable, WProjMode projectionMode)
+{
+	//==Set properties==
+	this->windowResizeable = resizable;
+	this->windowState = true;
+	this->windowSize = new glm::ivec2(windowWidth, windowHeight);
+	this->windowTitle = windowTitle;
+	this->windowFullscreen = false;
+
+	//==Set display==
+	this->ProjectionMatrix = new glm::mat4(1.f);
 	this->nearPlane = -1.f;
-	this->farPlane = 1.f;
-	this->fov = 90.f;
+	this->farPlane = 100.f;
 
+	//==Setup window==
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, GL_MINOR);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, GL_MAJOR);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 4);
 	glfwWindowHint(GLFW_RESIZABLE, resizable);
 
-	this->window = glfwCreateWindow(fbW, fbH, title, NULL, NULL);
+	this->window = glfwCreateWindow(this->windowSize->x, this->windowSize->y, this->windowTitle, NULL, NULL);
 
+	//Check if window has been created
 	if (this->window == nullptr)
 	{
-		std::cout << "Error, GLFW window fail" << "\n";
+		std::cout << "Error, GLFW window has failed to initialize" << "\n";
 		glfwTerminate();
 	}
 
-	if (_fullscreen)
-		toggleFullscreen(this->window);
-
-	//Window
-	glfwGetFramebufferSize(this->window, &this->fbW, &this->fbH);
+	//Window callbacks:
 	glfwSetFramebufferSizeCallback(this->window, Window::framebuffer_resize_callback);
 
-	//Mouse
-	glfwSetInputMode(this->window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
-	glfwSetCursorPosCallback(this->window, Window::mouse_callback);
-
-	//Init matrices
-	this->initMatrices();
-
-	//Update window size:
+	//Focus on this window
 	glfwMakeContextCurrent(this->window);
 
-	std::cout << "Window sucessfully initialized \n";
+	//Calculate the projection matrix
+	calculateProjMat();
+
+	std::cout << "Window sucessfully initialised" << "\n";
 }
 
 Window::~Window()
 {
-	std::cout << "Deleted window" << "\n";
+	delete this->ProjectionMatrix;
+	delete this->window;
 }
 
-#pragma region Callbacks
+#pragma endregion
 
+#pragma region Private functions
+
+//==Display==
+//This function re calculates the projection matrix based on the current projection mode. (Orthographic or perspective)
+void Window::calculateProjMat(float FOV)
+{
+	if (this->windowProjectionmode == WPerspective)
+	{
+		*this->ProjectionMatrix = glm::perspective(
+			glm::radians(FOV),
+			static_cast<float>(this->windowSize->x / this->windowSize->y),
+			this->nearPlane,
+			this->farPlane
+		);
+	}
+	else
+	{
+		*this->ProjectionMatrix = glm::ortho(
+			0, (int)this->windowSize->x,
+			0, (int)this->windowSize->y,
+			(int)this->nearPlane,
+			(int)this->farPlane);
+	}
+}
+
+#pragma endregion
+
+#pragma region Static functions
+
+//==Properties==
+//Update the framebuffer size, so that the window can be resized.
 void Window::framebuffer_resize_callback(GLFWwindow* window, int fbW, int fbH)
 {
 	glViewport(0, 0, fbW, fbH);
 }
 
-void Window::mouse_callback(GLFWwindow* window, double xPos, double yPos)
-{
-
-}
 #pragma endregion
 
-#pragma region Functions
+#pragma region Public functions
+//====Window====
 
-void Window::close()
+//Set the current OpenGL context to this window
+void Window::focusWindow()
 {
-	this->shouldClose = true;
-	std::cout << "Closed window" << "\n";
+	glfwMakeContextCurrent(this->window);
 }
 
-void Window::toggleFullscreen(GLFWwindow* window)
+//This function closes the window (by completely removing it from memory)
+void Window::closeWindow()
 {
-	GLFWmonitor* monitor = glfwGetPrimaryMonitor();
-	const GLFWvidmode* mode = glfwGetVideoMode(monitor);
-
-	this->fullscreen = !this->fullscreen;
-
-	if(this->fullscreen)
-		glfwSetWindowMonitor(window, monitor, 0, 0, mode->width, mode->height, mode->refreshRate);
-	std::cout << "Toggled fullscreen \n";
+	delete this;
 }
 
-void Window::update()
-{
-	this->updateProjMatrix();
-}
-
-void Window::updateProjMatrix()
-{
-	glfwGetFramebufferSize(this->window, &this->fbW, &this->fbH);
-
-	*this->ProjectionMatrix = glm::ortho(0.0f, 800.f, 0.0f, 600.f, 0.1f, 100.f);
-}
-
-void Window::swapBuffers()
+//Flip the framebuffer, from the old currently drawn frame, to the new frame
+void Window::refreshWindow()
 {
 	glfwSwapBuffers(this->window);
 }
 
-void Window::initMatrices()
+//====Display====
+
+//Toggle the window fullscreen state.
+//If the new mode is fullscreen. The old window size gets saved, for the moment the screen gets put back into windowed. 
+//After this happens, re calculate the projection matrix
+void Window::toggleFullScreen(bool state)
 {
-	*this->ProjectionMatrix = glm::ortho(0.f, 10.f, 10.f, 0.f, nearPlane, farPlane);
+	GLFWmonitor* currentMonitor = glfwGetPrimaryMonitor();
+	const GLFWvidmode* mode = glfwGetVideoMode(currentMonitor);
+	this->lastWindowSize = windowSize;
+
+	if (state)
+	{
+		glfwSetWindowMonitor(window, currentMonitor, 0, 0, mode->width, mode->height, mode->refreshRate);
+		windowSize->x = mode->width;
+		windowSize->y = mode->height;
+	}
+	else
+	{
+		glfwSetWindowMonitor(window, currentMonitor, 0, 0, lastWindowSize->x, lastWindowSize->y, mode->refreshRate);
+		windowSize = lastWindowSize;
+	}
+
+	this->calculateProjMat();
 }
+
+//Switch the rendering projection mode, from the old version to the new version, if the WOrtho mode is selected, FOV is not used.
+void Window::switchProjectionMode(WProjMode newMode, float fov)
+{
+	this->windowProjectionmode = newMode;
+
+	this->calculateProjMat();
+}
+
 #pragma endregion
 
-#pragma region Accessors
-glm::ivec2 Window::getSize()
-{
-	glm::ivec2 returnVec = glm::ivec2(1);
+#pragma region Getters / Setters
 
-	glfwGetWindowSize(this->window, &returnVec.x, &returnVec.y);
-	return returnVec;
+#pragma region Getters
+
+//==Getters==//
+//==Properties==
+bool Window::getWindowState()
+{
+	return this->windowState;
 }
 
-bool Window::getWindowShouldClose()
+bool Window::getResizeable()
 {
-	return this->shouldClose;
+	return this->windowResizeable;
 }
 
+const char* Window::getWindowTitle()
+{
+	return this->windowTitle;
+}
+
+//==Window==
+GLFWwindow* Window::getWindow()
+{
+	return this->window;
+}
+
+//Get size
+int Window::getWindowWidth()
+{
+	return this->windowSize->x;
+}
+
+int Window::getWindowHeight()
+{
+	return this->windowSize->y;
+}
+
+glm::ivec2* Window::getWindowSize()
+{
+	return this->windowSize;
+}
+
+//==Display==
+bool Window::getFullscreen()
+{
+	return this->windowFullscreen;
+}
+
+//Get display
 glm::mat4* Window::getProjectionMatrix()
 {
-	updateProjMatrix();
-
 	return this->ProjectionMatrix;
 }
 
-//Framebuffer
-int Window::getFBW()
+#pragma endregion
+
+#pragma region Setters
+
+//==Properties==
+void Window::setWindowTitle(const char* newTitle)
 {
-	return this->fbW;
+	this->windowTitle = newTitle;
 }
 
-int Window::getFBH()
+//==Window==
+//Set window size
+void Window::setWindowWidth(int newWidth)
 {
-	return this->fbH;
+	this->windowSize->x = newWidth;
 }
+
+void Window::setWindowHeight(int newHeight)
+{
+	this->windowSize->y = newHeight;
+}
+
+void Window::setWindowSize(glm::ivec2* newSize)
+{
+	this->windowSize = newSize;
+}
+
+//==Display==
+void Window::setNearPlane(float newNearPlane)
+{
+	this->nearPlane = newNearPlane;
+}
+
+void Window::setFarPlane(float newFarPlane)
+{
+	this->farPlane = newFarPlane;
+}
+
+#pragma endregion
+
 #pragma endregion

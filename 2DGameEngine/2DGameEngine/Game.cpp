@@ -10,7 +10,11 @@ Game::Game()
 	initCamera();
 	initRenderer();
 
+	endNextFrame = false;
+
 	start();
+
+	std::cout << "Finished game" << "\n";
 }
 
 
@@ -24,35 +28,29 @@ Game::~Game()
 
 void Game::start()
 {
-	//testObject = new TestOBJ(new glm::vec2(10.f, 10.f));
 	int objectAmount = 2;
 	testObject = new TestOBJ*[objectAmount];
 
 	for (int i = 0; i < objectAmount; i++)
 	{
-		testObject[i] = new TestOBJ(new glm::vec2(0, 0));
+		testObject[i] = new TestOBJ(new glm::vec2(40, 40));
 	}
 
-	while (!this->gameWindow->getWindowShouldClose())
+	while (!this->endNextFrame)
 	{
 		update();
 
 		render();
 	}
+
+	delete this;
 }
 
 void Game::update()
 {
-	this->gameWindow->updateProjMatrix();
-
-	if (glfwGetKey(this->gameWindow->window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+	if (glfwGetKey(this->gameWindow->getWindow(), GLFW_KEY_ESCAPE) == GLFW_PRESS)
 	{
-		this->gameWindow->close();
-	}
-
-	if (glfwGetKey(this->gameWindow->window, GLFW_KEY_F1) == GLFW_PRESS)
-	{
-		GameObjectManager::createObject(new TestOBJ(new glm::vec2(-10.f, 0.f)));
+		endNextFrame = true;
 	}
 }
 
@@ -80,7 +78,7 @@ void Game::initGLFW()
 void Game::initWindow()
 {
 	//Initialize the window
-	this->gameWindow = new Window("Title", true, false, 4, 4, glm::ivec2(800, 600));
+	this->gameWindow = new Window();
 }
 
 void Game::initGLEW()
@@ -118,7 +116,7 @@ void Game::initShaders()
 
 void Game::initCamera()
 {
-	this->gameCamera = new Camera(new glm::vec3(0, 0, 0));
+	this->gameCamera = new Camera(new glm::vec3(400, 400, 0));
 }
 
 void Game::initRenderer()

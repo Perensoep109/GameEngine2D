@@ -23,7 +23,7 @@ private:
 	void setupMainRender();
 
 	//Create data
-	GLuint createQuadVAO();
+	GLuint createQuadVAO(int tileWidth, int tileHeight);
 
 #pragma region Store data
 	//Matrices
@@ -39,7 +39,7 @@ private:
 #pragma region Gameobject rendering
 	//Variables
 	GLuint quadVAO, quadVBO;
-	GLuint matBuffer;
+	GLuint posBuffer;
 	const int MAX_INSTANCES = 1000;
 	const int INSTANCE_DATA_LENGTH_F = sizeof(glm::vec4);
 	const int INSTANCE_DATA_LENGTH_B = INSTANCE_DATA_LENGTH_F * sizeof(float);

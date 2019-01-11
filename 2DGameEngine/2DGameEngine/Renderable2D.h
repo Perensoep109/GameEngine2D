@@ -23,8 +23,6 @@ public:
 
 	//Public fields:
 	bool shouldRender = true;
-
-	void rotate(float angle);
 	
 	//Setters
 	void setSprite(const char* fileName);
