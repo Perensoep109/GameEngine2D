@@ -62,7 +62,8 @@ private:
 	const char* windowTitle;
 
 	//==Size==
-	glm::ivec2 *windowSize, *lastWindowSize;
+	static glm::ivec2 *windowSize;
+	static glm::ivec2 *lastWindowSize;
 	bool windowResizeable;
 
 	//==Display==
@@ -70,13 +71,13 @@ private:
 	WProjMode windowProjectionmode;
 	glm::mat4* ProjectionMatrix;
 	bool windowFullscreen;
-	float nearPlane, farPlane;
+	float nearPlane, farPlane, displayFov;
 
 #pragma endregion
 
 #pragma region Private functions
 	//==Display==
-	void calculateProjMat(float FOV = 90.f);
+	void calculateProjMat();
 #pragma endregion
 
 #pragma region Static functions
@@ -102,7 +103,7 @@ public:
 	void toggleFullScreen(bool state);
 
 	//Display
-	void switchProjectionMode(WProjMode newMode, float fov = 90.f);
+	void switchProjectionMode(WProjMode newMode);
 	void refreshWindow();
 
 #pragma endregion
@@ -126,6 +127,7 @@ public:
 
 	//==Display==
 	glm::mat4* getProjectionMatrix();
+	float getFov();
 	GLFWwindow* getWindow();
 
 
@@ -141,6 +143,7 @@ public:
 	//==Display==
 	void setNearPlane(float newNearPlane);
 	void setFarPlane(float newFarPlane);
+	void setFov(float newFov);
 
 #pragma endregion
 };

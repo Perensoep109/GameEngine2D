@@ -7,6 +7,9 @@
 	Base window constructor, this function starts with assigning all the variables,
 */
 
+glm::ivec2* Window::windowSize = new glm::ivec2(0.f, 0.f);
+glm::ivec2* Window::lastWindowSize = new glm::ivec2(0.f, 0.f);
+
 Window::Window(int windowWidth, int windowHeight, const char* windowTitle, bool resizable, WProjMode projectionMode)
 {
 	//==Set properties==
@@ -42,8 +45,8 @@ Window::Window(int windowWidth, int windowHeight, const char* windowTitle, bool 
 	//Focus on this window
 	glfwMakeContextCurrent(this->window);
 
-	//Calculate the projection matrix
-	calculateProjMat();
+	//Switch the projection matrix to the right version
+	switchProjectionMode(projectionMode);
 
 	std::cout << "Window sucessfully initialised" << "\n";
 }
@@ -60,12 +63,12 @@ Window::~Window()
 
 //==Display==
 //This function re calculates the projection matrix based on the current projection mode. (Orthographic or perspective)
-void Window::calculateProjMat(float FOV)
+void Window::calculateProjMat()
 {
 	if (this->windowProjectionmode == WPerspective)
 	{
 		*this->ProjectionMatrix = glm::perspective(
-			glm::radians(FOV),
+			glm::radians(this->displayFov),
 			static_cast<float>(this->windowSize->x / this->windowSize->y),
 			this->nearPlane,
 			this->farPlane
@@ -90,6 +93,11 @@ void Window::calculateProjMat(float FOV)
 void Window::framebuffer_resize_callback(GLFWwindow* window, int fbW, int fbH)
 {
 	glViewport(0, 0, fbW, fbH);
+
+	Window::windowSize->x = fbW;
+	Window::windowSize->y = fbH;
+
+	Window::lastWindowSize;
 }
 
 #pragma endregion
@@ -106,7 +114,7 @@ void Window::focusWindow()
 //This function closes the window (by completely removing it from memory)
 void Window::closeWindow()
 {
-	delete this;
+	glfwDestroyWindow(this->window);
 }
 
 //Flip the framebuffer, from the old currently drawn frame, to the new frame
@@ -122,27 +130,37 @@ void Window::refreshWindow()
 //After this happens, re calculate the projection matrix
 void Window::toggleFullScreen(bool state)
 {
+	//Switch the state
+	this->windowFullscreen = state;
+
+	//If the screen switches to full screen, save the state
+	if (state)
+		this->lastWindowSize = this->windowSize;
+
+	//Get the new screen size
 	GLFWmonitor* currentMonitor = glfwGetPrimaryMonitor();
 	const GLFWvidmode* mode = glfwGetVideoMode(currentMonitor);
-	this->lastWindowSize = windowSize;
 
 	if (state)
 	{
 		glfwSetWindowMonitor(window, currentMonitor, 0, 0, mode->width, mode->height, mode->refreshRate);
-		windowSize->x = mode->width;
-		windowSize->y = mode->height;
+		//^^^^^^^^ This function is doing weird stuffs.... Updates the Window::lastWindowSize
+		this->windowSize->x = mode->width;
+		this->windowSize->y = mode->height;
 	}
 	else
 	{
-		glfwSetWindowMonitor(window, currentMonitor, 0, 0, lastWindowSize->x, lastWindowSize->y, mode->refreshRate);
-		windowSize = lastWindowSize;
+		this->windowSize = this->lastWindowSize;
+		glfwSetWindowMonitor(window, currentMonitor, 0, 0, this->windowSize->x, this->windowSize->y, mode->refreshRate);
 	}
 
+	//Recalculate the projection matrix
 	this->calculateProjMat();
+	std::cout << "Toggled" << "\n";
 }
 
 //Switch the rendering projection mode, from the old version to the new version, if the WOrtho mode is selected, FOV is not used.
-void Window::switchProjectionMode(WProjMode newMode, float fov)
+void Window::switchProjectionMode(WProjMode newMode)
 {
 	this->windowProjectionmode = newMode;
 
@@ -203,7 +221,15 @@ bool Window::getFullscreen()
 //Get display
 glm::mat4* Window::getProjectionMatrix()
 {
+	if (this->lastWindowSize != this->windowSize)
+		calculateProjMat();
+
 	return this->ProjectionMatrix;
+}
+
+float Window::getFov()
+{
+	return this->displayFov;
 }
 
 #pragma endregion
@@ -242,6 +268,15 @@ void Window::setNearPlane(float newNearPlane)
 void Window::setFarPlane(float newFarPlane)
 {
 	this->farPlane = newFarPlane;
+}
+
+void Window::setFov(float newFov)
+{
+	this->displayFov = newFov;
+
+	//If the current projection mode is a perspective mode, recalculate the projection matrix
+	if (this->windowProjectionmode == WPerspective)
+		calculateProjMat();
 }
 
 #pragma endregion
