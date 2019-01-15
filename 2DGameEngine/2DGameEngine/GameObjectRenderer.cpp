@@ -19,7 +19,7 @@ void Renderer2D::renderGameObjects()
 	this->gameObjectShader->use();
 
 	//Update
-	updateBufferData(objectAmount);
+	//updateBufferData(objectAmount);
 
 	sendToGameObjectShader();
 	

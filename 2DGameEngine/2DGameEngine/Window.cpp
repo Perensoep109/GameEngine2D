@@ -9,6 +9,7 @@
 
 glm::ivec2* Window::windowSize = new glm::ivec2(0.f, 0.f);
 glm::ivec2* Window::lastWindowSize = new glm::ivec2(0.f, 0.f);
+bool Window::recalcProj = false;
 
 Window::Window(int windowWidth, int windowHeight, const char* windowTitle, bool resizable, WProjMode projectionMode)
 {
@@ -16,6 +17,7 @@ Window::Window(int windowWidth, int windowHeight, const char* windowTitle, bool 
 	this->windowResizeable = resizable;
 	this->windowState = true;
 	this->windowSize = new glm::ivec2(windowWidth, windowHeight);
+	this->lastWindowSize = windowSize;
 	this->windowTitle = windowTitle;
 	this->windowFullscreen = false;
 
@@ -25,11 +27,13 @@ Window::Window(int windowWidth, int windowHeight, const char* windowTitle, bool 
 	this->farPlane = 100.f;
 
 	//==Setup window==
+	//Set GLFW settings
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 4);
 	glfwWindowHint(GLFW_RESIZABLE, resizable);
 
+	//Create window
 	this->window = glfwCreateWindow(this->windowSize->x, this->windowSize->y, this->windowTitle, NULL, NULL);
 
 	//Check if window has been created
@@ -82,6 +86,9 @@ void Window::calculateProjMat()
 			(int)this->nearPlane,
 			(int)this->farPlane);
 	}
+
+	Window::recalcProj = false;
+	std::cout << "Recalculated projection matrix" << "\n";
 }
 
 #pragma endregion
@@ -96,8 +103,7 @@ void Window::framebuffer_resize_callback(GLFWwindow* window, int fbW, int fbH)
 
 	Window::windowSize->x = fbW;
 	Window::windowSize->y = fbH;
-
-	Window::lastWindowSize;
+	Window::recalcProj = true;
 }
 
 #pragma endregion
@@ -115,6 +121,7 @@ void Window::focusWindow()
 void Window::closeWindow()
 {
 	glfwDestroyWindow(this->window);
+	delete this;
 }
 
 //Flip the framebuffer, from the old currently drawn frame, to the new frame
@@ -130,6 +137,9 @@ void Window::refreshWindow()
 //After this happens, re calculate the projection matrix
 void Window::toggleFullScreen(bool state)
 {
+	//Create an empty screensize
+	glm::ivec2 *newScreenSize = new glm::ivec2(0.0f);
+
 	//Switch the state
 	this->windowFullscreen = state;
 
@@ -144,15 +154,16 @@ void Window::toggleFullScreen(bool state)
 	if (state)
 	{
 		glfwSetWindowMonitor(window, currentMonitor, 0, 0, mode->width, mode->height, mode->refreshRate);
-		//^^^^^^^^ This function is doing weird stuffs.... Updates the Window::lastWindowSize
-		this->windowSize->x = mode->width;
-		this->windowSize->y = mode->height;
+		newScreenSize->x = mode->width;
+		newScreenSize->y = mode->height;
 	}
 	else
 	{
-		this->windowSize = this->lastWindowSize;
-		glfwSetWindowMonitor(window, currentMonitor, 0, 0, this->windowSize->x, this->windowSize->y, mode->refreshRate);
+		newScreenSize = this->lastWindowSize;
+		glfwSetWindowMonitor(window, currentMonitor, 0, 0, newScreenSize->x, newScreenSize->y, mode->refreshRate);
 	}
+
+	this->windowSize = newScreenSize;
 
 	//Recalculate the projection matrix
 	this->calculateProjMat();
@@ -221,7 +232,7 @@ bool Window::getFullscreen()
 //Get display
 glm::mat4* Window::getProjectionMatrix()
 {
-	if (this->lastWindowSize != this->windowSize)
+	if (recalcProj)
 		calculateProjMat();
 
 	return this->ProjectionMatrix;

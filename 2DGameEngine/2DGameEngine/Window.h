@@ -72,6 +72,7 @@ private:
 	glm::mat4* ProjectionMatrix;
 	bool windowFullscreen;
 	float nearPlane, farPlane, displayFov;
+	static bool recalcProj;
 
 #pragma endregion
 
