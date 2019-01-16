@@ -15,12 +15,12 @@ Game::~Game()
 //The first function that gets called
 void Game::start()
 {
-	int objectAmount = 2;
+	int objectAmount = 3;
 	testObject = new TestOBJ*[objectAmount];
 
-	for (int i = 0; i < objectAmount; i++)
+	for (int i = 1; i < objectAmount + 1; i++)
 	{
-		testObject[i] = new TestOBJ(new glm::vec2(40, 40));
+		testObject[i] = new TestOBJ(new glm::vec2(64 * i + 128, i * 128));
 	}
 }
 

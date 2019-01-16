@@ -24,16 +24,6 @@ private:
 
 	//Create data
 	GLuint createQuadVAO(int tileWidth, int tileHeight);
-
-#pragma region Store data
-	//Matrices
-	void storeMat4Data(glm::mat4* matrix, std::vector<float>* vboData);													//Store data non interleaved
-	void storeMat4Data(glm::mat4* matrix, std::vector<float>* vboData, int objectAmount, int currentObject = 0);		//Store data interleaved
-
-	//Vectors:
-	void storeVec2Data(glm::vec2* vec2, std::vector<float>* vboData);
-	void storeVec3Data(glm::vec3* vec3, std::vector<float>* vboData);
-	void storeVec4Data(glm::vec4* vec4, std::vector<float>* vboData);
 #pragma endregion
 
 #pragma region Gameobject rendering

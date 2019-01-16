@@ -75,65 +75,6 @@ GLuint Renderer2D::createQuadVAO(int tileWidth, int tileHeight)
 	return returnVAO;
 }
 
-#pragma region General Data Storage
-
-//Store matrix data into float vector
-//Vectors
-void Renderer2D::storeVec2Data(glm::vec2* vec2, std::vector<float>* vboData)
-{
-	for (int i = 0; i < 2; i++)
-	{
-		vboData->push_back(vec2[0][i]);
-	}
-}
-
-void Renderer2D::storeVec3Data(glm::vec3* vec3, std::vector<float>* vboData)
-{
-	for (int i = 0; i < 3; i++)
-	{
-		vboData->push_back(vec3[0][i]);
-	}
-}
-
-void Renderer2D::storeVec4Data(glm::vec4* vec4, std::vector<float>* vboData)
-{
-	for (int i = 0; i < 2; i++)
-	{
-		vboData->push_back(vec4[0][i]);
-		//vboData->push_back(vec4[0][position + stride]);
-	}
-}
-
-//Matrices
-void Renderer2D::storeMat4Data(glm::mat4* matrix, std::vector<float>* vboData, int objectAmount, int currentObject)
-{
-	int componentJump = objectAmount * 4;
-	int offset = currentObject * 4;
-	for (int x = 0; x < 4; x++)
-	{
-		glm::vec4 tempVec = matrix[x][0];
-		for (int y = 0; y < 4; y++)
-		{
-			vboData->at(y * componentJump + x) = tempVec[y];
-		}
-	}
-}
-
-void Renderer2D::storeMat4Data(glm::mat4* matrix, std::vector<float>* vboData)
-{
-	for (int x = 0; x < 4; x++)
-	{
-		glm::vec4 tempVec = matrix[x][0];
-		for (int y = 0; y < 4; y++)
-		{
-			//vboData->at(x * 4 + y) = tempVec[y];
-			vboData->push_back(tempVec[y]);
-		}
-	}
-}
-
-#pragma endregion
-
 #pragma region Tilemap rendering
 
 #pragma endregion

@@ -19,7 +19,7 @@ void Renderer2D::renderGameObjects()
 	this->gameObjectShader->use();
 
 	//Update
-	//updateBufferData(objectAmount);
+	updateBufferData(objectAmount);
 
 	sendToGameObjectShader();
 	
@@ -40,7 +40,7 @@ void Renderer2D::createBuffers()
 {
 	glGenBuffers(1, &posBuffer);
 	glBindBuffer(GL_ARRAY_BUFFER, posBuffer);
-	glBufferData(GL_ARRAY_BUFFER, 4 * sizeof(float) * MAX_INSTANCES, NULL, GL_STREAM_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, 2 * sizeof(float) * MAX_INSTANCES, NULL, GL_STREAM_DRAW);
 }
 
 void Renderer2D::updateBufferData(int objectAmount)
@@ -53,8 +53,8 @@ void Renderer2D::updateBufferData(int objectAmount)
 	}
 
 	glBindBuffer(GL_ARRAY_BUFFER, posBuffer);
-	glBufferData(GL_ARRAY_BUFFER, 4 * sizeof(float) * MAX_INSTANCES, NULL, GL_STREAM_DRAW);
-	glBufferSubData(GL_ARRAY_BUFFER, 0, objectAmount * sizeof(float) * 4, &posData->front());
+	glBufferData(GL_ARRAY_BUFFER, 2 * sizeof(float) * MAX_INSTANCES, NULL, GL_STREAM_DRAW);
+	glBufferSubData(GL_ARRAY_BUFFER, 0, objectAmount * sizeof(float) * 2, posData->data());
 }
 
 void Renderer2D::setAttributes()

@@ -171,6 +171,7 @@
     <Text Include="Ideas.txt" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram.cd" />
     <None Include="GameObjectFragmentCore.glsl" />
     <None Include="GameObjectVertexCore.glsl" />
   </ItemGroup>

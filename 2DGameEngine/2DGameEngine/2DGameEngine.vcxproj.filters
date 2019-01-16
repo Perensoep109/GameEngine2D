@@ -186,5 +186,6 @@
     <None Include="GameObjectFragmentCore.glsl">
       <Filter>Source Files\Engine\Graphics\Shaders\GameObject Shaders</Filter>
     </None>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>
