@@ -60,6 +60,9 @@
     <Filter Include="Source Files\Engine\Game">
       <UniqueIdentifier>{33beadbd-39b9-4a13-88b2-3bde6cc0ab0d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Engine\Math">
+      <UniqueIdentifier>{a61077b2-bbbf-4990-af50-02a472ddba4c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -133,9 +136,6 @@
     <ClInclude Include="TestObject.h">
       <Filter>Header Files\Engine\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="TileMap.h">
-      <Filter>Header Files\Engine\Objects</Filter>
-    </ClInclude>
     <ClInclude Include="Renderable2D.h">
       <Filter>Header Files\Engine\Objects</Filter>
     </ClInclude>
@@ -168,6 +168,12 @@
     </ClInclude>
     <ClInclude Include="Vertex.h">
       <Filter>Header Files\Engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="CalcProjectionMatrix.h">
+      <Filter>Header Files\Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="TileMap.h">
+      <Filter>Header Files\Engine\Objects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

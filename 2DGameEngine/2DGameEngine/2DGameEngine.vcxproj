@@ -153,6 +153,7 @@
     <ClInclude Include="GameObjectManager.h" />
     <ClInclude Include="libs.h" />
     <ClInclude Include="Primitive.h" />
+    <ClInclude Include="CalcProjectionMatrix.h" />
     <ClInclude Include="Renderable2D.h" />
     <ClInclude Include="Renderer2D.h" />
     <ClInclude Include="resource.h" />

@@ -2,8 +2,7 @@
 
 #include<glew.h>
 #include <glfw3.h>
-#include <glm.hpp>
-#include <gtc/matrix_transform.hpp>
+#include "CalcProjectionMatrix.h"
 #include <iostream>
 
 /*
@@ -33,27 +32,11 @@
 	In the miscellaneous part, other variables are stored that did not fit in any other catagory. (general properties)
 
 	=====================================================================================================================
-	====================================================HELPER DATA TYPES================================================
-
-	The helper data types for this class are WProjMode, this is an enum that represents what projection mode the window
-	has to work with. Either orthographic (2D) or perspective (3D) mode. 
-
-	=====================================================================================================================
 
 */
 
 class Window
 {
-public:
-#pragma region Helper data types
-
-	enum WProjMode
-	{
-		WPerspective,
-		WOrtho
-	};
-
-#pragma endregion
 
 private:
 #pragma region Fields
@@ -68,8 +51,7 @@ private:
 
 	//==Display==
 	GLFWwindow* window;
-	WProjMode windowProjectionmode;
-	glm::mat4* ProjectionMatrix;
+	glm::mat4 ProjectionMatrix;
 	bool windowFullscreen;
 	float nearPlane, farPlane, displayFov;
 	static bool recalcProj;
@@ -91,7 +73,7 @@ public:
 #pragma region Constructors / Deconstructors
 
 	//==General==
-	Window(int windowWidth = 640, int windowHeight = 480, const char* windowTitle = "Window Title", bool resizeable = true, WProjMode projectionMode = WOrtho);
+	Window(int windowWidth = 640, int windowHeight = 480, const char* windowTitle = "Window Title", bool resizeable = true);
 	~Window();
 
 #pragma endregion
@@ -104,7 +86,6 @@ public:
 	void toggleFullScreen(bool state);
 
 	//Display
-	void switchProjectionMode(WProjMode newMode);
 	void refreshWindow();
 
 #pragma endregion
@@ -127,7 +108,7 @@ public:
 	glm::ivec2* getWindowSize();
 
 	//==Display==
-	glm::mat4* getProjectionMatrix();
+	glm::mat4 getProjectionMatrix();
 	float getFov();
 	GLFWwindow* getWindow();
 

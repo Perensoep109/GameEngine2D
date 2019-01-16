@@ -70,7 +70,7 @@ void GameManager::initGLFW()
 void GameManager::initWindow()
 {
 	//Initialize the window
-	this->gameWindow = new Window();
+	this->gameWindow = new Window(640, 480, "Game Engine", false);
 }
 
 void GameManager::initGLEW()

@@ -33,7 +33,7 @@ void Renderer2D::renderGameObjects()
 
 void Renderer2D::sendToGameObjectShader()
 {
-	glUniformMatrix4fv(glGetUniformLocation(gameObjectShader->id, "ProjectionMatrix"), 1, false, glm::value_ptr(*this->mainWindow->getProjectionMatrix()));
+	glUniformMatrix4fv(glGetUniformLocation(gameObjectShader->id, "ProjectionMatrix"), 1, false, glm::value_ptr(this->mainWindow->getProjectionMatrix()));
 }
 
 void Renderer2D::createBuffers()

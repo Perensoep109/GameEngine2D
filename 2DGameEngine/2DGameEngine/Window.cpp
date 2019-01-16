@@ -11,7 +11,7 @@ glm::ivec2* Window::windowSize = new glm::ivec2(0.f, 0.f);
 glm::ivec2* Window::lastWindowSize = new glm::ivec2(0.f, 0.f);
 bool Window::recalcProj = false;
 
-Window::Window(int windowWidth, int windowHeight, const char* windowTitle, bool resizable, WProjMode projectionMode)
+Window::Window(int windowWidth, int windowHeight, const char* windowTitle, bool resizable)
 {
 	//==Set properties==
 	this->windowResizeable = resizable;
@@ -22,7 +22,7 @@ Window::Window(int windowWidth, int windowHeight, const char* windowTitle, bool 
 	this->windowFullscreen = false;
 
 	//==Set display==
-	this->ProjectionMatrix = new glm::mat4(1.f);
+	this->ProjectionMatrix = glm::mat4(1.f);
 	this->nearPlane = -1.f;
 	this->farPlane = 100.f;
 
@@ -43,21 +43,20 @@ Window::Window(int windowWidth, int windowHeight, const char* windowTitle, bool 
 		glfwTerminate();
 	}
 
+	//Calculate projection matrix
+	calculateProjMat();
+
 	//Window callbacks:
 	glfwSetFramebufferSizeCallback(this->window, Window::framebuffer_resize_callback);
 
 	//Focus on this window
 	glfwMakeContextCurrent(this->window);
 
-	//Switch the projection matrix to the right version
-	switchProjectionMode(projectionMode);
-
 	std::cout << "Window sucessfully initialised" << "\n";
 }
 
 Window::~Window()
 {
-	delete this->ProjectionMatrix;
 	delete this->window;
 }
 
@@ -69,23 +68,7 @@ Window::~Window()
 //This function re calculates the projection matrix based on the current projection mode. (Orthographic or perspective)
 void Window::calculateProjMat()
 {
-	if (this->windowProjectionmode == WPerspective)
-	{
-		*this->ProjectionMatrix = glm::perspective(
-			glm::radians(this->displayFov),
-			static_cast<float>(this->windowSize->x / this->windowSize->y),
-			this->nearPlane,
-			this->farPlane
-		);
-	}
-	else
-	{
-		*this->ProjectionMatrix = glm::ortho(
-			0, (int)this->windowSize->x,
-			0, (int)this->windowSize->y,
-			(int)this->nearPlane,
-			(int)this->farPlane);
-	}
+	this->ProjectionMatrix = Math::Matrix::calcOrtho(0, this->windowSize->x, 0, this->windowSize->y, this->nearPlane, this->farPlane);
 
 	Window::recalcProj = false;
 	std::cout << "Recalculated projection matrix" << "\n";
@@ -170,14 +153,6 @@ void Window::toggleFullScreen(bool state)
 	std::cout << "Toggled" << "\n";
 }
 
-//Switch the rendering projection mode, from the old version to the new version, if the WOrtho mode is selected, FOV is not used.
-void Window::switchProjectionMode(WProjMode newMode)
-{
-	this->windowProjectionmode = newMode;
-
-	this->calculateProjMat();
-}
-
 #pragma endregion
 
 #pragma region Getters / Setters
@@ -230,7 +205,7 @@ bool Window::getFullscreen()
 }
 
 //Get display
-glm::mat4* Window::getProjectionMatrix()
+glm::mat4 Window::getProjectionMatrix()
 {
 	if (recalcProj)
 		calculateProjMat();
@@ -279,15 +254,6 @@ void Window::setNearPlane(float newNearPlane)
 void Window::setFarPlane(float newFarPlane)
 {
 	this->farPlane = newFarPlane;
-}
-
-void Window::setFov(float newFov)
-{
-	this->displayFov = newFov;
-
-	//If the current projection mode is a perspective mode, recalculate the projection matrix
-	if (this->windowProjectionmode == WPerspective)
-		calculateProjMat();
 }
 
 #pragma endregion
