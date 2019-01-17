@@ -18,10 +18,10 @@ void Game::start()
 	int objectAmount = 3;
 	testObject = new TestOBJ*[objectAmount];
 
-	for (int i = 1; i < objectAmount + 1; i++)
-	{
-		testObject[i] = new TestOBJ(new glm::vec2(64 * i + 128, i * 128));
-	}
+	testObject[0] = new TestOBJ(new glm::vec2(650, 128));
+	testObject[1] = new TestOBJ(new glm::vec2(400, 128));
+	testObject[2] = new TestOBJ(new glm::vec2(0, 128));
+	
 }
 
 //This function gets called every frame

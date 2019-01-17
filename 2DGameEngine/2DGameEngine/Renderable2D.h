@@ -13,8 +13,6 @@ private:
 
 protected:
 	float renderLayer = 1.f;
-	float rotation = 0.f;
-	glm::vec2* position;
 	glm::mat4* InstanceMatrix;
 
 public:
@@ -22,6 +20,8 @@ public:
 	~Renderable2D();
 
 	//Public fields:
+	float rotation = 0.f;
+	glm::vec2* position;
 	bool shouldRender = true;
 	
 	//Setters
