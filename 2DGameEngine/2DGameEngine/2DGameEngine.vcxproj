@@ -144,6 +144,7 @@
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteAtlas.cpp" />
+    <ClCompile Include="TestScene.cpp" />
     <ClCompile Include="TileMap.cpp" />
     <ClCompile Include="TileMapRenderer.cpp" />
     <ClCompile Include="Window.cpp" />
@@ -169,6 +170,7 @@
     <ClInclude Include="SpriteAtlas.h" />
     <ClInclude Include="TestOBJ.h" />
     <ClInclude Include="TestObject.h" />
+    <ClInclude Include="TestScene.h" />
     <ClInclude Include="TileMap.h" />
     <ClInclude Include="Vertex.h" />
     <ClInclude Include="Window.h" />

@@ -2,8 +2,9 @@
 
 
 
-Scene::Scene()
+Scene::Scene(const char* sceneName)
 {
+
 }
 
 

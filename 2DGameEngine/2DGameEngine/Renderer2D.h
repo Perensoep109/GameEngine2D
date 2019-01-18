@@ -4,6 +4,8 @@
 #include "Camera.h"
 #include <vector>
 
+class Scene;
+class SceneManager;
 class Renderer2D
 {
 private:
@@ -16,6 +18,7 @@ private:
 	Shader* tileMapShader;
 	Window* mainWindow;
 	Camera* mainCamera;
+	Scene*  currentScene;
 
 	//Rendering functions:
 #pragma region Rendering functions
