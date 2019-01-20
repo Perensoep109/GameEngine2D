@@ -6,5 +6,10 @@ class TestScene :
 public:
 	TestScene();
 	~TestScene();
+
+#pragma region Inherited virtual functions
+	void initScene();
+	void updateScene();
+#pragma endregion
 };
 

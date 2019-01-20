@@ -43,7 +43,7 @@ void Sprite2D::setSprite(const char* fileName)
 
 void Sprite2D::loadSprite(const char* fileName)
 {
-	/*
+	
 	//Load from file
 	if (this->id)
 	{
@@ -75,6 +75,5 @@ void Sprite2D::loadSprite(const char* fileName)
 	else
 	{
 		std::cout << "Error, loading sprite from file failed: " << fileName << "\n";
-	}
-	*/
+	}	
 }

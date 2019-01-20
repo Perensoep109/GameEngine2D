@@ -1,5 +1,23 @@
-﻿  Scene.cpp
-  TestScene.cpp
-c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\testscene.cpp(6): error C2512: 'Scene': no appropriate default constructor available
-  c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\scene.h(7): note: see declaration of 'Scene'
-  Generating Code...
+﻿  SceneObjectManager.cpp
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\sceneobjectmanager.h(2): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\sceneobjectmanager.cpp(23): error C2664: 'std::_List_iterator<std::_List_val<std::_List_simple_types<_Ty>>> std::_Hash<std::_Umap_traits<_Kty,std::vector<GameObject *,std::allocator<GameObject*>>,std::_Uhash_compare<_Kty,_Hasher,_Keyeq>,_Alloc,false>>::insert(std::_List_const_iterator<std::_List_val<std::_List_simple_types<_Ty>>>,const std::pair<const _Kty,std::vector<GameObject *,std::allocator<GameObject*>>> &)': cannot convert argument 1 from 'initializer list' to 'std::pair<const _Kty,_Ty> &&'
+          with
+          [
+              _Ty=std::pair<const char *const ,std::vector<GameObject *,std::allocator<GameObject *>>>,
+              _Kty=const char *,
+              _Hasher=std::hash<const char *>,
+              _Keyeq=std::equal_to<const char *>,
+              _Alloc=std::allocator<std::pair<const char *const ,std::vector<GameObject *,std::allocator<GameObject *>>>>
+          ]
+          and
+          [
+              _Kty=const char *,
+              _Ty=std::vector<GameObject *,std::allocator<GameObject *>>
+          ]
+  c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\sceneobjectmanager.cpp(23): note: Reason: cannot convert from 'initializer list' to 'std::pair<const _Kty,_Ty>'
+          with
+          [
+              _Kty=const char *,
+              _Ty=std::vector<GameObject *,std::allocator<GameObject *>>
+          ]
+  c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\sceneobjectmanager.cpp(23): note: No constructor could take the source type, or constructor overload resolution was ambiguous

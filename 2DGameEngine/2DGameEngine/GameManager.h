@@ -6,18 +6,14 @@
 
 //Component includes
 #include "Window.h"
-#include "Shader.h"
-#include "TestObject.h"
-#include "GameObjectManager.h"
-#include "Primitive.h"
 #include "Renderer2D.h"
+#include "SceneManager.h"
 
 class Game;
 
 class GameManager
 {
 private:
-
 	//Private components
 	Game* focussedGame;
 
@@ -26,8 +22,7 @@ private:
 	void initWindow();
 	void initGLEW();
 	void initOpenGLOptions();
-	void initShaders();
-	void initCamera();
+	void initSceneManager();
 	void initRenderer();
 
 	//Callbacks
@@ -36,20 +31,20 @@ private:
 
 protected:
 	//Components
+	SceneManager* sceneManager;
 	Window* gameWindow;
 	Renderer2D* gameRenderer;
-	Camera* gameCamera;
-
-	//Shaders
-	Shader* mainShader;
-	Shader* gameObjectShader;
-
-	TestOBJ** testObject;
 
 	bool endNextFrame;
 public:
 	GameManager(Game* game);
 	~GameManager();
+
+#pragma region Scene management
+
+	void activateScene(std::string sceneToActivate);
+
+#pragma endregion
 
 	void setup();
 	void start();

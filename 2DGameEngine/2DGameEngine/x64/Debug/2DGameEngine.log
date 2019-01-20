@@ -2,24 +2,30 @@
 c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\camera.h(2): fatal error C1083: Cannot open include file: 'glm.hpp': No such file or directory
   Game.cpp
 c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\libs.h(5): fatal error C1083: Cannot open include file: 'glew.h': No such file or directory
-  GameObject.cpp
-c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\sprite.h(3): fatal error C1083: Cannot open include file: 'SOIL2.h': No such file or directory
-  GameObjectManager.cpp
-c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\sprite.h(3): fatal error C1083: Cannot open include file: 'SOIL2.h': No such file or directory
+  GameManager.cpp
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\libs.h(5): fatal error C1083: Cannot open include file: 'glew.h': No such file or directory
   GameObjectRenderer.cpp
-c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\window.h(5): fatal error C1083: Cannot open include file: 'glew.h': No such file or directory
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\window.h(3): fatal error C1083: Cannot open include file: 'glew.h': No such file or directory
   main.cpp
 c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\libs.h(5): fatal error C1083: Cannot open include file: 'glew.h': No such file or directory
-  Renderable2D.cpp
-c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\sprite.h(3): fatal error C1083: Cannot open include file: 'SOIL2.h': No such file or directory
   Renderer2D.cpp
-c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\sprite.h(3): fatal error C1083: Cannot open include file: 'SOIL2.h': No such file or directory
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\window.h(3): fatal error C1083: Cannot open include file: 'glew.h': No such file or directory
+  Scene.cpp
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\scene.cpp(12): warning C4150: deletion of pointer to incomplete type 'Camera'; no destructor called
+  c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\scene.h(7): note: see declaration of 'Camera'
+  SceneComponent.cpp
+  SceneManager.cpp
+  SceneObjectManager.cpp
+  SceneRenderer.cpp
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\window.h(3): fatal error C1083: Cannot open include file: 'glew.h': No such file or directory
   Shader.cpp
 c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\shader.h(4): fatal error C1083: Cannot open include file: 'glew.h': No such file or directory
   Sprite.cpp
 c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\sprite.h(3): fatal error C1083: Cannot open include file: 'SOIL2.h': No such file or directory
+  TestScene.cpp
   TileMapRenderer.cpp
-c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\window.h(5): fatal error C1083: Cannot open include file: 'glew.h': No such file or directory
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\window.h(3): fatal error C1083: Cannot open include file: 'glew.h': No such file or directory
+  Timer.cpp
   Window.cpp
-c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\window.h(5): fatal error C1083: Cannot open include file: 'glew.h': No such file or directory
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\window.h(3): fatal error C1083: Cannot open include file: 'glew.h': No such file or directory
   Generating Code...

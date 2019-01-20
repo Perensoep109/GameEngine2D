@@ -11,7 +11,6 @@ GameManager::GameManager(Game* game)
 
 GameManager::~GameManager()
 {
-	GameObjectManager::deletePool();
 	delete this->gameRenderer;
 }
 
@@ -22,12 +21,13 @@ void GameManager::setup()
 	initWindow();
 	initGLEW();
 	initOpenGLOptions();
-	initShaders();
-	initCamera();
+	initSceneManager();
 	initRenderer();
 
 	endNextFrame = false;
 }
+
+//======Game management functions======//
 
 void GameManager::start()
 {
@@ -49,6 +49,14 @@ void GameManager::update()
 void GameManager::draw()
 {
 	this->focussedGame->draw();
+}
+
+//Scene management functions//
+
+void GameManager::activateScene(std::string sceneToActivate)
+{
+	this->sceneManager->activateScene(sceneToActivate);
+	this->gameRenderer->setCurrentScene(this->sceneManager->getScene(sceneToActivate));
 }
 
 #pragma endregion
@@ -101,19 +109,14 @@ void GameManager::initOpenGLOptions()
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 }
 
-void GameManager::initShaders()
+void GameManager::initSceneManager()
 {
-	this->gameObjectShader = new Shader(4, 4, "GameObjectVertexCore.glsl", "GameObjectFragmentCore.glsl");
-}
-
-void GameManager::initCamera()
-{
-	this->gameCamera = new Camera(new glm::vec3(400, 400, 0));
+	this->sceneManager = new SceneManager();
 }
 
 void GameManager::initRenderer()
 {
-	this->gameRenderer = new Renderer2D(this->mainShader, this->gameObjectShader, this->gameWindow, this->gameCamera);
+	this->gameRenderer = new Renderer2D(this->gameWindow);
 	this->gameRenderer->setBackgroundColor(90.f / 255, 130.f / 255, 180.f / 255, 0.f);
 }
 #pragma endregion

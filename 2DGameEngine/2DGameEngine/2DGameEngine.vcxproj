@@ -132,21 +132,21 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameObject.cpp" />
-    <ClCompile Include="GameObjectManager.cpp" />
     <ClCompile Include="GameObjectRenderer.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Renderable2D.cpp" />
     <ClCompile Include="Renderer2D.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneComponent.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="SceneObjectManager.cpp" />
+    <ClCompile Include="SceneRenderer.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteAtlas.cpp" />
     <ClCompile Include="TestScene.cpp" />
     <ClCompile Include="TileMap.cpp" />
     <ClCompile Include="TileMapRenderer.cpp" />
+    <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -154,11 +154,9 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameObject.h" />
-    <ClInclude Include="GameObjectManager.h" />
     <ClInclude Include="libs.h" />
     <ClInclude Include="Primitive.h" />
     <ClInclude Include="CalcProjectionMatrix.h" />
-    <ClInclude Include="Renderable2D.h" />
     <ClInclude Include="Renderer2D.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Scene.h" />
@@ -169,9 +167,9 @@
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteAtlas.h" />
     <ClInclude Include="TestOBJ.h" />
-    <ClInclude Include="TestObject.h" />
     <ClInclude Include="TestScene.h" />
     <ClInclude Include="TileMap.h" />
+    <ClInclude Include="Timer.h" />
     <ClInclude Include="Vertex.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
@@ -179,8 +177,6 @@
     <Text Include="Ideas.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram.cd" />
-    <None Include="ClassDiagram1.cd" />
     <None Include="GameObjectFragmentCore.glsl" />
     <None Include="GameObjectVertexCore.glsl" />
   </ItemGroup>

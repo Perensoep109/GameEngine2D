@@ -4,6 +4,8 @@
 #include "SceneComponent.h"
 #include <vector>
 
+class Camera;
+
 class Scene
 {
 private:
@@ -13,16 +15,21 @@ private:
 
 #pragma region Private functions
 
+	//==Scene loading==//
+	void loadScene();
+	void unloadScene();
+
 #pragma endregion
 
 protected:
 #pragma region Protected variables
 	//Scene components
+	Camera* sceneCamera;
 	SceneObjectManager* sceneObjectManager;
-	std::vector<SceneComponent*> sceneComponents;
+	std::vector<SceneComponent*>* sceneComponents;
 	
 	//Scene variables
-	const char* sceneName;
+	std::string sceneName;
 	bool isActive;
 #pragma endregion
 
@@ -52,7 +59,8 @@ public:
 #pragma region Getters & Setters
 	//Getters
 	bool getActive();
-	const char* getSceneName();
+	std::string getSceneName();
+	Camera* getCamera();
 
 	//Setters
 

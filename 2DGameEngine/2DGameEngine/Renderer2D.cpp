@@ -1,13 +1,10 @@
-#include "GameObjectManager.h"
+#include "Renderer2D.h"
 #include <array>
 
 
-Renderer2D::Renderer2D(Shader* _mainShaderProgram, Shader* _gameObjectShader, Window* _mainWindow, Camera* _mainCamera)
+Renderer2D::Renderer2D(Window* renderTarget)
 {
-	this->mainShader = _mainShaderProgram;
-	this->gameObjectShader = _gameObjectShader;
-	this->mainWindow = _mainWindow;
-	this->mainCamera = _mainCamera;
+	this->mainWindow = renderTarget;
 
 	setupMainRender();
 	setupGameObjectRender();
@@ -17,7 +14,6 @@ Renderer2D::~Renderer2D()
 {
 	delete this->mainWindow;
 	delete this->mainShader;
-	delete this->mainCamera;
 
 	deleteGameObjectRendering();
 }
@@ -40,7 +36,7 @@ void Renderer2D::renderFrame()
 	glClearColor(this->clearR, this->clearG, this->clearB, this->clearA);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
-	this->renderGameObjects();
+	this->renderScene();
 
 	this->mainWindow->refreshWindow();
 	glfwPollEvents();

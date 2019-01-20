@@ -1,10 +1,9 @@
 #include "Game.h"
+#include "TestScene.h"
 
 Game::Game()
 	: GameManager(this)
-{
-	std::cout << "Created game" << "\n";
-}
+{}
 
 Game::~Game()
 {
@@ -15,13 +14,8 @@ Game::~Game()
 //The first function that gets called
 void Game::start()
 {
-	int objectAmount = 3;
-	testObject = new TestOBJ*[objectAmount];
-
-	testObject[0] = new TestOBJ(new glm::vec2(650, 128));
-	testObject[1] = new TestOBJ(new glm::vec2(400, 128));
-	testObject[2] = new TestOBJ(new glm::vec2(0, 128));
-	
+	this->sceneManager->addScene(new TestScene());
+	this->activateScene("TestScene");
 }
 
 //This function gets called every frame

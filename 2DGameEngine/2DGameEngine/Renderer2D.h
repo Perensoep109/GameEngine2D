@@ -1,7 +1,7 @@
 #pragma once
 #include "Window.h"
 #include "Shader.h"
-#include "Camera.h"
+#include "Scene.h"
 #include <vector>
 
 class Scene;
@@ -17,11 +17,12 @@ private:
 	Shader* gameObjectShader;
 	Shader* tileMapShader;
 	Window* mainWindow;
-	Camera* mainCamera;
-	Scene*  currentScene;
 
 	//Rendering functions:
 #pragma region Rendering functions
+	//General quad type
+	GLuint quadVAO, quadVBO;
+
 	//Instanced rendering functions
 	void setupMainRender();
 
@@ -29,9 +30,21 @@ private:
 	GLuint createQuadVAO(int tileWidth, int tileHeight);
 #pragma endregion
 
+#pragma region Scene rendering
+	//==Private==//
+	//Fields
+	Scene* currentScene;
+
+	//Functions
+	void setupSceneRender();
+	void renderScene();
+	void endSceneRender();
+	void deleteSceneRender();
+
+#pragma endregion
+
 #pragma region Gameobject rendering
 	//Variables
-	GLuint quadVAO, quadVBO;
 	GLuint posBuffer;
 	const int MAX_INSTANCES = 1000;
 	const int INSTANCE_DATA_LENGTH_F = sizeof(glm::vec4);
@@ -57,15 +70,17 @@ private:
 
 	void renderFrame();
 public:
-	Renderer2D(Shader* mainShaderProgram, Shader* gameObjectShader, Window* mainWindow, Camera* mainCamera);
+	Renderer2D(Window* renderTarget);
 	~Renderer2D();
 
 	void renderGame();
 
 	//Setters
+	void setCurrentScene(Scene* newScene);
 	void setBackgroundColor(float R, float G, float B, float A);
 
 	//Getters
+	Scene* getCurrentScene();
 	float getClearR();
 	float getClearG();
 	float getClearB();

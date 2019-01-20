@@ -1,15 +1,15 @@
 #include "Renderer2D.h"
-#include "GameObjectManager.h"
 #include <gtc\type_ptr.hpp>
 
 void Renderer2D::setupGameObjectRender()
 {
-	createBuffers();
-	setAttributes();
+	//createBuffers();
+	//setAttributes();
 }
 
 void Renderer2D::renderGameObjects()
 {
+	/*
 	int objectAmount = GameObjectManager::getRenderObjectAmount();
 
 	//Check if there are objects to be rendered
@@ -29,6 +29,7 @@ void Renderer2D::renderGameObjects()
 	this->gameObjectShader->unuse();
 
 	endGameObjectRender();
+	*/
 }
 
 void Renderer2D::sendToGameObjectShader()
@@ -49,7 +50,7 @@ void Renderer2D::updateBufferData(int objectAmount)
 
 	for (int i = 0; i < objectAmount; i++)
 	{
-		posData->push_back(*GameObjectManager::renderObjects->at(i)->getPosition());
+		//posData->push_back(*GameObjectManager::renderObjects->at(i)->getPosition());
 	}
 
 	glBindBuffer(GL_ARRAY_BUFFER, posBuffer);
