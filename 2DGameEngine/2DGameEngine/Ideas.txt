@@ -28,3 +28,5 @@ created or removed. When either of these actions hit. Both this list and the gam
 has to draw a frame, they get all the data through the keylist. Push it into the shaders and start rendering through them.
 
 All the light sources will be rendered with another shader for organization purposes.
+
+https://stackoverflow.com/questions/7676971/pointing-to-a-function-that-is-a-class-member-glfw-setkeycallback/7677191

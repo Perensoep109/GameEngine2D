@@ -1,15 +1,21 @@
 #pragma once
+#include <vector>
 class GameObject
 {
 private:
-	const char* objectType;
+	std::vector<const char*>* objectTypes;
+	const char* objectName;
 
 public:
 	GameObject();
 	~GameObject();
 
+	//==Public functions==//
+	bool typeOf(const char* type);
+
 	//==Getters==//
-	const char* getObjectType();
+	std::vector<const char*>* getObjectTypes();
+	const char* getObjectName();
 
 	//==Setters==//
 };

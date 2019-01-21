@@ -18,7 +18,6 @@ private:
 	//Scene loading
 	Scene* loadScene(std::string sceneFileName);
 	void unloadScene();
-
 #pragma endregion
 
 
@@ -33,6 +32,9 @@ public:
 	void activateScene(std::string sceneName);
 	void deactivateScene(std::string sceneName);
 	void deactivateScene(std::string sceneName, std::string newActiveScene);
+
+	//Active scene methods
+	void updateActiveScene();
 
 #pragma region Getters / Setters
 	//==Getters==//

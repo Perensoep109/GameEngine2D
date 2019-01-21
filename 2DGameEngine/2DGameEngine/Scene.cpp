@@ -1,4 +1,5 @@
 #include "Scene.h"
+#include <iostream>
 
 Scene::Scene(const char* sceneName)
 {
@@ -11,6 +12,11 @@ Scene::~Scene()
 	delete this->sceneComponents;
 	delete this->sceneCamera;
 	delete this->sceneObjectManager;
+}
+
+void Scene::keyboardInput(int key, int scancode, int action, int mods)
+{
+	std::cout << key << "\n";
 }
 
 void Scene::activate()

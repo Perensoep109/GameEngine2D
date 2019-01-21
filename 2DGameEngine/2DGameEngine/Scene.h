@@ -47,8 +47,12 @@ public:
 #pragma endregion
 
 #pragma region Public functions
+	//Abstract functions
 	virtual void initScene() = 0;
 	virtual void updateScene() = 0;
+
+	//Input
+	void keyboardInput(int key, int scancode, int action, int mods);
 
 	//Set scene state
 	void activate();

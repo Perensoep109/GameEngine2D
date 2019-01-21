@@ -44,6 +44,7 @@ void GameManager::start()
 void GameManager::update()
 {
 	this->focussedGame->update();
+	this->sceneManager->updateActiveScene();
 }
 
 void GameManager::draw()
@@ -66,6 +67,7 @@ void GameManager::activateScene(std::string sceneToActivate)
 void GameManager::initGLFW()
 {
 	glfwSetErrorCallback(&GameManager::glfwErrorCallback);
+	glfwSetKeyCallback(this->gameWindow->getWindow(), keyInputCallback);
 
 	//Initialize GLFW
 	if (glfwInit() == GL_FALSE)
@@ -133,6 +135,11 @@ void APIENTRY GameManager::OpenGLErrorMessageCallBack(GLenum source, GLenum type
 	fprintf(stderr, "GL CALLBACK: %s type = 0x%x, severity = 0x%x, message = %s\n",
 		(type == GL_DEBUG_TYPE_ERROR ? "** GL ERROR **" : ""),
 		type, severity, message);
+}
+
+void GameManager::keyInputCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+	this->sceneManager->getActiveScene()->keyboardInput(key, scancode, action, mods);
 }
 
 #pragma endregion

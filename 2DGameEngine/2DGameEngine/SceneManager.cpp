@@ -29,7 +29,6 @@ Scene* SceneManager::getScene(std::string sceneName)
 	if (sceneMapIterator == sceneMap->end())
 	{
 		std::cout << "Scene: " << sceneName << " does not exist!" << "\n";
-
 		return nullptr;
 	}
 
@@ -62,6 +61,11 @@ void SceneManager::deactivateScene(std::string sceneName)
 void SceneManager::deactivateScene(std::string sceneName, std::string newActiveScene)
 {
 	this->activateScene(newActiveScene);
+}
+
+void SceneManager::updateActiveScene()
+{
+	this->getActiveScene()->updateScene();
 }
 
 #pragma endregion
