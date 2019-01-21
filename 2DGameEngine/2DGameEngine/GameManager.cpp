@@ -67,7 +67,6 @@ void GameManager::activateScene(std::string sceneToActivate)
 void GameManager::initGLFW()
 {
 	glfwSetErrorCallback(&GameManager::glfwErrorCallback);
-	glfwSetKeyCallback(this->gameWindow->getWindow(), keyInputCallback);
 
 	//Initialize GLFW
 	if (glfwInit() == GL_FALSE)

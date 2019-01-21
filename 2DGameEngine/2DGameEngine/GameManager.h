@@ -14,14 +14,10 @@ class Game;
 class GameManager
 {
 private:
-	class InputSingleton
-	{
-
-	};
-
-private:
 	//Private components
 	Game* focussedGame;
+	
+	
 
 	//Initialize functions
 	void initGLFW();
@@ -58,5 +54,52 @@ public:
 	void update();
 	void draw();
 };
+
+#pragma region Input management
+//======Input management=====//
+class InputSingleton
+{
+private:
+	InputSingleton(void)
+	{
+	}
+
+	InputSingleton(InputSingleton const&);
+	void operator=(InputSingleton const&);
+
+public:
+	static InputSingleton& getInstance()
+	{
+		static InputSingleton instance;
+		return instance;
+	}
+
+	static void static_keyCallBack(GLFWwindow* window, int key, int scancode, int action, int mods)
+	{
+		getInstance().keyCallback(key, scancode, action, mods);
+	}
+
+	void keyCallback(int key, int scancode, int action, int mods)
+	{
+		//Keyboard output
+		std::cout << key << "\n";
+	}
+};
+
+const struct KeyInput
+{
+public:
+	int key, scancode, action, mods;
+
+	KeyInput(int key, int scancode, int action, int mods)
+	{
+		this->key = key;
+		this->scancode = scancode;
+		this->action = action;
+		this->mods = mods;
+	}
+};
+
+#pragma endregion
 
 #endif // !GAMEMANAGER_H

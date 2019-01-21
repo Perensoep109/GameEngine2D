@@ -30,5 +30,11 @@ public:
 	std::vector<GameObject*>* getObjectsOfType(const char* typeName);
 
 	//Setters
+
+#pragma region Converters
+
+	std::string* toString();
+
+#pragma endregion
 };
 

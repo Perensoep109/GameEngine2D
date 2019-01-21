@@ -4,6 +4,8 @@
 Scene::Scene(const char* sceneName)
 {
 	this->sceneName = sceneName;
+
+	this->sceneObjectManager = new SceneObjectManager();
 }
 
 
@@ -56,6 +58,7 @@ Camera* Scene::getCamera()
 {
 	return this->sceneCamera;
 }
+
 //==Setters==//
 
 

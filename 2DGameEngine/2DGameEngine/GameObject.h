@@ -6,6 +6,9 @@ private:
 	std::vector<const char*>* objectTypes;
 	const char* objectName;
 
+protected:
+	void setObjectType(const char* objectType);
+
 public:
 	GameObject();
 	~GameObject();

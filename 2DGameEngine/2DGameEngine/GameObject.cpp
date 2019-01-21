@@ -2,6 +2,11 @@
 
 
 
+void GameObject::setObjectType(const char* objectType)
+{
+	this->objectTypes->push_back(objectType);
+}
+
 GameObject::GameObject()
 {
 	this->objectTypes = new std::vector<const char*>();

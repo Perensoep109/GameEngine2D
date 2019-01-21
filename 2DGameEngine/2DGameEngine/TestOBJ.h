@@ -1,11 +1,13 @@
 #pragma once
-#include "Renderable2D.h"
+#include "GameObject.h"
+
 class TestOBJ
-	: public Renderable2D
+	: public GameObject
 {
+
 public:
 	TestOBJ()
 	{
-		std::cout << "Created test object" << "\n";
+		this->setObjectType("TestObject");
 	}
 };

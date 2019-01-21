@@ -1,5 +1,6 @@
 #include "SceneObjectManager.h"
 #include <iostream>
+#include <string>
 
 SceneObjectManager::SceneObjectManager()
 {
@@ -48,9 +49,19 @@ std::vector<GameObject*>* SceneObjectManager::getObjectTypeVector(const char* ty
 void SceneObjectManager::addObject(GameObject* objectToAdd)
 {
 	std::vector<const char*>* objectTypes = objectToAdd->getObjectTypes();
+	std::vector<GameObject*>* objectVector;
 	for (int i = 0; i < objectTypes->size(); i++)
 	{
+		if ((objectVector = this->getObjectTypeVector(objectTypes->at(i))) != nullptr)
+		{
+			//Add the new object type, this type does not exist yet
+
+		}
+
+		/*
 		this->getObjectTypeVector(objectTypes->at(i))->push_back(objectToAdd);
+		std::cout << "Added new object to: " << objectTypes->at(i) << "\n";
+		*/
 	}
 }
 
@@ -63,7 +74,7 @@ bool SceneObjectManager::containsType(const char* typeName)
 {
 	this->gameObjectMapIterator = gameObjectMap->find(typeName);
 
-	if(this->gameObjectMapIterator != this->gameObjectMap->end())
+	if(this->gameObjectMapIterator == this->gameObjectMap->end())
 		return false;
 	return true;
 }
@@ -109,4 +120,12 @@ GameObject* SceneObjectManager::getObject(const char* objectName)
 
 	std::cout << "No game object has been found with name: " << objectName << "\n";
 	return nullptr;
+}
+
+//===Converters===//
+std::string* SceneObjectManager::toString()
+{
+	return new std::string("Amount of game objects: " + std::to_string(this->gameObjectMap->at(this->gameObjectMap->find("GameObject")->first)->size()) + "\n" + 
+		"Amount of game object types: " + std::to_string(this->gameObjectMap->size()) + "\n"
+	);
 }
