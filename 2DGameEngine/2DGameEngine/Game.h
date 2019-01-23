@@ -3,6 +3,8 @@
 class Game :
 	public GameManager
 {
+private:
+	bool temp, temp2;
 public:
 	Game();
 	~Game();

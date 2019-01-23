@@ -1,9 +1,13 @@
 #include "Game.h"
 #include "TestScene.h"
+#include "Scene2.h"
 
 Game::Game()
 	: GameManager(this)
-{}
+{
+	this->temp = true;
+	this->temp2 = false;
+}
 
 Game::~Game()
 {
@@ -15,6 +19,7 @@ Game::~Game()
 void Game::start()
 {
 	this->sceneManager->addScene(new TestScene());
+	this->sceneManager->addScene(new TestScene2());
 	this->activateScene("TestScene");
 }
 
@@ -30,6 +35,26 @@ void Game::update()
 	{
 		this->gameWindow->toggleFullScreen(!this->gameWindow->getFullscreen());
 	}
+
+	if (glfwGetKey(this->gameWindow->getWindow(), GLFW_KEY_F2) == GLFW_PRESS)
+	{
+		if (!temp2)
+		{
+			this->temp = !this->temp;
+
+			if (temp)
+			{
+				this->activateScene("Scene2");
+			}
+			else
+			{
+				this->activateScene("TestScene");
+			}
+		}
+		this->temp2 = true;
+	}
+	else
+		this->temp2 = false;
 }
 
 //This function renders every frame

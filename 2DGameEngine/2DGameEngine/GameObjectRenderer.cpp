@@ -37,12 +37,15 @@ void Renderer2D::setAttributes()
 void Renderer2D::updateBufferData(int objectsToRender, std::vector<GameObject*>* gameObjects)
 {
 	//Write all data to the pos buffer
-	std::vector<glm::vec3*>* posData = new std::vector<glm::vec3*>();
+	std::vector<float>* posData = new std::vector<float>();
 
 	for (int i = 0; i < objectsToRender; i++)
 	{
 		TestOBJ* curObj = static_cast<TestOBJ*>(gameObjects->at(i));
-		posData->push_back(curObj->getPosition());
+		glm::vec3* curData = curObj->getPosition();
+		posData->push_back(curData->x);
+		posData->push_back(curData->y);
+		posData->push_back(curData->z);
 	}
 
 	glBindBuffer(GL_ARRAY_BUFFER, posBuffer);
