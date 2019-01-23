@@ -171,11 +171,7 @@ void Shader::setMat3fv(glm::mat3 value, const GLchar* name, GLboolean transpose)
 
 void Shader::setMat4fv(glm::mat4 value, const GLchar* name, GLboolean transpose)
 {
-	this->use();
-
 	glUniformMatrix4fv(glGetUniformLocation(this->id, name), 1, transpose, glm::value_ptr(value));
-
-	this->unuse();
 }
 
 //Set shader texture

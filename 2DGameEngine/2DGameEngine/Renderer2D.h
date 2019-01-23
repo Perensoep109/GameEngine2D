@@ -14,8 +14,6 @@ private:
 
 	//Components:
 	Shader* mainShader;
-	Shader* gameObjectShader;
-	Shader* tileMapShader;
 	Window* mainWindow;
 
 	//Rendering functions:
@@ -50,12 +48,15 @@ private:
 	const int INSTANCE_DATA_LENGTH_F = sizeof(glm::vec4);
 	const int INSTANCE_DATA_LENGTH_B = INSTANCE_DATA_LENGTH_F * sizeof(float);
 
+	//==Shaders==//
+	Shader* gameObjectShader;
+
 	//==Functions==
 	//Main functions
 	void setupGameObjectRender();
-	void renderGameObjects();
+	void renderGameObjects(std::vector<GameObject*>* gameObjects);
 	void sendToGameObjectShader();
-	void updateBufferData(int objectsToRender);
+	void updateBufferData(int objectsToRender, std::vector<GameObject*>* gameObjects);
 	void createBuffers();
 	void setAttributes();
 	void deleteGameObjectRendering();

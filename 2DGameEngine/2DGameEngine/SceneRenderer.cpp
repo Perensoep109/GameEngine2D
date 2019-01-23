@@ -11,7 +11,8 @@ void Renderer2D::renderScene()
 {
 	if (this->currentScene != nullptr)
 	{
-		
+		//Render scene game objects
+		this->renderGameObjects(this->currentScene->getObjectsOfType("TestObject"));
 	}
 	else
 	{

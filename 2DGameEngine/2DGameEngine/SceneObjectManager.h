@@ -12,6 +12,7 @@ private:
 
 	//==Private functions==//
 	void addObjectType(const char* typeName);
+	void addObjectType(GameObject* object);
 	void removeObjectType(const char* typeName);
 	std::vector<GameObject*>* getObjectTypeVector(const char* typeName);
 public:
@@ -21,6 +22,7 @@ public:
 	//==Public functions==//
 	void addObject(GameObject* objectToAdd);
 	void removeObject(const char* objectName);
+	//oid removeObjectRange()
 	bool containsType(const char* typeName);
 	bool containsObject(const char* objectName);
 

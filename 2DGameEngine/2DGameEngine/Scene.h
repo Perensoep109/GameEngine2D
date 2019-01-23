@@ -66,6 +66,9 @@ public:
 	std::string getSceneName();
 	Camera* getCamera();
 
+	//Get scene game objects
+	std::vector<GameObject*>* getObjectsOfType(const char* typeName);
+
 	//Setters
 
 #pragma endregion

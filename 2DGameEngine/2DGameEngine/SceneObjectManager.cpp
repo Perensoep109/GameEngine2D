@@ -26,6 +26,23 @@ void SceneObjectManager::addObjectType(const char* typeName)
 	}
 }
 
+void SceneObjectManager::addObjectType(GameObject* object)
+{
+	//Scan through all the paramenter object its types. If a type does NOT exist, add it to the list.
+	std::vector<const char*>* objectTypes = object->getObjectTypes();
+	for (int i = 0; i < objectTypes->size(); i++)
+	{
+		this->gameObjectMapIterator = this->gameObjectMap->find(objectTypes->at(i));
+
+		if (this->gameObjectMap->end() == this->gameObjectMapIterator)
+		{
+			//Add this object type, it does not exist yet.
+			this->gameObjectMap->insert({ objectTypes->at(i), new std::vector<GameObject*>()});
+			std::cout << "Added new object type: " << objectTypes->at(i) << "\n";
+		}
+	}
+}
+
 void SceneObjectManager::removeObjectType(const char* typeName)
 {
 	if (typeName != nullptr)
@@ -52,16 +69,18 @@ void SceneObjectManager::addObject(GameObject* objectToAdd)
 	std::vector<GameObject*>* objectVector;
 	for (int i = 0; i < objectTypes->size(); i++)
 	{
-		if ((objectVector = this->getObjectTypeVector(objectTypes->at(i))) != nullptr)
+		if ((objectVector = this->getObjectTypeVector(objectTypes->at(i))) == nullptr)
 		{
 			//Add the new object type, this type does not exist yet
-
+			this->addObjectType(objectToAdd);
+			this->getObjectTypeVector(objectTypes->at(i))->push_back(objectToAdd);
+			std::cout << "Added new object type: and object to: " << objectTypes->at(i) << "\n";
 		}
-
-		/*
-		this->getObjectTypeVector(objectTypes->at(i))->push_back(objectToAdd);
-		std::cout << "Added new object to: " << objectTypes->at(i) << "\n";
-		*/
+		else
+		{
+			this->getObjectTypeVector(objectTypes->at(i))->push_back(objectToAdd);
+			std::cout << "Added new object to: " << objectTypes->at(i) << "\n";
+		}
 	}
 }
 

@@ -59,6 +59,11 @@ Camera* Scene::getCamera()
 	return this->sceneCamera;
 }
 
+std::vector<GameObject*>* Scene::getObjectsOfType(const char* typeName)
+{
+	return this->sceneObjectManager->getObjectsOfType(typeName);
+}
+
 //==Setters==//
 
 
