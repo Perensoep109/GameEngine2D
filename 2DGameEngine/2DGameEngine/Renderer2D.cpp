@@ -32,10 +32,6 @@ void Renderer2D::renderGame()
 
 void Renderer2D::renderFrame()
 {
-	//Actual drawing
-	glClearColor(this->clearR, this->clearG, this->clearB, this->clearA);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
-
 	this->renderScene();
 
 	this->mainWindow->refreshWindow();

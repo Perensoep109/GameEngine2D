@@ -7,7 +7,7 @@ private:
 	const char* objectName;
 
 protected:
-	void setObjectType(const char* objectType);
+	void addObjectType(const char* objectType);
 
 public:
 	GameObject();

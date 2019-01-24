@@ -10,7 +10,8 @@ class Scene
 {
 private:
 #pragma region Private variables
-
+	float* backgroundColor;
+	const char* sceneName;
 #pragma endregion
 
 #pragma region Private functions
@@ -29,7 +30,6 @@ protected:
 	std::vector<SceneComponent*>* sceneComponents;
 	
 	//Scene variables
-	std::string sceneName;
 	bool isActive;
 #pragma endregion
 
@@ -49,6 +49,7 @@ public:
 #pragma region Public functions
 	//Abstract functions
 	virtual void initScene() = 0;
+	virtual void startScene() = 0;
 	virtual void updateScene() = 0;
 
 	//Input
@@ -63,13 +64,15 @@ public:
 #pragma region Getters & Setters
 	//Getters
 	bool getActive();
-	std::string getSceneName();
+	const char* getSceneName();
 	Camera* getCamera();
+	float* getBackground();
 
 	//Get scene game objects
 	std::vector<GameObject*>* getObjectsOfType(const char* typeName);
 
 	//Setters
+	void setBackground(float R, float G, float B, float A);
 
 #pragma endregion
 

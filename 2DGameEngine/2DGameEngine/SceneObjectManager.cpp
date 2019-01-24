@@ -74,12 +74,11 @@ void SceneObjectManager::addObject(GameObject* objectToAdd)
 			//Add the new object type, this type does not exist yet
 			this->addObjectType(objectToAdd);
 			this->getObjectTypeVector(objectTypes->at(i))->push_back(objectToAdd);
-			std::cout << "Added new object type: and object to: " << objectTypes->at(i) << "\n";
+			std::cout << "Added new object type: " << objectTypes->at(i) << "\n";
 		}
 		else
 		{
 			this->getObjectTypeVector(objectTypes->at(i))->push_back(objectToAdd);
-			std::cout << "Added new object to: " << objectTypes->at(i) << "\n";
 		}
 	}
 }

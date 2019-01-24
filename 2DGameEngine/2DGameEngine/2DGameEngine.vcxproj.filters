@@ -134,6 +134,9 @@
     <ClCompile Include="GameObject.cpp">
       <Filter>Source Files\Engine\Objects</Filter>
     </ClCompile>
+    <ClCompile Include="Renderable2D.cpp">
+      <Filter>Source Files\Engine\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h">
@@ -204,6 +207,9 @@
     </ClInclude>
     <ClInclude Include="Scene2.h">
       <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderable2D.h">
+      <Filter>Header Files\Engine\Objects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

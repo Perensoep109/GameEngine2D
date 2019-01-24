@@ -17,23 +17,16 @@ TestScene::~TestScene()
 void TestScene::initScene() 
 {
 	std::cout << "Initialized test scene 1 scene \n";
-	this->sceneObjectManager->addObject(new TestOBJ(new glm::vec3(0.0f, 0.f, 0.f)));
-	this->sceneObjectManager->addObject(new TestOBJ(new glm::vec3(10.f, 25.f, 0.f)));
-	this->sceneObjectManager->addObject(new TestOBJ(new glm::vec3(430.f, 150.f, 0.f)));
-	this->sceneObjectManager->addObject(new TestOBJ(new glm::vec3(0.f, 35.f, 0.f)));
-	this->sceneObjectManager->addObject(new TestOBJ(new glm::vec3(600.f, 0.f, 0.f)));
-	this->sceneObjectManager->addObject(new TestOBJ(new glm::vec3(0.f, 400.f, 0.f)));
-	this->sceneObjectManager->addObject(new TestOBJ(new glm::vec3(123.f, 350.f, 0.f)));
-	this->sceneObjectManager->addObject(new TestOBJ(new glm::vec3(321.f, 400.f, 0.f)));
-	this->sceneObjectManager->addObject(new TestOBJ(new glm::vec3(750.f, 10.f, 0.f)));
-	this->sceneObjectManager->addObject(new TestOBJ(new glm::vec3(700.f, 30.f, 0.f)));
-	
-//	this->sceneObjectManager->removeObject();
+	startScene();
+}
+
+void TestScene::startScene()
+{
+	this->sceneObjectManager->addObject(ball = new TestOBJ(new glm::vec2(320.f, 240.f)));
 }
 
 void TestScene::updateScene()
 {
-	std::cout << "Updated test scene 1 scene" << "\n";
-
-	//if()
+	//Move ball:
+	this->ball->setPosition = *this->ball->getPosition() + glm::vec2(0.1f, 0.f);
 }

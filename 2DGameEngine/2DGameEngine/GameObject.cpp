@@ -1,12 +1,5 @@
 #include "GameObject.h"
 
-
-
-void GameObject::setObjectType(const char* objectType)
-{
-	this->objectTypes->push_back(objectType);
-}
-
 GameObject::GameObject()
 {
 	this->objectTypes = new std::vector<const char*>();
@@ -16,6 +9,8 @@ GameObject::GameObject()
 
 GameObject::~GameObject()
 {
+	delete this->objectName; 
+	delete this->objectTypes;
 }
 
 std::vector<const char*>* GameObject::getObjectTypes()
@@ -36,4 +31,9 @@ bool GameObject::typeOf(const char* type)
 			return true;
 	}
 	return false;
+}
+
+void GameObject::addObjectType(const char* objectType)
+{
+	this->objectTypes->push_back(objectType);
 }

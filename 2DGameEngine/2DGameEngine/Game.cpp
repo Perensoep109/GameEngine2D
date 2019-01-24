@@ -19,7 +19,7 @@ Game::~Game()
 void Game::start()
 {
 	this->sceneManager->addScene(new TestScene());
-	this->sceneManager->addScene(new TestScene2());
+	//this->sceneManager->addScene(new TestScene2());
 	this->activateScene("TestScene");
 }
 

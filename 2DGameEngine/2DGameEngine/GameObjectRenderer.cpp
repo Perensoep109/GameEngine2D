@@ -41,11 +41,10 @@ void Renderer2D::updateBufferData(int objectsToRender, std::vector<GameObject*>*
 
 	for (int i = 0; i < objectsToRender; i++)
 	{
-		TestOBJ* curObj = static_cast<TestOBJ*>(gameObjects->at(i));
-		glm::vec3* curData = curObj->getPosition();
+		Renderable2D* curObj = static_cast<Renderable2D*>(gameObjects->at(i));
+		glm::vec2* curData = curObj->getPosition();
 		posData->push_back(curData->x);
 		posData->push_back(curData->y);
-		posData->push_back(curData->z);
 	}
 
 	glBindBuffer(GL_ARRAY_BUFFER, posBuffer);

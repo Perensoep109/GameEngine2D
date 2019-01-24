@@ -1,22 +1,16 @@
 #pragma once
-#include "GameObject.h"
+#include "Renderable2D.h"
 #include <glm.hpp>
 
 class TestOBJ
-	: public GameObject
+	: public Renderable2D
 {
 private:
-	glm::vec3* position;
 
 public:
-	TestOBJ(glm::vec3* position)
+	TestOBJ(glm::vec2* position)
 	{
 		this->position = position;
-		this->setObjectType("TestObject");
-	}
-
-	glm::vec3* getPosition()
-	{
-		return this->position;
+		this->addObjectType("TestObject");
 	}
 };

@@ -134,6 +134,7 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameObjectRenderer.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Renderable2D.cpp" />
     <ClCompile Include="Renderer2D.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneComponent.cpp" />
@@ -157,6 +158,7 @@
     <ClInclude Include="libs.h" />
     <ClInclude Include="Primitive.h" />
     <ClInclude Include="CalcProjectionMatrix.h" />
+    <ClInclude Include="Renderable2D.h" />
     <ClInclude Include="Renderer2D.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Scene.h" />
