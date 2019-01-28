@@ -31,9 +31,9 @@ void Renderable2D::setDepth(float newDepth)
 	this->depth = newDepth;
 }
 
-void Renderable2D::setPosition(glm::vec2* newPosition)
+void Renderable2D::setPosition(glm::vec2 newPosition)
 {
-	this->position = newPosition;
+	*this->position = newPosition;
 }
 
 #pragma endregion

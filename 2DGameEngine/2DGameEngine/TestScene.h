@@ -6,6 +6,9 @@ class TestScene :
 {
 private:
 	TestOBJ* ball;
+	glm::vec2 direction;
+	glm::vec2 position;
+	float speed;
 
 public:
 	TestScene();
