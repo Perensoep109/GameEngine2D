@@ -71,7 +71,7 @@ void SceneManager::deactivateScene(std::string sceneName, std::string newActiveS
 
 void SceneManager::updateActiveScene()
 {
-	this->getActiveScene()->updateScene();
+	//this->getActiveScene()->updateScene();
 }
 
 #pragma endregion
