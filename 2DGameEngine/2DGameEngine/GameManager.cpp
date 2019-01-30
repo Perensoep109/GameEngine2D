@@ -54,9 +54,9 @@ void GameManager::draw()
 
 //Scene management functions//
 
-void GameManager::activateScene(std::string sceneToActivate)
+void GameManager::activateScene(std::string sceneToActivate, bool reload)
 {
-	this->sceneManager->activateScene(sceneToActivate);
+	this->sceneManager->activateScene(sceneToActivate, reload);
 	this->gameRenderer->setCurrentScene(this->sceneManager->getScene(sceneToActivate));
 }
 

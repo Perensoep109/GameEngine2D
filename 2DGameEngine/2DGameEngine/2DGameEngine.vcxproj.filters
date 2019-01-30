@@ -72,6 +72,9 @@
     <Filter Include="Source Files\Game\Scenes">
       <UniqueIdentifier>{b97e5f50-b0ea-4ff0-9b10-db0b3527b720}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Game\Objects">
+      <UniqueIdentifier>{cb958111-f311-4330-bef0-fc87efb10f81}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -148,9 +151,6 @@
     <ClInclude Include="Window.h">
       <Filter>Header Files\Engine\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="TestOBJ.h">
-      <Filter>Header Files\Game\Objects</Filter>
-    </ClInclude>
     <ClInclude Include="Primitive.h">
       <Filter>Header Files\Engine\Graphics</Filter>
     </ClInclude>
@@ -210,6 +210,9 @@
     </ClInclude>
     <ClInclude Include="Renderable2D.h">
       <Filter>Header Files\Engine\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Ball.h">
+      <Filter>Source Files\Game\Objects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

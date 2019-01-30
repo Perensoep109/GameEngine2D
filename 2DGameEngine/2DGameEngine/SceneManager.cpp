@@ -45,12 +45,18 @@ void SceneManager::removeAllScenes()
 	this->sceneMap->clear();
 }
 
-void SceneManager::activateScene(std::string sceneName)
+void SceneManager::activateScene(std::string sceneName, bool reload)
 {
 	if (sceneMap->find(sceneName) != sceneMap->end())
 		this->activeSceneName = sceneName;
 	else
+	{
 		std::cout << "Scene cannot be found, scene: " << sceneName << " does not exist." << "\n";
+		return;
+	}
+
+	if (reload)
+		this->getActiveScene()->reloadScene();
 }
 
 void SceneManager::deactivateScene(std::string sceneName)
@@ -58,9 +64,9 @@ void SceneManager::deactivateScene(std::string sceneName)
 	this->activeSceneName = "";
 }
 
-void SceneManager::deactivateScene(std::string sceneName, std::string newActiveScene)
+void SceneManager::deactivateScene(std::string sceneName, std::string newActiveScene, bool reload)
 {
-	this->activateScene(newActiveScene);
+	this->activateScene(newActiveScene, reload);
 }
 
 void SceneManager::updateActiveScene()

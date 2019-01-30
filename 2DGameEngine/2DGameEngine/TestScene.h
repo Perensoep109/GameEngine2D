@@ -1,11 +1,11 @@
 #pragma once
 #include "Scene.h"
-#include "TestOBJ.h"
+#include "Ball.h"
 class TestScene :
 	public Scene
 {
 private:
-	TestOBJ* ball;
+	Ball* ball;
 	glm::vec2 direction;
 	glm::vec2 position;
 	float speed;
@@ -18,6 +18,7 @@ public:
 	void initScene();
 	void startScene();
 	void updateScene();
+	void reloadScene();
 #pragma endregion
 };
 

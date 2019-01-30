@@ -6,6 +6,7 @@ Renderable2D::Renderable2D()
 	: GameObject()
 {
 	this->addObjectType("Renderable2D");
+	this->position = new glm::vec2(0.f, 0.f);
 }
 
 

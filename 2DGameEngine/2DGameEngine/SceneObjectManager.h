@@ -9,6 +9,7 @@ private:
 	//==Fields==//
 	std::unordered_map<const char*, std::vector<GameObject*>*>* gameObjectMap;
 	std::unordered_map<const char*, std::vector<GameObject*>*>::iterator gameObjectMapIterator;
+	std::vector<const char*>* gameObjectTypes;
 
 	//==Private functions==//
 	void addObjectType(const char* typeName);
@@ -22,7 +23,10 @@ public:
 	//==Public functions==//
 	void addObject(GameObject* objectToAdd);
 	void removeObject(const char* objectName);
-	//oid removeObjectRange()
+	void removeObjectsOfType(const char* typeName);
+	void removeAllObjects();
+	
+	//Checkers
 	bool containsType(const char* typeName);
 	bool containsObject(const char* objectName);
 

@@ -2,6 +2,7 @@
 #include "Window.h"
 #include "Shader.h"
 #include "Scene.h"
+#include "Renderable2D.h"
 #include <vector>
 
 class Scene;
@@ -44,9 +45,10 @@ private:
 #pragma region Gameobject rendering
 	//Variables
 	GLuint posBuffer;
-	const int MAX_INSTANCES = 1000;
-	const int INSTANCE_DATA_LENGTH_F = sizeof(glm::vec4);
+	const int MAX_INSTANCES = 100000;
+	const int INSTANCE_DATA_LENGTH_F = sizeof(glm::vec3);
 	const int INSTANCE_DATA_LENGTH_B = INSTANCE_DATA_LENGTH_F * sizeof(float);
+	int batchAmount, currentBatch;
 
 	//==Shaders==//
 	Shader* gameObjectShader;
@@ -61,6 +63,7 @@ private:
 	void setAttributes();
 	void deleteGameObjectRendering();
 	void endGameObjectRender();
+	void batchGameObjects(int objectAmount);
 #pragma endregion
 
 #pragma region Tilemap rendering

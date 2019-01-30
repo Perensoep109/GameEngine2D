@@ -45,7 +45,7 @@ public:
 
 #pragma region Scene management
 
-	void activateScene(std::string sceneToActivate);
+	void activateScene(std::string sceneToActivate, bool reload);
 
 #pragma endregion
 

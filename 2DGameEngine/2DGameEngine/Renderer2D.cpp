@@ -22,7 +22,7 @@ Renderer2D::~Renderer2D()
 #pragma region Rendering
 void Renderer2D::setupMainRender()
 {
-	this->quadVAO = createQuadVAO(64, 64);
+	this->quadVAO = createQuadVAO(8, 8);
 }
 
 void Renderer2D::renderGame()

@@ -19,8 +19,7 @@ Game::~Game()
 void Game::start()
 {
 	this->sceneManager->addScene(new TestScene());
-	//this->sceneManager->addScene(new TestScene2());
-	this->activateScene("TestScene");
+	this->activateScene("TestScene", false);
 }
 
 //This function gets called every frame
@@ -44,11 +43,11 @@ void Game::update()
 
 			if (temp)
 			{
-				this->activateScene("Scene2");
+				this->activateScene("Scene2", true);
 			}
 			else
 			{
-				this->activateScene("TestScene");
+				this->activateScene("TestScene", true);
 			}
 		}
 		this->temp2 = true;

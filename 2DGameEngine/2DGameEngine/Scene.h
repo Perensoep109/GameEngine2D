@@ -51,6 +51,7 @@ public:
 	virtual void initScene() = 0;
 	virtual void startScene() = 0;
 	virtual void updateScene() = 0;
+	virtual void reloadScene() = 0;
 
 	//Input
 	void keyboardInput(int key, int scancode, int action, int mods);

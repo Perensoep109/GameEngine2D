@@ -29,9 +29,9 @@ public:
 	void addScene(Scene* sceneToAdd);
 	void removeScene(std::string sceneName);
 	void removeAllScenes();
-	void activateScene(std::string sceneName);
+	void activateScene(std::string sceneName, bool reload);
 	void deactivateScene(std::string sceneName);
-	void deactivateScene(std::string sceneName, std::string newActiveScene);
+	void deactivateScene(std::string sceneName, std::string newActiveScene, bool reload);
 
 	//Active scene methods
 	void updateActiveScene();

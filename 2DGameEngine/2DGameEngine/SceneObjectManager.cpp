@@ -23,6 +23,7 @@ void SceneObjectManager::addObjectType(const char* typeName)
 
 		//This object type does not yet exist!
 		this->gameObjectMap->insert({typeName, new std::vector<GameObject*>()});
+		this->gameObjectTypes->push_back(typeName);
 	}
 }
 
@@ -47,8 +48,11 @@ void SceneObjectManager::removeObjectType(const char* typeName)
 {
 	if (typeName != nullptr)
 	{
-		if(this->containsType(typeName))
+		if (this->containsType(typeName))
+		{
 			this->gameObjectMap->erase(typeName);
+			removeObjectsOfType(typeName);
+		}
 	}
 }
 
@@ -85,7 +89,33 @@ void SceneObjectManager::addObject(GameObject* objectToAdd)
 
 void SceneObjectManager::removeObject(const char* objectName)
 {
-	
+	if (containsObject(objectName))
+	{
+		//GameObject* object;
+		//this->getObjectTypeVector(this->)
+	}
+}
+
+void SceneObjectManager::removeObjectsOfType(const char * typeName)
+{
+	if (containsType(typeName))
+	{
+		this->gameObjectMap->erase(this->gameObjectMapIterator->first);
+	}
+}
+
+void SceneObjectManager::removeAllObjects()
+{
+	/*
+
+	An algorithm that iterates through every object type, removes all the entries in the list. 
+
+	*/
+
+	for (int i = 0; i < this->gameObjectMap->size(); i++)
+	{
+		
+	}
 }
 
 bool SceneObjectManager::containsType(const char* typeName)

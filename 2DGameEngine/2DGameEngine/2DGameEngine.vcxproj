@@ -151,6 +151,7 @@
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Ball.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameManager.h" />
@@ -169,7 +170,6 @@
     <ClInclude Include="Shader.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteAtlas.h" />
-    <ClInclude Include="TestOBJ.h" />
     <ClInclude Include="TestScene.h" />
     <ClInclude Include="TileMap.h" />
     <ClInclude Include="Timer.h" />

@@ -1,4 +1,5 @@
 #include "GameObject.h"
+#include <iostream>
 
 GameObject::GameObject()
 {
@@ -11,6 +12,7 @@ GameObject::~GameObject()
 {
 	delete this->objectName; 
 	delete this->objectTypes;
+	std::cout << "Removed object" << "\n";
 }
 
 std::vector<const char*>* GameObject::getObjectTypes()

@@ -1,11 +1,13 @@
 #include "Renderer2D.h"
 #include <gtc\type_ptr.hpp>
-#include "TestOBJ.h"
 
 #pragma region Setup
 
 void Renderer2D::setupGameObjectRender()
 {
+	batchAmount = 0;
+	currentBatch = 0;
+
 	createBuffers();
 	setAttributes();
 	this->gameObjectShader = new Shader(4, 4, "gameObjectVertexCore.glsl", "gameObjectFragmentCore.glsl");
@@ -45,6 +47,7 @@ void Renderer2D::updateBufferData(int objectsToRender, std::vector<GameObject*>*
 		glm::vec2* curData = curObj->getPosition();
 		posData->push_back(curData->x);
 		posData->push_back(curData->y);
+		posData->push_back(0.f);
 	}
 
 	glBindBuffer(GL_ARRAY_BUFFER, posBuffer);
@@ -52,6 +55,21 @@ void Renderer2D::updateBufferData(int objectsToRender, std::vector<GameObject*>*
 	glBufferSubData(GL_ARRAY_BUFFER, 0, objectsToRender * sizeof(float) * 3, posData->data());
 }
 #pragma endregion
+
+#pragma region Manage batching
+
+void Renderer2D::batchGameObjects(int objectAmount)
+{
+	//Check if batching is required
+	if (objectAmount <= MAX_INSTANCES)
+		return;
+
+	//Start batching
+	
+}
+
+#pragma endregion
+
 
 void Renderer2D::sendToGameObjectShader()
 {
@@ -77,6 +95,9 @@ void Renderer2D::renderGameObjects(std::vector<GameObject*>* gameObjects)
 	//Check if there are objects to be rendered
 	if (objectAmount == 0)
 		return;
+
+	//Batch all the objects into batches of 1000 objects max.
+	batchGameObjects(objectAmount);
 
 	this->gameObjectShader->use();
 
