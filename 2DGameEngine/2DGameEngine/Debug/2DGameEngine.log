@@ -1,7 +1,4 @@
-﻿  Game.cpp
-  GameManager.cpp
-  GameObjectRenderer.cpp
-  Renderer2D.cpp
+﻿  Renderer2D.cpp
 c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\renderer2d.cpp(55): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
 c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\renderer2d.cpp(48): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
 c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\renderer2d.cpp(49): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
@@ -9,20 +6,4 @@ c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\renderer2
 c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\renderer2d.cpp(52): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
 c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\renderer2d.cpp(53): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
 c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\renderer2d.cpp(54): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-  Scene.cpp
-c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\scene.cpp(16): warning C4150: deletion of pointer to incomplete type 'Camera'; no destructor called
-  c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\scene.h(7): note: see declaration of 'Camera'
-  SceneManager.cpp
-  SceneObjectManager.cpp
-c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\sceneobjectmanager.cpp(34): warning C4018: '<': signed/unsigned mismatch
-c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\sceneobjectmanager.cpp(74): warning C4018: '<': signed/unsigned mismatch
-c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\sceneobjectmanager.cpp(115): warning C4018: '<': signed/unsigned mismatch
-c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\sceneobjectmanager.cpp(134): warning C4018: '<': signed/unsigned mismatch
-c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\sceneobjectmanager.cpp(160): warning C4018: '<': signed/unsigned mismatch
-  SceneRenderer.cpp
-  TestScene.cpp
-c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\testscene.cpp(35): warning C4018: '<': signed/unsigned mismatch
-  TileMapRenderer.cpp
-  main.cpp
-  Generating Code...
-  2DGameEngine.vcxproj -> C:\Users\wiebe\Documents\GitHub\GameEngine2D\2DGameEngine\2DGameEngine\2DGameEngine.exe
+  2DGameEngine.vcxproj -> C:\Users\Wiebe\Documents\GitHub\GameEngine2D\2DGameEngine\2DGameEngine\2DGameEngine.exe

@@ -50,9 +50,13 @@ void Renderer2D::updateBufferData(int objectsToRender, std::vector<GameObject*>*
 		posData->push_back(0.f);
 	}
 
+	//Buffer data
 	glBindBuffer(GL_ARRAY_BUFFER, posBuffer);
 	glBufferData(GL_ARRAY_BUFFER, 3 * sizeof(float) * MAX_INSTANCES, NULL, GL_STREAM_DRAW);
 	glBufferSubData(GL_ARRAY_BUFFER, 0, objectsToRender * sizeof(float) * 3, posData->data());
+
+	//Clean memory
+	delete posData;
 }
 #pragma endregion
 
