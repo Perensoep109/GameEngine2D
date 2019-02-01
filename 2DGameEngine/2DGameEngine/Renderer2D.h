@@ -4,7 +4,6 @@
 #include "Scene.h"
 #include "Renderable2D.h"
 #include <vector>
-#include <array>
 
 class Scene;
 class SceneManager;
@@ -46,9 +45,8 @@ private:
 #pragma region Gameobject rendering
 	//Variables
 	GLuint posBuffer;
-	std::array<GLuint, 4>* matBuffers;
 	const int MAX_INSTANCES = 100000;
-	const int INSTANCE_DATA_LENGTH_F = 3 + 16;
+	const int INSTANCE_DATA_LENGTH_F = sizeof(glm::vec3);
 	const int INSTANCE_DATA_LENGTH_B = INSTANCE_DATA_LENGTH_F * sizeof(float);
 	int batchAmount, currentBatch;
 

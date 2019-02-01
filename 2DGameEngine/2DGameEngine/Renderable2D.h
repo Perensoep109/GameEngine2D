@@ -5,7 +5,6 @@ class Renderable2D :
 	public GameObject
 {
 private:
-	glm::mat4* instanceMatrix;
 
 protected:
 	glm::vec2* position;
@@ -19,7 +18,6 @@ public:
 	//==Getters==//
 	glm::vec2* getPosition();
 	float getDepth();
-	std::array<float, 16>* getInstanceMat();
 
 	//==Setters==//
 	void setDepth(float newDepth);

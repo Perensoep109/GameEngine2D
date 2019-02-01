@@ -15,38 +15,21 @@ void Renderer2D::setupGameObjectRender()
 
 void Renderer2D::createBuffers()
 {
-	this->matBuffers = new std::array<GLuint, 4>();
+	glGenBuffers(1, &posBuffer);
+	glBindBuffer(GL_ARRAY_BUFFER, this->posBuffer);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * 3 * MAX_INSTANCES, NULL, GL_STREAM_DRAW);
 
-	for (int i = 0; i < 4; i++)
-	{
-		glGenBuffers(1, &matBuffers->at(i));
-		glBindBuffer(GL_ARRAY_BUFFER, this->matBuffers->at(0));
-		glBufferData(GL_ARRAY_BUFFER, sizeof(float) * 4 * MAX_INSTANCES, NULL, GL_STREAM_DRAW);
-	}
 }
 
 void Renderer2D::setAttributes()
 {
 	glBindVertexArray(this->quadVAO);
-
-	glBindBuffer(GL_ARRAY_BUFFER, this->matBuffers->at(0));
+	glBindBuffer(GL_ARRAY_BUFFER, posBuffer);
 	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)0);
-	glBindBuffer(GL_ARRAY_BUFFER, this->matBuffers->at(1));
-	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(2, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)0);
-	glBindBuffer(GL_ARRAY_BUFFER, this->matBuffers->at(2));
-	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(3, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)0);
-	glBindBuffer(GL_ARRAY_BUFFER, this->matBuffers->at(3));
-	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(4, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)0);
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 
 	glVertexAttribDivisor(0, 0);
 	glVertexAttribDivisor(1, 1);
-	glVertexAttribDivisor(2, 1);
-	glVertexAttribDivisor(3, 1);
-	glVertexAttribDivisor(4, 1);
 }
 
 #pragma endregion
@@ -55,24 +38,25 @@ void Renderer2D::setAttributes()
 #pragma region Manage buffering
 void Renderer2D::updateBufferData(int objectsToRender, std::vector<GameObject*>* gameObjects)
 {
+	//Write all data to the pos buffer
+	std::vector<float>* posData = new std::vector<float>();
+
 	for (int i = 0; i < objectsToRender; i++)
 	{
 		Renderable2D* curObj = static_cast<Renderable2D*>(gameObjects->at(i));
-		std::array<float, 16>* curMatData = curObj->getInstanceMat();
-		float data[4];
-
-		for (int j = 0; j < 4; j++)
-		{
-			for (int n = 0; n < 4; n++)
-			{
-				//Copy the column to buffer into one
-				data[n] = curMatData->at(n + j);
-			}
-			glBindBuffer(GL_ARRAY_BUFFER, this->matBuffers->at(j));
-			glBufferData(GL_ARRAY_BUFFER, 4 * sizeof(float) * MAX_INSTANCES, NULL, GL_STREAM_DRAW);
-			glBufferSubData(GL_ARRAY_BUFFER, 0, objectsToRender * sizeof(float) * 4, data);
-		}
+		glm::vec2* curData = curObj->getPosition();
+		posData->push_back(curData->x);
+		posData->push_back(curData->y);
+		posData->push_back(0.f);
 	}
+
+	//Buffer data
+	glBindBuffer(GL_ARRAY_BUFFER, posBuffer);
+	glBufferData(GL_ARRAY_BUFFER, 3 * sizeof(float) * MAX_INSTANCES, NULL, GL_STREAM_DRAW);
+	glBufferSubData(GL_ARRAY_BUFFER, 0, objectsToRender * sizeof(float) * 3, posData->data());
+
+	//Clean memory
+	delete posData;
 }
 #pragma endregion
 
