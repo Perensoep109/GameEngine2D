@@ -17,6 +17,7 @@ void Renderer2D::renderScene()
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
 		//Render scene game objects
+		//Filter game objects
 		this->renderGameObjects(this->currentScene->getObjectsOfType("Renderable2D"));
 	}
 	else

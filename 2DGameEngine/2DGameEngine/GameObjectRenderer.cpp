@@ -60,16 +60,21 @@ void Renderer2D::updateBufferData(int objectsToRender, std::vector<GameObject*>*
 }
 #pragma endregion
 
-#pragma region Manage batching
+#pragma region Manage filtering
 
-void Renderer2D::batchGameObjects(int objectAmount)
+std::vector<GameObject*>* Renderer2D::clipGameObjects(std::vector<GameObject*>* gameObjects)
 {
-	//Check if batching is required
-	if (objectAmount <= MAX_INSTANCES)
-		return;
+	return gameObjects;
+}
 
-	//Start batching
-	
+std::vector<GameObject*>* Renderer2D::filterGameObjects(std::vector<GameObject*>* gameObjects)
+{
+	return gameObjects;
+}
+
+std::vector<GameObject*>* Renderer2D::batchGameObjects(std::vector<GameObject*>* gameObjects)
+{
+	return gameObjects;
 }
 
 #pragma endregion
@@ -100,8 +105,9 @@ void Renderer2D::renderGameObjects(std::vector<GameObject*>* gameObjects)
 	if (objectAmount == 0)
 		return;
 
-	//Batch all the objects into batches of 1000 objects max.
-	batchGameObjects(objectAmount);
+	//Filter all the game objects
+	gameObjects = clipGameObjects(gameObjects);
+	gameObjects = batchGameObjects(gameObjects);
 
 	this->gameObjectShader->use();
 

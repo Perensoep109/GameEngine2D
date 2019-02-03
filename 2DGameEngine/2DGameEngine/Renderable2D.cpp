@@ -9,7 +9,6 @@ Renderable2D::Renderable2D()
 	this->position = new glm::vec2(0.f, 0.f);
 }
 
-
 Renderable2D::~Renderable2D()
 {
 	delete this->position;

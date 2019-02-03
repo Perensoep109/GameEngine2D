@@ -10,6 +10,11 @@ SceneObjectManager::SceneObjectManager()
 
 SceneObjectManager::~SceneObjectManager()
 {
+	std::vector<GameObject*>* gameObjects = this->gameObjectMap->at("GameObjects");
+	for (int i = 0; i < gameObjects->size(); i++)
+	{
+		delete gameObjects->at(i);
+	}
 	delete this->gameObjectMap;
 }
 

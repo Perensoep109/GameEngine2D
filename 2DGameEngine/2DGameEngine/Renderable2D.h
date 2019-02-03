@@ -22,6 +22,5 @@ public:
 	//==Setters==//
 	void setDepth(float newDepth);
 	void setPosition(glm::vec2 newPosition);
-
 };
 

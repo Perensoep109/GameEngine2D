@@ -11,7 +11,7 @@ Game::Game()
 
 Game::~Game()
 {
-	delete this;
+	delete this->sceneManager;
 }
 
 //=====Game loop functions=====

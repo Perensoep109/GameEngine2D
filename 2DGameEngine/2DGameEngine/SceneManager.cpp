@@ -42,7 +42,10 @@ void SceneManager::removeScene(std::string sceneName)
 
 void SceneManager::removeAllScenes()
 {
-	this->sceneMap->clear();
+	for (int i = 0; i < this->sceneMap->size(); i++)
+	{
+		//delete this->sceneMap->at(i);
+	}
 }
 
 void SceneManager::activateScene(std::string sceneName, bool reload)

@@ -19,7 +19,6 @@ Window::Window(int windowWidth, int windowHeight, const char* windowTitle, bool 
 	this->windowSize = new glm::ivec2(windowWidth, windowHeight);
 	this->lastWindowSize = windowSize;
 	this->windowTitle = windowTitle;
-	this->windowFullscreen = false;
 
 	//==Set display==
 	this->ProjectionMatrix = glm::mat4(1.f);
@@ -45,6 +44,9 @@ Window::Window(int windowWidth, int windowHeight, const char* windowTitle, bool 
 
 	//Calculate projection matrix
 	calculateProjMat();
+
+	//Set full screen
+	toggleFullScreen(true);
 
 	//Window callbacks:
 	glfwSetFramebufferSizeCallback(this->window, Window::framebuffer_resize_callback);

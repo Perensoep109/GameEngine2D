@@ -43,8 +43,11 @@ void GameManager::start()
 
 void GameManager::update()
 {
-	this->focussedGame->update();
-	this->sceneManager->updateActiveScene();
+	if (glfwGetKey(this->gameWindow->getWindow(), GLFW_KEY_SPACE) == GLFW_PRESS)
+	{
+		this->focussedGame->update();
+		this->sceneManager->updateActiveScene();
+	}
 }
 
 void GameManager::draw()
@@ -79,7 +82,7 @@ void GameManager::initGLFW()
 void GameManager::initWindow()
 {
 	//Initialize the window
-	this->gameWindow = new Window(640, 480, "Game Engine", false);
+	this->gameWindow = new Window(640, 480, "Game Engine", true);
 }
 
 void GameManager::initGLEW()

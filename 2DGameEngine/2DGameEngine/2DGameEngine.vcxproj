@@ -128,6 +128,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Animatable.cpp" />
+    <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameManager.cpp" />
@@ -142,7 +144,8 @@
     <ClCompile Include="SceneObjectManager.cpp" />
     <ClCompile Include="SceneRenderer.cpp" />
     <ClCompile Include="Shader.cpp" />
-    <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="BaseSprite.cpp" />
+    <ClCompile Include="Sprite2D.cpp" />
     <ClCompile Include="SpriteAtlas.cpp" />
     <ClCompile Include="TestScene.cpp" />
     <ClCompile Include="TileMap.cpp" />
@@ -151,6 +154,8 @@
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Animatable.h" />
+    <ClInclude Include="Animation.h" />
     <ClInclude Include="Ball.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Game.h" />
@@ -168,7 +173,8 @@
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SceneObjectManager.h" />
     <ClInclude Include="Shader.h" />
-    <ClInclude Include="Sprite.h" />
+    <ClInclude Include="BaseSprite.h" />
+    <ClInclude Include="Sprite2D.h" />
     <ClInclude Include="SpriteAtlas.h" />
     <ClInclude Include="TestScene.h" />
     <ClInclude Include="TileMap.h" />

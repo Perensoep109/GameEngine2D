@@ -1,9 +1,14 @@
-﻿  Renderer2D.cpp
-c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\renderer2d.cpp(55): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\renderer2d.cpp(48): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\renderer2d.cpp(49): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\renderer2d.cpp(50): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\renderer2d.cpp(52): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\renderer2d.cpp(53): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\renderer2d.cpp(54): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+﻿  Window.cpp
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\window.cpp(62): warning C4150: deletion of pointer to incomplete type 'GLFWwindow'; no destructor called
+  c:\users\wiebe\documents\github\gameengine2d\2dgameengine\linking\glfw\include\glfw3.h(789): note: see declaration of 'GLFWwindow'
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\window.cpp(73): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=glm::i32
+          ]
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\window.cpp(126): warning C4244: 'argument': conversion from 'float' to 'T', possible loss of data
+          with
+          [
+              T=glm::i32
+          ]
   2DGameEngine.vcxproj -> C:\Users\Wiebe\Documents\GitHub\GameEngine2D\2DGameEngine\2DGameEngine\2DGameEngine.exe

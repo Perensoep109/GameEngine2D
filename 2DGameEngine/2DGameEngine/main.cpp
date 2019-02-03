@@ -7,6 +7,8 @@ int main()
 
 	Game* game = new Game();
 
+	delete game;
+
 	if(!autoClose)
 		system("PAUSE");
 

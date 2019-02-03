@@ -75,6 +75,18 @@
     <Filter Include="Source Files\Game\Objects">
       <UniqueIdentifier>{cb958111-f311-4330-bef0-fc87efb10f81}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Engine\Graphics\Sprites">
+      <UniqueIdentifier>{0ee1182a-fbed-4197-8a72-26301b9bbcc4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\Graphics\Sprite">
+      <UniqueIdentifier>{8e38d930-63cd-48b5-a334-837931c039fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game\Scenes">
+      <UniqueIdentifier>{8b249e47-95e9-41c4-ab4b-3c3ec4d6bad6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Graphics\Renderers">
+      <UniqueIdentifier>{4978a0bc-be8d-4283-b97d-955c39174d5d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -83,13 +95,7 @@
     <ClCompile Include="Shader.cpp">
       <Filter>Source Files\Engine\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="Sprite.cpp">
-      <Filter>Source Files\Engine\Graphics</Filter>
-    </ClCompile>
     <ClCompile Include="Window.cpp">
-      <Filter>Source Files\Engine\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="SpriteAtlas.cpp">
       <Filter>Source Files\Engine\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="Camera.cpp">
@@ -140,24 +146,30 @@
     <ClCompile Include="Renderable2D.cpp">
       <Filter>Source Files\Engine\Objects</Filter>
     </ClCompile>
+    <ClCompile Include="SpriteAtlas.cpp">
+      <Filter>Source Files\Engine\Graphics\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Source Files\Engine\Graphics\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseSprite.cpp">
+      <Filter>Source Files\Engine\Graphics\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite2D.cpp">
+      <Filter>Source Files\Engine\Graphics\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="Animatable.cpp">
+      <Filter>Source Files\Engine\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h">
-      <Filter>Header Files\Engine\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="Sprite.h">
       <Filter>Header Files\Engine\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="Window.h">
       <Filter>Header Files\Engine\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="Primitive.h">
-      <Filter>Header Files\Engine\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="SpriteAtlas.h">
-      <Filter>Header Files\Engine\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="Renderer2D.h">
       <Filter>Header Files\Engine\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
@@ -196,9 +208,6 @@
     <ClInclude Include="TileMap.h">
       <Filter>Header Files\Engine\Scenes\Scene components</Filter>
     </ClInclude>
-    <ClInclude Include="TestScene.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Timer.h">
       <Filter>Header Files\Engine\Scenes\Scene components</Filter>
     </ClInclude>
@@ -213,6 +222,27 @@
     </ClInclude>
     <ClInclude Include="Ball.h">
       <Filter>Source Files\Game\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteAtlas.h">
+      <Filter>Header Files\Engine\Graphics\Sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Header Files\Engine\Graphics\Sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseSprite.h">
+      <Filter>Header Files\Engine\Graphics\Sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite2D.h">
+      <Filter>Header Files\Engine\Graphics\Sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScene.h">
+      <Filter>Header Files\Game\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Animatable.h">
+      <Filter>Header Files\Engine\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer2D.h">
+      <Filter>Header Files\Engine\Graphics\Renderers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

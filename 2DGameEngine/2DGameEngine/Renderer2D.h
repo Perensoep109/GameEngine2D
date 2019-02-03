@@ -43,27 +43,34 @@ private:
 #pragma endregion
 
 #pragma region Gameobject rendering
-	//Variables
+	//===Fields===//
 	GLuint posBuffer;
 	const int MAX_INSTANCES = 100000;
 	const int INSTANCE_DATA_LENGTH_F = sizeof(glm::vec3);
 	const int INSTANCE_DATA_LENGTH_B = INSTANCE_DATA_LENGTH_F * sizeof(float);
 	int batchAmount, currentBatch;
 
-	//==Shaders==//
+	//===Shaders===//
 	Shader* gameObjectShader;
 
-	//==Functions==
-	//Main functions
+	//===Functions===//
+	//==Main functions==//
 	void setupGameObjectRender();
 	void renderGameObjects(std::vector<GameObject*>* gameObjects);
 	void sendToGameObjectShader();
+	void deleteGameObjectRendering();
+	void endGameObjectRender();
+
+	//=Buffer management=//
 	void updateBufferData(int objectsToRender, std::vector<GameObject*>* gameObjects);
 	void createBuffers();
 	void setAttributes();
-	void deleteGameObjectRendering();
-	void endGameObjectRender();
-	void batchGameObjects(int objectAmount);
+
+	//=Object filtering=//
+	std::vector<GameObject*>* clipGameObjects(std::vector<GameObject*>* gameObjects);
+	std::vector<GameObject*>* filterGameObjects(std::vector<GameObject*>* gameObjects);
+	std::vector<GameObject*>* batchGameObjects(std::vector<GameObject*>* gameObjects);
+
 #pragma endregion
 
 #pragma region Tilemap rendering
