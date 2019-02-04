@@ -73,7 +73,7 @@ public:
 #pragma region Constructors / Deconstructors
 
 	//==General==
-	Window(int windowWidth = 640, int windowHeight = 480, const char* windowTitle = "Window Title", bool resizeable = true);
+	Window(int windowWidth = 640, int windowHeight = 480, const char* windowTitle = "Window Title", bool resizeable = true, bool fullScreen = false);
 	~Window();
 
 #pragma endregion

@@ -11,7 +11,7 @@ glm::ivec2* Window::windowSize = new glm::ivec2(0.f, 0.f);
 glm::ivec2* Window::lastWindowSize = new glm::ivec2(0.f, 0.f);
 bool Window::recalcProj = false;
 
-Window::Window(int windowWidth, int windowHeight, const char* windowTitle, bool resizable)
+Window::Window(int windowWidth, int windowHeight, const char* windowTitle, bool resizable, bool fullScreen)
 {
 	//==Set properties==
 	this->windowResizeable = resizable;
@@ -46,7 +46,8 @@ Window::Window(int windowWidth, int windowHeight, const char* windowTitle, bool 
 	calculateProjMat();
 
 	//Set full screen
-	toggleFullScreen(true);
+	if(fullScreen)
+		toggleFullScreen(fullScreen);
 
 	//Window callbacks:
 	glfwSetFramebufferSizeCallback(this->window, Window::framebuffer_resize_callback);
@@ -111,7 +112,7 @@ void Window::closeWindow()
 
 //Flip the framebuffer, from the old currently drawn frame, to the new frame
 void Window::refreshWindow()
-{
+{	
 	glfwSwapBuffers(this->window);
 }
 

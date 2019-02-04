@@ -28,7 +28,6 @@ void GameManager::setup()
 }
 
 //======Game management functions======//
-
 void GameManager::start()
 {
 	this->focussedGame->start();
@@ -47,6 +46,11 @@ void GameManager::update()
 	{
 		this->focussedGame->update();
 		this->sceneManager->updateActiveScene();
+	}
+
+	if (glfwGetKey(this->gameWindow->getWindow(), GLFW_KEY_ESCAPE) == GLFW_PRESS)
+	{
+		this->endNextFrame = true;
 	}
 }
 
@@ -82,7 +86,7 @@ void GameManager::initGLFW()
 void GameManager::initWindow()
 {
 	//Initialize the window
-	this->gameWindow = new Window(640, 480, "Game Engine", true);
+	this->gameWindow = new Window(640, 480, "Game Engine", true, false);
 }
 
 void GameManager::initGLEW()
