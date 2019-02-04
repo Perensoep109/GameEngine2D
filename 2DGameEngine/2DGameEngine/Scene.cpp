@@ -6,6 +6,7 @@ Scene::Scene(const char* sceneName)
 	this->sceneName = sceneName;
 
 	this->sceneObjectManager = new SceneObjectManager();
+	this->sceneCamera = new Camera(new glm::vec3(0.f, 0.f, 0.f));
 	this->backgroundColor = new float[4] {0.f, 0.f, 0.f, 1.f};
 }
 

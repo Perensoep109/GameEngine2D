@@ -11,7 +11,7 @@ class Renderer2D
 {
 private:
 	//Fields
-	float clearR = 0.f, clearG = 0.f, clearB = 0.f, clearA = 0.f;
+	glm::mat4* ViewMatrix;
 
 	//Components:
 	Shader* mainShader;
@@ -88,13 +88,8 @@ public:
 
 	//Setters
 	void setCurrentScene(Scene* newScene);
-	void setBackgroundColor(float R, float G, float B, float A);
 
 	//Getters
 	Scene* getCurrentScene();
-	float getClearR();
-	float getClearG();
-	float getClearB();
-	float getClearA();
 };
 

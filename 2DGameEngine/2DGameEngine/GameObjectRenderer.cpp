@@ -84,6 +84,7 @@ void Renderer2D::sendToGameObjectShader()
 {
 	//glUniformMatrix4fv(glGetUniformLocation(gameObjectShader->id, "ProjectionMatrix"), 1, false, glm::value_ptr(this->mainWindow->getProjectionMatrix()));
 	this->gameObjectShader->setMat4fv(this->mainWindow->getProjectionMatrix(), "ProjectionMatrix", false);
+	this->gameObjectShader->setMat4fv(*this->ViewMatrix, "ViewMatrix", false);
 }
 
 void Renderer2D::deleteGameObjectRendering()

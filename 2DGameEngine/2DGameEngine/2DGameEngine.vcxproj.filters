@@ -161,6 +161,9 @@
     <ClCompile Include="Animatable.cpp">
       <Filter>Source Files\Engine\Objects</Filter>
     </ClCompile>
+    <ClCompile Include="GameInputManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h">
@@ -244,6 +247,9 @@
     <ClInclude Include="Renderer2D.h">
       <Filter>Header Files\Engine\Graphics\Renderers</Filter>
     </ClInclude>
+    <ClInclude Include="GameInputManager.h">
+      <Filter>Header Files\Engine\Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Ideas.txt" />
@@ -255,5 +261,6 @@
     <None Include="GameObjectFragmentCore.glsl">
       <Filter>Source Files\Engine\Graphics\Shaders\GameObject Shaders</Filter>
     </None>
+    <None Include="ClassDiagram2.cd" />
   </ItemGroup>
 </Project>

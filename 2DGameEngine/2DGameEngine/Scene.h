@@ -2,9 +2,9 @@
 
 #include "SceneObjectManager.h"
 #include "SceneComponent.h"
+#include "Camera.h"
 #include <vector>
-
-class Camera;
+#include <glm.hpp>
 
 class Scene
 {

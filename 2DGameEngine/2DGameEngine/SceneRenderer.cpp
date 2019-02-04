@@ -46,3 +46,8 @@ void Renderer2D::setCurrentScene(Scene* newScene)
 {
 	this->currentScene = newScene;
 }
+
+Scene* Renderer2D::getCurrentScene()
+{
+	return this->currentScene;
+}

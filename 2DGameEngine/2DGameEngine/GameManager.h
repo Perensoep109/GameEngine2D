@@ -16,8 +16,6 @@ class GameManager
 private:
 	//Private components
 	Game* focussedGame;
-	
-	
 
 	//Initialize functions
 	void initGLFW();
@@ -30,7 +28,6 @@ private:
 	//Callbacks
 	static void glfwErrorCallback(int id, const char* description);
 	static void APIENTRY OpenGLErrorMessageCallBack(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar* message, const void* userParam);
-	void keyInputCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
 
 protected:
 	//Components

@@ -22,11 +22,12 @@ Renderer2D::~Renderer2D()
 #pragma region Rendering
 void Renderer2D::setupMainRender()
 {
-	this->quadVAO = createQuadVAO(2, 2);
+	this->quadVAO = createQuadVAO(9, 9);
 }
 
 void Renderer2D::renderGame()
 {
+	this->ViewMatrix = this->currentScene->getCamera()->getViewMatrix();
 	renderFrame();
 }
 
@@ -74,34 +75,5 @@ GLuint Renderer2D::createQuadVAO(int tileWidth, int tileHeight)
 #pragma endregion
 
 #pragma region Getters & Setters
-//Getters
-float Renderer2D::getClearR()
-{
-	return this->clearR;
-}
-
-float Renderer2D::getClearG()
-{
-	return this->clearG;
-}
-
-float Renderer2D::getClearB()
-{
-	return this->clearB;
-}
-
-float Renderer2D::getClearA()
-{
-	return this->clearA;
-}
-
-//Setters
-void Renderer2D::setBackgroundColor(float R, float G, float B, float A)
-{
-	this->clearR = R;
-	this->clearG = G;
-	this->clearB = B;
-	this->clearA = A;
-}
 
 #pragma endregion

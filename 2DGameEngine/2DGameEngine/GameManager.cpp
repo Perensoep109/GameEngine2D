@@ -42,15 +42,10 @@ void GameManager::start()
 
 void GameManager::update()
 {
+	this->focussedGame->update();
 	if (glfwGetKey(this->gameWindow->getWindow(), GLFW_KEY_SPACE) == GLFW_PRESS)
 	{
-		this->focussedGame->update();
 		this->sceneManager->updateActiveScene();
-	}
-
-	if (glfwGetKey(this->gameWindow->getWindow(), GLFW_KEY_ESCAPE) == GLFW_PRESS)
-	{
-		this->endNextFrame = true;
 	}
 }
 
@@ -105,6 +100,7 @@ void GameManager::initOpenGLOptions()
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_DEBUG_OUTPUT);
 	glDebugMessageCallback(OpenGLErrorMessageCallBack, 0);
+	glfwSetKeyCallback(this->gameWindow->getWindow(), Stat);
 
 	//glEnable(GL_CULL_FACE);
 
@@ -125,7 +121,6 @@ void GameManager::initSceneManager()
 void GameManager::initRenderer()
 {
 	this->gameRenderer = new Renderer2D(this->gameWindow);
-	this->gameRenderer->setBackgroundColor(90.f / 255, 130.f / 255, 180.f / 255, 0.f);
 }
 #pragma endregion
 
@@ -141,11 +136,6 @@ void APIENTRY GameManager::OpenGLErrorMessageCallBack(GLenum source, GLenum type
 	fprintf(stderr, "GL CALLBACK: %s type = 0x%x, severity = 0x%x, message = %s\n",
 		(type == GL_DEBUG_TYPE_ERROR ? "** GL ERROR **" : ""),
 		type, severity, message);
-}
-
-void GameManager::keyInputCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
-{
-	this->sceneManager->getActiveScene()->keyboardInput(key, scancode, action, mods);
 }
 
 #pragma endregion

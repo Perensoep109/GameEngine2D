@@ -1,7 +1,5 @@
 #include "Camera.h"
 
-
-
 Camera::Camera(glm::vec3* camPos)
 {
 	this->front = new glm::vec3(0.f, 0.f, -1.f);
@@ -19,7 +17,10 @@ Camera::~Camera()
 }
 
 //Functions
-
+void Camera::move(glm::vec3* direction)
+{
+	*this->position += *direction;
+}
 
 float* Camera::getSpeed()
 {

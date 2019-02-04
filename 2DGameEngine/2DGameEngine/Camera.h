@@ -6,28 +6,30 @@ class Camera
 {
 	class Renderable2D;
 private:
-	//Constant fields
+	//===Fields===//
+	//==Private==//
 	glm::vec3* front;
-
 	glm::vec3* position;
 	glm::mat4* ViewMatrix;
 
 	float* speed;
 
 public:
+	//===Constructors & Deconstructors===//
 	Camera(glm::vec3* camPos);
 	~Camera();
 
-	//Functions
+	//===Functions===//
 	void followGameObject(Renderable2D objectToFollow);
-	void move();
+	void move(glm::vec3* direction);
 
-	//Accessors
+	//==Getters & Setters==//
+	//=Getters=//
 	float* getSpeed();
 	glm::mat4* getViewMatrix();
 
-	//Setters
+	//=Setters=//
 	void setSpeed(float* newSpeed);
-	void setPosition(glm::vec3* _position);
+	void setPosition(glm::vec3* position);
 };
 
