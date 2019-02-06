@@ -1,7 +1,5 @@
 #include "Renderable2D.h"
 
-
-
 Renderable2D::Renderable2D()
 	: GameObject()
 {
@@ -13,6 +11,11 @@ Renderable2D::~Renderable2D()
 {
 	delete this->position;
 }
+
+#pragma region Functions
+
+#pragma endregion
+
 
 #pragma region Getters & Setters
 

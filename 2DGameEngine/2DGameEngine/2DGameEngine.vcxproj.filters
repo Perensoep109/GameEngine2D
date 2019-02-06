@@ -164,6 +164,9 @@
     <ClCompile Include="GameInputManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AtlasSprite2D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h">
@@ -249,6 +252,9 @@
     </ClInclude>
     <ClInclude Include="GameInputManager.h">
       <Filter>Header Files\Engine\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="AtlasSprite2D.h">
+      <Filter>Header Files\Engine\Graphics\Sprites</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

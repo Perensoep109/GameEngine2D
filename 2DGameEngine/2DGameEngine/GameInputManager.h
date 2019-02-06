@@ -7,13 +7,13 @@ static class StatGameInputManager
 private:
 	//===Fields===//
 	//==Private==//
-	GameInputManager* inputManager;
+	//GameInputManager* inputManager;
 
 	//===Functions===//
 	//==Public==//
 	void init(GameInputManager* inputManager)
 	{
-		this->inputManager = inputManager;
+		//this->inputManager = inputManager;
 	}
 
 public:

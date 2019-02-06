@@ -1,3 +1,2 @@
-﻿  GameInputManager.cpp
-c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\gameinputmanager.h(17): warning C4091: 'static ': ignored on left of 'StatGameInputManager' when no variable is declared
-  2DGameEngine.vcxproj -> C:\Users\Wiebe\Documents\GitHub\GameEngine2D\2DGameEngine\2DGameEngine\2DGameEngine.exe
+﻿  Game.cpp
+  2DGameEngine.vcxproj -> C:\Users\wiebe\Documents\GitHub\GameEngine2D\2DGameEngine\2DGameEngine\2DGameEngine.exe

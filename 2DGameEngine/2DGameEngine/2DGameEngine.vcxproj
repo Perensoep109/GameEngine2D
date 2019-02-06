@@ -130,6 +130,7 @@
   <ItemGroup>
     <ClCompile Include="Animatable.cpp" />
     <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="AtlasSprite2D.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameManager.cpp" />
@@ -157,6 +158,7 @@
   <ItemGroup>
     <ClInclude Include="Animatable.h" />
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="AtlasSprite2D.h" />
     <ClInclude Include="Ball.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Game.h" />

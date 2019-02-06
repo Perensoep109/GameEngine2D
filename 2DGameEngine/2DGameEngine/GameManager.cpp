@@ -100,7 +100,7 @@ void GameManager::initOpenGLOptions()
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_DEBUG_OUTPUT);
 	glDebugMessageCallback(OpenGLErrorMessageCallBack, 0);
-	glfwSetKeyCallback(this->gameWindow->getWindow(), Stat);
+	//glfwSetKeyCallback(this->gameWindow->getWindow(), Input);
 
 	//glEnable(GL_CULL_FACE);
 
