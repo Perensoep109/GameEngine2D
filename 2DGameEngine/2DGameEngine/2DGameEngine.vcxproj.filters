@@ -87,6 +87,9 @@
     <Filter Include="Header Files\Engine\Graphics\Renderers">
       <UniqueIdentifier>{4978a0bc-be8d-4283-b97d-955c39174d5d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Engine\Resource">
+      <UniqueIdentifier>{ba693a65-68e0-425c-9c4f-af0aabe741f4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -167,6 +170,9 @@
     <ClCompile Include="AtlasSprite2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ResourceManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h">
@@ -177,9 +183,6 @@
     </ClInclude>
     <ClInclude Include="Primitive.h">
       <Filter>Header Files\Engine\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>Header Files\Engine\Graphics</Filter>
@@ -192,9 +195,6 @@
     </ClInclude>
     <ClInclude Include="libs.h">
       <Filter>Header Files\Engine\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Vertex.h">
       <Filter>Header Files\Engine\Graphics</Filter>
@@ -219,9 +219,6 @@
     </ClInclude>
     <ClInclude Include="GameObject.h">
       <Filter>Header Files\Engine\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene2.h">
-      <Filter>Header Files\Engine</Filter>
     </ClInclude>
     <ClInclude Include="Renderable2D.h">
       <Filter>Header Files\Engine\Objects</Filter>
@@ -255,6 +252,15 @@
     </ClInclude>
     <ClInclude Include="AtlasSprite2D.h">
       <Filter>Header Files\Engine\Graphics\Sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene2.h">
+      <Filter>Header Files\Game\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManager.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

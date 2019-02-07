@@ -3,7 +3,6 @@
 
 
 Sprite2D::Sprite2D()
-	: BaseSprite2D(SpriteMode::Single)
 {
 }
 

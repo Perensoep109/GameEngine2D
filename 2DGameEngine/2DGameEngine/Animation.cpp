@@ -3,7 +3,6 @@
 
 
 Animation::Animation()
-	: BaseSprite2D(SpriteMode::Animation)
 {
 }
 

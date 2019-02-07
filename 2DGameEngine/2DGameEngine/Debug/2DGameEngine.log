@@ -1,2 +1,22 @@
-﻿  Game.cpp
+﻿  Animatable.cpp
+  BaseSprite.cpp
+  Game.cpp
+  GameManager.cpp
+  GameObjectRenderer.cpp
+  Renderable2D.cpp
+  Renderer2D.cpp
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\renderer2d.cpp(56): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\renderer2d.cpp(49): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\renderer2d.cpp(50): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\renderer2d.cpp(51): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\renderer2d.cpp(53): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\renderer2d.cpp(54): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\renderer2d.cpp(55): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  SceneRenderer.cpp
+  Sprite2D.cpp
+  TestScene.cpp
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\testscene.cpp(35): warning C4018: '<': signed/unsigned mismatch
+  TileMapRenderer.cpp
+  main.cpp
+  Generating Code...
   2DGameEngine.vcxproj -> C:\Users\wiebe\Documents\GitHub\GameEngine2D\2DGameEngine\2DGameEngine\2DGameEngine.exe

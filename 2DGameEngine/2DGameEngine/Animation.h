@@ -1,7 +1,6 @@
 #pragma once
 #include "BaseSprite.h"
-class Animation :
-	public BaseSprite2D
+class Animation
 {
 public:
 	Animation();

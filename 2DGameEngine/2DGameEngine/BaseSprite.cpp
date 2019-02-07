@@ -1,5 +1,5 @@
 #include "BaseSprite.h"
-
+/*
 BaseSprite2D::BaseSprite2D(BaseSprite2D::SpriteMode spriteMode)
 {
 	this->spriteMode = spriteMode;
@@ -94,3 +94,4 @@ glm::ivec2 BaseSprite2D::getDimensions()
 	return glm::ivec2(this->spriteWidth, this->spriteHeight);
 }
 #pragma endregion
+*/
