@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "TestScene.h"
+#include "SpriteAtlas.h"
 #include "Scene2.h"
 
 Game::Game()
@@ -14,12 +15,13 @@ Game::~Game()
 	delete this->sceneManager;
 }
 
-//=====Game loop functions=====
+//=====Game loop functions=====//
 //The first function that gets called
 void Game::start()
 {
 	this->sceneManager->addScene(new TestScene());
 	this->activateScene("TestScene", false);
+	SpriteAtlas* temp = new SpriteAtlas("Graphics/TestSpriteAtlas.png", 64, 64);
 }
 
 //This function gets called every frame

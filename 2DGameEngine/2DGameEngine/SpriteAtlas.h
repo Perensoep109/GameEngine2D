@@ -9,15 +9,19 @@ private:
 	int spriteWidth, spriteHeight;
 
 	GLuint ID;
+	int spriteAmount;
 
 	//===Functions===//
 	//==Private==//
-	//=Image loading=//
-	void loadFromFile(const char* fileName);
 
 public:
 	SpriteAtlas(const char* fileName, int spriteWidth, int spriteHeight);
 	~SpriteAtlas();
+
+	//===Functions===//
+	//==Public==//
+	void bind(const GLint textureUnit);
+	void unbind();
 
 	//===Getters & Setters===//
 	//==Getters==//
@@ -25,6 +29,7 @@ public:
 	int getAtlasHeight();
 	int getSpriteWidth();
 	int getSpriteHeight();
+	int getSpriteAmount();
 
 	GLuint getID();
 

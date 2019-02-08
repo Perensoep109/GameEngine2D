@@ -90,6 +90,9 @@
     <Filter Include="Header Files\Engine\Resource">
       <UniqueIdentifier>{ba693a65-68e0-425c-9c4f-af0aabe741f4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Engine\Managers">
+      <UniqueIdentifier>{6f926bf6-b34c-46f0-8865-83b3ae6aca17}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -260,7 +263,7 @@
       <Filter>Header Files\Game</Filter>
     </ClInclude>
     <ClInclude Include="ResourceManager.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Engine\Managers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
