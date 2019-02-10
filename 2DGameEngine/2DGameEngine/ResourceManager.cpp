@@ -39,3 +39,9 @@ bool RSCM::imgLoadFromFile(const char* fileName, int &imageWidth, int &imageHeig
 		return false;
 	}
 }
+
+//========Base resource class========//
+const char* RSCM::BaseResource::getKey()
+{
+	return this->key;
+}

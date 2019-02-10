@@ -1,6 +1,8 @@
 #pragma once
 #include <glew.h>
+#include "ResourceManager.h"
 class SpriteAtlas
+	: public RSCM::BaseResource
 {
 private:
 	//===Fields===//
@@ -15,7 +17,7 @@ private:
 	//==Private==//
 
 public:
-	SpriteAtlas(const char* fileName, int spriteWidth, int spriteHeight);
+	SpriteAtlas(const char* fileName, const char* resourceName, int spriteWidth, int spriteHeight);
 	~SpriteAtlas();
 
 	//===Functions===//

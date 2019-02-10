@@ -1,4 +1,47 @@
 ﻿  Game.cpp
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\resourcemanager.h(9): error C2039: 'ResourceManager': is not a member of 'RSCM'
+  c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\resourcemanager.h(6): note: see declaration of 'RSCM'
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\resourcemanager.h(9): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\resourcemanager.h(9): error C2146: syntax error: missing ';' before identifier 'resourceManager'
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\resourcemanager.h(20): error C2065: 'BaseResource': undeclared identifier
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\resourcemanager.h(20): error C2059: syntax error: ','
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\resourcemanager.h(20): error C2976: 'std::unordered_map': too few template arguments
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.15.26726\include\unordered_map(95): note: see declaration of 'std::unordered_map'
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\resourcemanager.h(21): error C2065: 'BaseResource': undeclared identifier
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\resourcemanager.h(21): error C2059: syntax error: ','
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\resourcemanager.h(21): error C2976: 'std::unordered_map': too few template arguments
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.15.26726\include\unordered_map(95): note: see declaration of 'std::unordered_map'
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\resourcemanager.h(21): error C2955: 'std::unordered_map': use of class template requires template argument list
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.15.26726\include\unordered_map(95): note: see declaration of 'std::unordered_map'
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\game.cpp(24): error C2661: 'SpriteAtlas::SpriteAtlas': no overloaded function takes 3 arguments
+  ResourceManager.cpp
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\resourcemanager.h(9): error C2039: 'ResourceManager': is not a member of 'RSCM'
+  c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\resourcemanager.h(6): note: see declaration of 'RSCM'
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\resourcemanager.h(9): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\resourcemanager.h(9): error C2146: syntax error: missing ';' before identifier 'resourceManager'
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\resourcemanager.h(20): error C2065: 'BaseResource': undeclared identifier
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\resourcemanager.h(20): error C2059: syntax error: ','
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\resourcemanager.h(20): error C2976: 'std::unordered_map': too few template arguments
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.15.26726\include\unordered_map(95): note: see declaration of 'std::unordered_map'
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\resourcemanager.h(21): error C2065: 'BaseResource': undeclared identifier
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\resourcemanager.h(21): error C2059: syntax error: ','
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\resourcemanager.h(21): error C2976: 'std::unordered_map': too few template arguments
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.15.26726\include\unordered_map(95): note: see declaration of 'std::unordered_map'
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\resourcemanager.h(21): error C2955: 'std::unordered_map': use of class template requires template argument list
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.15.26726\include\unordered_map(95): note: see declaration of 'std::unordered_map'
   SpriteAtlas.cpp
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\resourcemanager.h(9): error C2039: 'ResourceManager': is not a member of 'RSCM'
+  c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\resourcemanager.h(6): note: see declaration of 'RSCM'
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\resourcemanager.h(9): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\resourcemanager.h(9): error C2146: syntax error: missing ';' before identifier 'resourceManager'
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\resourcemanager.h(20): error C2065: 'BaseResource': undeclared identifier
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\resourcemanager.h(20): error C2059: syntax error: ','
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\resourcemanager.h(20): error C2976: 'std::unordered_map': too few template arguments
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.15.26726\include\unordered_map(95): note: see declaration of 'std::unordered_map'
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\resourcemanager.h(21): error C2065: 'BaseResource': undeclared identifier
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\resourcemanager.h(21): error C2059: syntax error: ','
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\resourcemanager.h(21): error C2976: 'std::unordered_map': too few template arguments
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.15.26726\include\unordered_map(95): note: see declaration of 'std::unordered_map'
+c:\users\wiebe\documents\github\gameengine2d\2dgameengine\2dgameengine\resourcemanager.h(21): error C2955: 'std::unordered_map': use of class template requires template argument list
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.15.26726\include\unordered_map(95): note: see declaration of 'std::unordered_map'
   Generating Code...
-  2DGameEngine.vcxproj -> C:\Users\wiebe\Documents\GitHub\GameEngine2D\2DGameEngine\2DGameEngine\2DGameEngine.exe

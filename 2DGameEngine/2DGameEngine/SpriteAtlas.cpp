@@ -1,11 +1,11 @@
 #include "SpriteAtlas.h"
 #include <SOIL2.h>
 #include <iostream>
-#include "ResourceManager.h"
 
 #pragma region Constructors & Deconstructors
 
-SpriteAtlas::SpriteAtlas(const char* fileName, int spriteWidth, int spriteHeight)
+SpriteAtlas::SpriteAtlas(const char* fileName, const char* resourceName, int spriteWidth, int spriteHeight)
+	: RSCM::BaseResource(resourceName)
 {
 	this->spriteWidth = spriteWidth;
 	this->spriteHeight = spriteHeight;
